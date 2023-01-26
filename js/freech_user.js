@@ -1,4 +1,4 @@
-// twister_user.js
+// freech_user.js
 // 2013 Miguel Freitas
 //
 // Load/save current user to localStorage
@@ -16,11 +16,11 @@ function initUser(cbFunc, cbReq) {
         function (req) {
             var elemAccountsList = getElem('select.local-usernames', true);
             if (elemAccountsList.length) {
-                for (var i = 0; i < twister.var.localAccounts.length; i++) {
-                    if (!elemAccountsList.find('option[value=\'' + twister.var.localAccounts[i] + '\']').length) {
+                for (var i = 0; i < freech.var.localAccounts.length; i++) {
+                    if (!elemAccountsList.find('option[value=\'' + freech.var.localAccounts[i] + '\']').length) {
                         $('<option/>')
-                            .val(twister.var.localAccounts[i])
-                            .text(twister.var.localAccounts[i])
+                            .val(freech.var.localAccounts[i])
+                            .text(freech.var.localAccounts[i])
                             .appendTo(elemAccountsList)
                         ;
                     }
@@ -28,7 +28,7 @@ function initUser(cbFunc, cbReq) {
             }
 
             loadScreenName();
-            if (!defaultScreenName || twister.var.localAccounts.indexOf(defaultScreenName) < 0) {
+            if (!defaultScreenName || freech.var.localAccounts.indexOf(defaultScreenName) < 0) {
                 defaultScreenName = undefined;
             } else {
                 getElem('select.local-usernames', true).val(defaultScreenName);
@@ -62,12 +62,12 @@ function incLastPostId( optionalNewValue ) {
 }
 
 function loadWalletlUsers(cbFunc, cbReq) {
-    twisterRpc('listwalletusers', [],
+    freechRpc('listwalletusers', [],
         function (req, ret) {
-            twister.var.localAccounts = [];
+            freech.var.localAccounts = [];
             for (var i = 0; i < ret.length; i++) {
                 if (ret.length && ret[i][0] !== '*') { // filter out group aliases (starting with '*')
-                    twister.var.localAccounts.push(ret[i]);
+                    freech.var.localAccounts.push(ret[i]);
                 }
             }
 
@@ -113,7 +113,7 @@ function createAccount(peerAlias) {
         return;
     }
 
-    twisterRpc('createwalletuser', [peerAlias],
+    freechRpc('createwalletuser', [peerAlias],
         function(req, ret) {
             $.MAL.processCreateAccount(req.peerAlias, ret);
         }, {peerAlias: peerAlias},
@@ -133,7 +133,7 @@ function importAccount(peerAlias, secretKey) {
         return;
     }
 
-    twisterRpc('importprivkey', [secretKey, peerAlias],
+    freechRpc('importprivkey', [secretKey, peerAlias],
         function (req, ret) {
             defaultScreenName = req.peerAlias;
             saveScreenName();
@@ -147,7 +147,7 @@ function importAccount(peerAlias, secretKey) {
 }
 
 function sendNewUserTransaction(peerAlias, cbFunc, cbReq) {
-    twisterRpc('sendnewusertransaction', [peerAlias],
+    freechRpc('sendnewusertransaction', [peerAlias],
         function (req, ret) {
             if (typeof req.cbFunc === 'function') {
                 req.cbFunc(req.cbReq);

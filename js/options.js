@@ -1,11 +1,11 @@
-function twisterOptions() {
+function freechOptions() {
     this.add({
         name: 'locLang',
         selector: '#language',
         valDefault: 'auto',
         tickMethod: function (elem) {
             if (elem.value !== 'auto')
-                twisterRpc('setpreferredspamlang', [elem.value]);
+                freechRpc('setpreferredspamlang', [elem.value]);
             location.reload();
             /*
             if (elem.value !== 'auto') {
@@ -59,35 +59,35 @@ function twisterOptions() {
         valDefault: 'enable'
     });
     this.add({
-        name: 'TwistdayReminder',
+        name: 'FreechdayReminder',
         valDefault: 'enable',
         tickMethod: function (elem) {
-            $('#TwistdayReminderCont').css('display', (elem.value === 'enable') ? 'block' : 'none');
+            $('#FreechdayReminderCont').css('display', (elem.value === 'enable') ? 'block' : 'none');
         }
     });
     this.add({
-        name: 'TwistdayReminderAutoUpdate',
+        name: 'FreechdayReminderAutoUpdate',
         valDefault: 'enable',
         tickMethod: function (elem) {
-            $('#TwistdayReminderAutoUpdateOpt').css('display', (elem.value === 'enable') ? 'inline' : 'none');
+            $('#FreechdayReminderAutoUpdateOpt').css('display', (elem.value === 'enable') ? 'inline' : 'none');
         }
     });
     this.add({
-        name: 'TwistdayReminderAutoUpdateTimer',
+        name: 'FreechdayReminderAutoUpdateTimer',
         type: 'numeric',
         valDefault: '3600',
         valMes: 'second(s)',
         getMethod: function (val) {return parseInt(val);}
     });
     this.add({
-        name: 'TwistdayReminderShowUpcoming',
+        name: 'FreechdayReminderShowUpcoming',
         valDefault: 'enable',
         tickMethod: function (elem) {
-            $('#TwistdayReminderShowUpcomingOpt').css('display', (elem.value === 'enable') ? 'inline' : 'none');
+            $('#FreechdayReminderShowUpcomingOpt').css('display', (elem.value === 'enable') ? 'inline' : 'none');
         }
     });
     this.add({
-        name: 'TwistdayReminderShowUpcomingTimer',
+        name: 'FreechdayReminderShowUpcomingTimer',
         type: 'numeric',
         valDefault: '72',
         valMes: 'hour(s)',
@@ -342,26 +342,26 @@ function twisterOptions() {
     });
 }
 
-twisterOptions.prototype.add = function (option) {
+freechOptions.prototype.add = function (option) {
     if (option.name && !this[option.name])
-        this[option.name] = new twisterOption(option);
+        this[option.name] = new freechOption(option);
 };
 
-twisterOptions.prototype.get = function (optionName) {
+freechOptions.prototype.get = function (optionName) {
     if (optionName && typeof this[optionName] !== 'undefined')
         return this[optionName].val;
     else
         console.warn('option \'' + optionName + '\' does not exist');
 };
 
-twisterOptions.prototype.set = function (optionName, val) {
+freechOptions.prototype.set = function (optionName, val) {
     if (optionName && typeof this[optionName] !== 'undefined')
         this[optionName].set(val);
     else
         console.warn('option \'' + optionName + '\' does not exist');
 };
 
-twisterOptions.prototype.initControls = function () {
+freechOptions.prototype.initControls = function () {
     var elem;
 
     for (var option in this) {
@@ -387,7 +387,7 @@ twisterOptions.prototype.initControls = function () {
     $('#testDesktopNotif').on('click', function () {
         $.MAL.showDesktopNotification({
             body: polyglot.t('notify_desktop_test'),
-            tag: 'twister_notification_test',
+            tag: 'freech_notification_test',
             funcClick: function () {
                 alert(polyglot.t('notify_desktop_perm_denied', {'this_domain': document.domain}));
             }
@@ -398,7 +398,7 @@ twisterOptions.prototype.initControls = function () {
     $('#opt-mod-posts-display').find('select').on('change', tickOptionsPostPreview);
 };
 
-function twisterOption(option) {
+function freechOption(option) {
     this.option = option;
 
     if (!option.selector)
@@ -415,16 +415,16 @@ function twisterOption(option) {
     }
 }
 
-twisterOption.prototype.val = undefined;
+freechOption.prototype.val = undefined;
 
-twisterOption.prototype.set = function (val) {
+freechOption.prototype.set = function (val) {
     this.val = (this.option.getMethod) ? this.option.getMethod(val) : val;
     this.option.valRaw = val;
 
     $.localStorage.set('options:' + this.option.name, val);
 };
 
-twisterOption.prototype.tick = function (event) {
+freechOption.prototype.tick = function (event) {
     if (this.option.type !== 'numeric' || checkForNumeric(event.target)) {
         this.set((this.option.type === 'checkbox') ? event.target.checked : event.target.value);
         if (this.option.valMes)
@@ -434,7 +434,7 @@ twisterOption.prototype.tick = function (event) {
     }
 };
 
-jQuery.Options = new twisterOptions();
+jQuery.Options = new freechOptions();
 
 
 function checkForNumeric(elem) {
@@ -453,7 +453,7 @@ function tickOptionsPostPreview() {
     var imgPreviewCont = elem.find('.preview-container');
 
     fillElemWithTxt(elem.children().first(),
-        polyglot.t('post_preview_dummy', {logo: '/img/twister_mini.png', site: 'http://twister.net.co'}));
+        polyglot.t('post_preview_dummy', {logo: '/img/freech_mini.png', site: 'http://freech.net.co'}));
 
     if ($.Options.displayPreview.val === 'enable') {
         imgPreviewCont.empty();

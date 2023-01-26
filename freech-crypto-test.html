@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
-<title>twister crypto test</title>
-<script src="js/twister-crypto-bundle.js"></script>
+<title>freech crypto test</title>
+<script src="js/freech-crypto-bundle.js"></script>
 
 <body>
 <textarea id="myTextarea" name="something" rows="20" cols="80">running javascript tests...</textarea>
@@ -47,13 +47,13 @@ function log(msg)
   document.getElementById('myTextarea').value += "\n" + msg;
 }
 
-var newKey = TwisterCrypto.PrivKey.makeRandom()
+var newKey = FreechCrypto.PrivKey.makeRandom()
 if( !newKey.pub.messageVerify(testvector["plaintext"], 
      newKey.messageSign(testvector["plaintext"])) ) {
   log("ERROR: New key self test signature failure");
 }
 
-var key = TwisterCrypto.PrivKey.fromWIF(testvector["secret"]);
+var key = FreechCrypto.PrivKey.fromWIF(testvector["secret"]);
 var pubkeyhex = key.pub.toHex()
 if( pubkeyhex != testvector["pubkey"] ) {
   log("ERROR: pubkey error: " + pubkeyhex);
@@ -103,7 +103,7 @@ if( key.pub.messageVerify(userpost, signedpost["sig_userpost"]) ) {
   log("ERROR: false positive verify for userpost")
 }
 
-userPubKey = TwisterCrypto.PubKey.fromHex(signedpost_user_pubkey)
+userPubKey = FreechCrypto.PubKey.fromHex(signedpost_user_pubkey)
 if( !userPubKey.messageVerify(userpost, signedpost["sig_userpost"]) ) {
   log("ERROR: verify for userpost failed with the expected pubkey")
 }

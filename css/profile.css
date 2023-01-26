@@ -10,7 +10,6 @@
 }
 .profile-card-main
 {
-    width: 540px;
     padding: 10px;
     text-align: center;
     position: relative;
@@ -37,32 +36,32 @@
 {
     width: 74px;
     height: 74px;
-    border: solid 6px #45474d;
+    border: solid 6px #971fe4;
     border-radius: 40%;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     box-sizing: content-box;
     float:left;
     top: 50%;
-    background-color: #a12a28;
+    background-color: #152A73;
 
 }
 .profile-card-main h1
 {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: #1464c0;
 }
 .profile-card-main h2
 {
-    color: #fff;
+    color: #1464c0;
 }
 
 .profile-card-buttons {
     padding: 4px 0;
 }
 
-.twister-user-info .profile-card-buttons {
+.freech-user-info .profile-card-buttons {
     position: absolute;
     top: 0;
     right: 0;
@@ -105,10 +104,9 @@
 .forEdition .profile-card-main input, .forEdition .profile-card-main textarea {
     display: block;
     margin: 0 auto;
-    background: rgba( 0, 0, 0, .1 );
     border: none;
     padding: 6px 4px;
-    color: #fff;
+    color: #2E438C;
     margin-bottom: 4px;
     text-align: center;
     transition: all .2s linear;
@@ -119,7 +117,7 @@
 .forEdition .profile-card-main textarea:hover, .forEdition .profile-card-main textarea:focus,
 .forEdition .profile-card-photo:hover
 {
-    background: rgba( 0, 0, 0, .3 );
+    background: rgba( 97, 118, 191, .1 );
 }
 
 .input-description {
@@ -258,7 +256,7 @@
 
 .profile-modal .profile-card-main
 {
-    background: #45474d;
+    background: #971fe4;
     color: white;
     width:100%;
 }

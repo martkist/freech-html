@@ -1,4 +1,4 @@
-// twister_timeline.js
+// freech_timeline.js
 // 2013 Miguel Freitas
 //
 // Provides objects to keep track of timeline display state to request new posts efficiently.
@@ -134,12 +134,12 @@ function requestGetposts(req)
     var r = req.getRequest();
     if( !req.getspam ) {
         if( r.length ) {
-            twisterRpc("getposts", [req.count,r],
+            freechRpc("getposts", [req.count,r],
                        function(req, posts) {processReceivedPosts(req, posts);}, req,
                        function(req, ret) {console.log("ajax error:" + ret);}, req);
         }
     } else {
-        twisterRpc("getspamposts", [req.count,r.max_id?r.max_id:-1,r.since_id?r.since_id:-1],
+        freechRpc("getspamposts", [req.count,r.max_id?r.max_id:-1,r.since_id?r.since_id:-1],
                    function(req, posts) {processReceivedPosts(req, posts);}, req,
                    function(req, ret) {console.log("ajax error:" + ret);}, req);
     }
@@ -184,8 +184,8 @@ function processReceivedPosts(req, posts)
 
 function updateTimeline(req, posts) {
     attachPostsToStream($.MAL.getStreamPostsParent(), posts, true,
-        function (twist, promoted) {
-            return {item: postToElem(twist, 'original', promoted), time: twist.userpost.time};
+        function (freech, promoted) {
+            return {item: postToElem(freech, 'original', promoted), time: freech.userpost.time};
         },
         req.getspam
     );
@@ -213,12 +213,12 @@ function attachPostsToStream(stream, posts, descendingOrder, createElem, createE
         intrantPost.item.attr('data-time', intrantPost.time);
 
         if (streamPosts.length) {
-            // check to avoid twist duplication and insert the post in timeline ordered by (you guessed) time
+            // check to avoid freech duplication and insert the post in timeline ordered by (you guessed) time
             for (var j = 0; j < streamPosts.length; j++) {
                 if (intrantPost.time === streamPosts[j].time &&
                     intrantPost.item[0].innerHTML === streamPosts[j].item[0].innerHTML) {
                         isAttached = true;
-                        console.warn('appending of duplicate twist prevented');
+                        console.warn('appending of duplicate freech prevented');
                         break;
                 } else if (descendingOrder ?
                     intrantPost.time > streamPosts[j].time : intrantPost.time < streamPosts[j].time) {
@@ -263,7 +263,7 @@ function requestTimelineUpdate(mode, count, timelineUsers, getspam)
 
 // getlasthave is called every second to check if followed users have posted anything new
 function requestLastHave() {
-    twisterRpc("getlasthave", [defaultScreenName],
+    freechRpc("getlasthave", [defaultScreenName],
            function(req, ret) {processLastHave(ret);}, null,
            function(req, ret) {console.log("ajax error:" + ret);}, null);
 }
@@ -300,7 +300,7 @@ function processLastHave(userHaves)
     if( newPostsLocal ) {
         //console.log('processLastHave(): requesting '+newPostsLocal);
         //console.log(reqConfirmNewPosts);
-        twisterRpc("getposts", [newPostsLocal, reqConfirmNewPosts],
+        freechRpc("getposts", [newPostsLocal, reqConfirmNewPosts],
                function(expected, posts) {processNewPostsConfirmation(expected, posts);}, newPostsLocal,
                function(req, ret) {console.log("ajax error:" + ret);}, null);
     }

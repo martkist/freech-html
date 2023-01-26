@@ -1,22 +1,22 @@
 // Process with:
-// browserify twister-crypto.js -o twister-crypto-bundle.js
+// browserify freech-crypto.js -o freech-crypto-bundle.js
 
 var Bitcoin = require('bitcoinjs-lib');
 var Crypto = require('crypto');
 window.Buffer = require('buffer').Buffer;
 window.Bencode = require('bencode');
 
-var twister_network = {
-    magicPrefix: '\x18twister Signed Message:\n',
+var freech_network = {
+    magicPrefix: '\x18freech Signed Message:\n',
     pubKeyHash: 0x00,
 }
 
-window.TwisterCrypto = {}
+window.FreechCrypto = {}
 
-TwisterCrypto.PubKey = Bitcoin.ECPubKey;
-TwisterCrypto.PrivKey = Bitcoin.ECKey;
+FreechCrypto.PubKey = Bitcoin.ECPubKey;
+FreechCrypto.PrivKey = Bitcoin.ECKey;
 
-TwisterCrypto.PubKey.prototype.encrypt = function ( message, enc )
+FreechCrypto.PubKey.prototype.encrypt = function ( message, enc )
 {
 	var sec = { orig: message.length }
 	var ephemeral = Bitcoin.ECKey.makeRandom()
@@ -42,7 +42,7 @@ TwisterCrypto.PubKey.prototype.encrypt = function ( message, enc )
 	return sec;
 }
 
-TwisterCrypto.PrivKey.prototype.decrypt = function ( sec )
+FreechCrypto.PrivKey.prototype.decrypt = function ( sec )
 {
 	var sec_key = sec["key"];
 	var sec_body = sec["body"];
@@ -81,16 +81,16 @@ TwisterCrypto.PrivKey.prototype.decrypt = function ( sec )
 	return decrypted;
 }
 
-TwisterCrypto.PrivKey.prototype.messageSign = function ( message, enc )
+FreechCrypto.PrivKey.prototype.messageSign = function ( message, enc )
 {
-	var signature = Bitcoin.Message.sign(this, message, twister_network);
+	var signature = Bitcoin.Message.sign(this, message, freech_network);
 	return enc ? signature.toString(enc) : signature;
 }
 
-TwisterCrypto.PubKey.prototype.messageVerify = function ( message, signature )
+FreechCrypto.PubKey.prototype.messageVerify = function ( message, signature )
 {
 	if (!Buffer.isBuffer(signature)) {
 		signature = new Buffer(signature, 'hex')
 	}
-	return Bitcoin.Message.verify(this.getAddress(), signature, message, twister_network)
+	return Bitcoin.Message.verify(this.getAddress(), signature, message, freech_network)
 }

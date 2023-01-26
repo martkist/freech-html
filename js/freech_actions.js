@@ -1,9 +1,9 @@
-// twister_actions.js
+// freech_actions.js
 // 2013 Miguel Freitas
 //
-// This file contains some twister "actions" like requesting
+// This file contains some freech "actions" like requesting
 // posts from dht, sending posts, replies. It seems to be a
-// intermediate layer between twister_io and interface, but
+// intermediate layer between freech_io and interface, but
 // separation is not clearly defined. Perhaps it would be better
 // to get rid of this file altogether.
 
@@ -41,7 +41,7 @@ function requestRepliedBefore(postLi)
         } else {
             //replied to a promoted post... try to get it..
             var params = [1, parseInt(reply_k)];
-            twisterRpc("getspamposts", params,
+            freechRpc("getspamposts", params,
                 function (postLi, postFromJson) {
                     if (postFromJson) {
                         postLi.find('textarea').textcomplete('destroy'); // FIXME maybe we need to reset position instead (but curently it's cheaper)
@@ -208,7 +208,7 @@ function requestPostRecursively(containerToAppend,username,resource,count,useGet
             req.max_id = max_id;
         }
 
-        twisterRpc("getposts", [count,[req]],
+        freechRpc("getposts", [count,[req]],
                        function(args, posts) {
                            for( var i = 0; i < posts.length; i++ ) {
                                 appendPostToElem(posts[i], args.containerToAppend);
@@ -253,7 +253,7 @@ function newPostMsg(msg, $postOrig) {
             params.push($postOrig.attr('data-screen-name'));
             params.push(parseInt($postOrig.attr('data-id')));
         }
-        twisterRpc("newpostmsg", params,
+        freechRpc("newpostmsg", params,
                    function(arg, ret) { incLastPostId(); }, null,
                    function(arg, ret) { var msg = ("message" in ret) ? ret.message : ret;
                                         alert(polyglot.t("ajax_error", { error: msg })); }, null);
@@ -267,10 +267,10 @@ function newRtMsg(postData, msg) {
     var sig_userpost;
 
     if (userpost.rt) {
-        if (parseInt(twisterVersion) <= 93000) {
+        if (parseInt(freechVersion) <= 93000) {
             alertPopup({
                 //txtTitle: polyglot.t(''), add some title (not 'error', please) or just KISS
-                txtMessage: 'Can\'t handle retwisting of commented retwisted twists —\n'
+                txtMessage: 'Can\'t handle refreeching of commented refreeched freechs —\n'
                     + polyglot.t('daemon_is_obsolete', {versionReq: '0.9.3+'})
             });
 
@@ -306,7 +306,7 @@ function newRtMsg(postData, msg) {
         if (typeof msg !== 'undefined')
             params.push(msg);
 
-        twisterRpc('newrtmsg', params,
+        freechRpc('newrtmsg', params,
             function(arg, ret) {incLastPostId();}, null,
             function(arg, ret) {var msg = ('message' in ret) ? ret.message : ret;
                 alert(polyglot.t('ajax_error', {error: msg}));
@@ -339,7 +339,7 @@ function newFavMsg(postData, priv, msg) {
         if (typeof msg !== 'undefined')
             params.push(msg);
 
-        twisterRpc('newfavmsg', params,
+        freechRpc('newfavmsg', params,
             function(arg, ret) {incLastPostId();}, null,
             function(arg, ret) {var msg = ('message' in ret) ? ret.message : ret;
                 alert(polyglot.t('ajax_error', {error: msg}));
@@ -352,27 +352,27 @@ function newFavMsg(postData, priv, msg) {
 
 function newShortURI(uri, cbFunc, cbReq) {
     if (!uri || !defaultScreenName) return;
-    if (parseInt(twisterVersion) < 93500) {
+    if (parseInt(freechVersion) < 93500) {
         console.warn('can\'t shorten URI "' + uri + '" — '
             + polyglot.t('daemon_is_obsolete', {versionReq: '0.9.35'}));
         return;
     }
 
-    for (var short in twister.URIs)
-        if (twister.URIs[short] instanceof Array ?
-            twister.URIs[short][0] === uri : twister.URIs[short] === uri) {
+    for (var short in freech.URIs)
+        if (freech.URIs[short] instanceof Array ?
+            freech.URIs[short][0] === uri : freech.URIs[short] === uri) {
             if (typeof cbFunc === 'function')
                 cbFunc(uri, short, cbReq);
 
             return;
         }
 
-    twisterRpc('newshorturl', [defaultScreenName, lastPostId + 1, uri],
+    freechRpc('newshorturl', [defaultScreenName, lastPostId + 1, uri],
         function (req, ret) {
             if (ret) {
                 ret = ret[0];  // FIXME there should be 1 element anyway for daemon version 93500
-                twister.URIs[ret] = req.uri;
-                $.localStorage.set('twistaURIs', twister.URIs);
+                freech.URIs[ret] = req.uri;
+                $.localStorage.set('freechaURIs', freech.URIs);
                 incLastPostId();
             } else
                 console.warn('RPC "newshorturl" error: empty response');
@@ -414,7 +414,7 @@ function updateProfileData(profileModalContent, username) {
     var postsView = profileModalContent.find(".postboard-posts");
 
     // try using getposts first. fallback to dht.
-    twisterRpc("getposts", [1,[{username: username}]],
+    freechRpc("getposts", [1,[{username: username}]],
                        function(args, posts) {
                            updateProfilePosts(postsView, username, posts.length);
                        }, {},
@@ -438,81 +438,81 @@ function updateProfilePosts(postsView, username, useGetposts) {
 
 function queryCreateRes(query, resource, extra) {
     var req = query + '@' + resource;
-    twister.res[req] = {
+    freech.res[req] = {
         query: query,
         resource: resource,
         lengthCached: 0,
-        twists: {
+        freechs: {
             cached: {},
             pending: []
         }
     };
     if (extra)
         for (i in extra)
-            twister.res[req][i] = extra[i];
+            freech.res[req][i] = extra[i];
 
-    return twister.res[req];
+    return freech.res[req];
 }
 
 function queryStart(board, query, resource, timeoutArgs, intervalTimeout, extra) {
     var req = query + '@' + resource;
 
-    if (typeof twister.res[req] !== 'object') {
-        twister.res[req] = {
+    if (typeof freech.res[req] !== 'object') {
+        freech.res[req] = {
             board: board,
             query: query,
             resource: resource,
             lengthCached: 0,
-            twists: {
+            freechs: {
                 cached: {},
                 pending: []
             }
         };
         if (extra) {
             for (i in extra)
-                twister.res[req][i] = extra[i];
+                freech.res[req][i] = extra[i];
 
             if (typeof extra.ready === 'function')
                 extra.ready(req, extra.readyReq);
         }
     } else {
-        twister.res[req].board = board;
-        for (var i in twister.res[req].twists.cached)
-            if (twister.res[req].twists.pending.indexOf(i) === -1)
-                twister.res[req].twists.pending.push(i);
+        freech.res[req].board = board;
+        for (var i in freech.res[req].freechs.cached)
+            if (freech.res[req].freechs.pending.indexOf(i) === -1)
+                freech.res[req].freechs.pending.push(i);
 
         if (extra) {
             if (typeof extra.drawFinish === 'function') {
-                twister.res[req].drawFinish = extra.drawFinish;
-                twister.res[req].drawFinishReq = extra.drawFinishReq;
+                freech.res[req].drawFinish = extra.drawFinish;
+                freech.res[req].drawFinishReq = extra.drawFinishReq;
             }
             if (typeof extra.skidoo === 'function')
-                twister.res[req].skidoo = extra.skidoo;
+                freech.res[req].skidoo = extra.skidoo;
         }
 
         queryPendingDraw(req);
     }
 
-    if (twister.res[req].interval)
+    if (freech.res[req].interval)
         return req;
 
     queryRequest(req);
 
-    // use extended timeout parameters on modal refresh (requires twister_core >= 0.9.14).
-    // our first query above should be faster (with default timeoutArgs of twisterd),
+    // use extended timeout parameters on modal refresh (requires freech_core >= 0.9.14).
+    // our first query above should be faster (with default timeoutArgs of freechd),
     // then we may possibly collect more posts on our second try by waiting more.
-    twister.res[req].timeoutArgs = timeoutArgs ? timeoutArgs : [10000, 2000, 3];
+    freech.res[req].timeoutArgs = timeoutArgs ? timeoutArgs : [10000, 2000, 3];
 
-    twister.res[req].interval = setInterval(queryTick, intervalTimeout ? intervalTimeout : 5000, req);
+    freech.res[req].interval = setInterval(queryTick, intervalTimeout ? intervalTimeout : 5000, req);
 
     return req;
 }
 
 function queryTick(req) {
-    if (typeof twister.res[req].skidoo === 'function' ? twister.res[req].skidoo(req)
-        : !isModalWithElemExists(twister.res[req].board)) {
-        clearInterval(twister.res[req].interval);
-        twister.res[req].interval = 0;
+    if (typeof freech.res[req].skidoo === 'function' ? freech.res[req].skidoo(req)
+        : !isModalWithElemExists(freech.res[req].board)) {
+        clearInterval(freech.res[req].interval);
+        freech.res[req].interval = 0;
         queryPendingClear(req);
         return;
     }
@@ -521,74 +521,74 @@ function queryTick(req) {
 }
 
 function queryPendingClear(req) {
-    twister.res[req].twists.pending = [];
+    freech.res[req].freechs.pending = [];
 }
 
 function queryRequest(req) {
-    if (twister.res[req].board && isModalWithElemExists(twister.res[req].board))
-        twister.res[req].board.closest('div').find('.postboard-loading').show();
+    if (freech.res[req].board && isModalWithElemExists(freech.res[req].board))
+        freech.res[req].board.closest('div').find('.postboard-loading').show();
 
-    if (twister.res[req].resource === 'mention' && twister.res[req].query === defaultScreenName) {
-        twisterRpc('getmentions', [twister.res[req].query, 100, {since_id: twister.res[req].lastTorrentId}],
+    if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName) {
+        freechRpc('getmentions', [freech.res[req].query, 100, {since_id: freech.res[req].lastTorrentId}],
             queryProcess, req,
-            function () {console.warn('getmentions API requires twister-core > 0.9.27');}
+            function () {console.warn('getmentions API requires freech-core > 0.9.27');}
         );
-        dhtget(twister.res[req].query, twister.res[req].resource, 'm',
-            queryProcess, req, twister.res[req].timeoutArgs);
-    } else if (twister.res[req].resource === 'fav')
-        twisterRpc('getfavs', [twister.res[req].query, 1000],
+        dhtget(freech.res[req].query, freech.res[req].resource, 'm',
+            queryProcess, req, freech.res[req].timeoutArgs);
+    } else if (freech.res[req].resource === 'fav')
+        freechRpc('getfavs', [freech.res[req].query, 1000],
             queryProcess, req);
-    else if (twister.res[req].resource === 'direct') {
-        var lengthStandard = 100;  // FIXME there may be the gap between .lastId and the lesser twist.id in response greater than 100 (very rare case)
-        if (twister.res[req].lengthCached < Math.min(twister.res[req].lastId, lengthStandard)
-            && !twister.res[req].triedToReCache) {
-            twister.res[req].triedToReCache = true;
-            var length = Math.min(twister.res[req].lastId + 1, lengthStandard);
-            var query = [{username: twister.res[req].query, max_id: twister.res[req].lastId}];
+    else if (freech.res[req].resource === 'direct') {
+        var lengthStandard = 100;  // FIXME there may be the gap between .lastId and the lesser freech.id in response greater than 100 (very rare case)
+        if (freech.res[req].lengthCached < Math.min(freech.res[req].lastId, lengthStandard)
+            && !freech.res[req].triedToReCache) {
+            freech.res[req].triedToReCache = true;
+            var length = Math.min(freech.res[req].lastId + 1, lengthStandard);
+            var query = [{username: freech.res[req].query, max_id: freech.res[req].lastId}];
         } else
-            var length = lengthStandard, query = [{username: twister.res[req].query, since_id: twister.res[req].lastId}];
+            var length = lengthStandard, query = [{username: freech.res[req].query, since_id: freech.res[req].lastId}];
 
-        twisterRpc('getdirectmsgs', [defaultScreenName, length, query],
+        freechRpc('getdirectmsgs', [defaultScreenName, length, query],
             queryProcess, req,
             function (req, res) {
                 console.warn(polyglot.t('ajax_error', {error: (res && res.message) ? res.message : res}));
             }
         );
     } else
-        dhtget(twister.res[req].query, twister.res[req].resource, 'm',
-            queryProcess, req, twister.res[req].timeoutArgs);
+        dhtget(freech.res[req].query, freech.res[req].resource, 'm',
+            queryProcess, req, freech.res[req].timeoutArgs);
 }
 
 function queryProcess(req, res) {
-    if (!req || !twister.res[req] || typeof res !== 'object' || $.isEmptyObject(res))
+    if (!req || !freech.res[req] || typeof res !== 'object' || $.isEmptyObject(res))
         return;
 
     var lengthNew = 0;
-    var lengthPending = twister.res[req].twists.pending.length;
+    var lengthPending = freech.res[req].freechs.pending.length;
 
-    if (twister.res[req].resource === 'mention' && twister.res[req].query === defaultScreenName)
+    if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName)
         lengthNew = queryPendingPushMentions(req, res);
-    else if (twister.res[req].resource === 'direct')
+    else if (freech.res[req].resource === 'direct')
         lengthNew = queryPendingPushDMs(res);
     else
         lengthNew = queryPendingPush(req, res);
 
-    if (typeof twister.res[req].skidoo === 'function' && twister.res[req].skidoo(req))
+    if (typeof freech.res[req].skidoo === 'function' && freech.res[req].skidoo(req))
         return;
 
     if (lengthNew) {
-        if (twister.res[req].resource === 'mention' && twister.res[req].query === defaultScreenName) {
-            $.MAL.updateNewMentionsUI(twister.res[req].lengthNew);
+        if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName) {
+            $.MAL.updateNewMentionsUI(freech.res[req].lengthNew);
             $.MAL.soundNotifyMentions();
             if (!$.mobile && $.Options.showDesktopNotifMentions.val === 'enable')
                 $.MAL.showDesktopNotification({
-                    body: polyglot.t('You got') + ' ' + polyglot.t('new_mentions', twister.res[req].lengthNew) + '.',
-                    tag: 'twister_notification_new_mentions',
+                    body: polyglot.t('You got') + ' ' + polyglot.t('new_mentions', freech.res[req].lengthNew) + '.',
+                    tag: 'freech_notification_new_mentions',
                     timeout: $.Options.showDesktopNotifMentionsTimer.val,
                     funcClick: (function () {
-                        if (!twister.res[this.req].board || !focusModalWithElement(twister.res[this.req].board,
+                        if (!freech.res[this.req].board || !focusModalWithElement(freech.res[this.req].board,
                             function (req) {
-                                twister.res[req].board.closest('.postboard')
+                                freech.res[req].board.closest('.postboard')
                                     .find('.postboard-news').click();
                             },
                             this.req
@@ -596,8 +596,8 @@ function queryProcess(req, res) {
                             $.MAL.showMentions(defaultScreenName);
                     }).bind({req: req})
                 });
-        } else if (twister.res[req].resource === 'direct') {
-            if (twister.res[req].query[0] !== '*')
+        } else if (freech.res[req].resource === 'direct') {
+            if (freech.res[req].query[0] !== '*')
                 $.MAL.updateNewDMsUI(getNewDMsCount());
             else
                 $.MAL.updateNewGroupDMsUI(getNewGroupDMsCount());
@@ -605,29 +605,29 @@ function queryProcess(req, res) {
             $.MAL.soundNotifyDM();
             if (!$.mobile && $.Options.showDesktopNotifDMs.val === 'enable')
                 $.MAL.showDesktopNotification({
-                    body: twister.res[req].query[0] === '*' ?
+                    body: freech.res[req].query[0] === '*' ?
                         polyglot.t('You got') + ' ' + polyglot.t('new_group_messages', getNewGroupDMsCount()) + '.'
                         : polyglot.t('You got') + ' ' + polyglot.t('new_direct_messages', getNewDMsCount()) + '.',
-                    tag: 'twister_notification_new_DMs',
+                    tag: 'freech_notification_new_DMs',
                     timeout: $.Options.showDesktopNotifDMsTimer.val,
                     funcClick: (function () {
-                        focusModalWithElement(twister.res[this.req].board);
+                        focusModalWithElement(freech.res[this.req].board);
                     }).bind({req: req})
                 });
             // TODO new DMs counters on minimized modals'
         } else if (!$.mobile && $.Options.showDesktopNotifPostsModal.val === 'enable'
-            && (twister.res[req].resource !== 'mention' || twister.res[req].query !== defaultScreenName)
-            && twister.res[req].board && isModalWithElemExists(twister.res[req].board)
-            && twister.res[req].board.children().length)
+            && (freech.res[req].resource !== 'mention' || freech.res[req].query !== defaultScreenName)
+            && freech.res[req].board && isModalWithElemExists(freech.res[req].board)
+            && freech.res[req].board.children().length)
             $.MAL.showDesktopNotification({
-                body: polyglot.t('You got') + ' ' + polyglot.t('new_posts', twister.res[req].twists.pending.length) + ' '
+                body: polyglot.t('You got') + ' ' + polyglot.t('new_posts', freech.res[req].freechs.pending.length) + ' '
                     + polyglot.t('in search result') + '.',
-                tag: 'twister_notification_new_posts_modal',
+                tag: 'freech_notification_new_posts_modal',
                 timeout: $.Options.showDesktopNotifPostsModalTimer.val,
                 funcClick: (function () {
-                    focusModalWithElement(twister.res[this.req].board,
+                    focusModalWithElement(freech.res[this.req].board,
                         function (req) {
-                            twister.res[req].board.closest('.postboard')
+                            freech.res[req].board.closest('.postboard')
                                 .find('.postboard-news').click();
                         },
                         this.req
@@ -636,31 +636,31 @@ function queryProcess(req, res) {
             });
     }
 
-    if (twister.res[req].twists.pending.length > lengthPending) {  // there is some twists may be which are not considered new so lengthNew equals zero (mentions thing)
-        if (!twister.res[req].board || (!$.mobile && !isModalWithElemExists(twister.res[req].board)))
+    if (freech.res[req].freechs.pending.length > lengthPending) {  // there is some freechs may be which are not considered new so lengthNew equals zero (mentions thing)
+        if (!freech.res[req].board || (!$.mobile && !isModalWithElemExists(freech.res[req].board)))
             return;
 
-        if (!twister.res[req].board.children().length || twister.res[req].boardAutoAppend)
+        if (!freech.res[req].board.children().length || freech.res[req].boardAutoAppend)
             queryPendingDraw(req);
         else {
-            twister.res[req].board.closest('div').find('.postboard-news')  // FIXME we'd replace 'div' with '.postboard' but need to dig through tmobile first
-                .text(polyglot.t('new_posts', twister.res[req].twists.pending.length))
+            freech.res[req].board.closest('div').find('.postboard-news')  // FIXME we'd replace 'div' with '.postboard' but need to dig through tmobile first
+                .text(polyglot.t('new_posts', freech.res[req].freechs.pending.length))
                 .fadeIn('slow')
             ;
-            twister.res[req].board.closest('div').find('.postboard-loading').hide();
+            freech.res[req].board.closest('div').find('.postboard-loading').hide();
         }
     }
 }
 
-function queryPendingPush(req, twists) {
+function queryPendingPush(req, freechs) {
     var lengthNew = 0;
     var needForFilter = $.Options.filterLang.val !== 'disable' && $.Options.filterLangForSearching.val;
 
-    for (var i = twists.length - 1; i >= 0; i--) {
-        var userpost = twists[i].userpost;
+    for (var i = freechs.length - 1; i >= 0; i--) {
+        var userpost = freechs[i].userpost;
         var j = userpost.n + '/' + userpost.time;
 
-        if (typeof twister.res[req].twists.cached[j] === 'undefined') {
+        if (typeof freech.res[req].freechs.cached[j] === 'undefined') {
             if (userpost.fav)
                 userpost = userpost.fav;
 
@@ -676,7 +676,7 @@ function queryPendingPush(req, twists) {
                     langFilterData = filterLang(userpost.rt.msg);
 
                 if ($.Options.filterLangSimulate.val) {
-                    twists[i].langFilter = langFilterData;
+                    freechs[i].langFilter = langFilterData;
                 } else {
                     if (!langFilterData.pass)
                         continue;
@@ -684,9 +684,9 @@ function queryPendingPush(req, twists) {
             }
 
             lengthNew++;
-            twister.res[req].twists.cached[j] = twists[i];
-            twister.res[req].lengthCached++;
-            twister.res[req].twists.pending.push(j);
+            freech.res[req].freechs.cached[j] = freechs[i];
+            freech.res[req].lengthCached++;
+            freech.res[req].freechs.pending.push(j);
         }
     }
 
@@ -694,57 +694,57 @@ function queryPendingPush(req, twists) {
 }
 
 function queryPendingDraw(req) {
-    var twists = [], length = 0;
+    var freechs = [], length = 0;
 
-    if (twister.res[req].resource === 'direct') {
-        for (var j = 0; j < twister.res[req].twists.pending.length; j++) {
-            var twist = twister.res[req].twists.cached[twister.res[req].twists.pending[j]];
+    if (freech.res[req].resource === 'direct') {
+        for (var j = 0; j < freech.res[req].freechs.pending.length; j++) {
+            var freech = freech.res[req].freechs.cached[freech.res[req].freechs.pending[j]];
             for (var i = 0; i < length; i++)
-                if (twist.id < twists[i].id) {
-                    twists.splice(i, 0, twist);
+                if (freech.id < freechs[i].id) {
+                    freechs.splice(i, 0, freech);
                     break;
                 }
 
-            if (length === twists.length)
-                twists.push(twist);
+            if (length === freechs.length)
+                freechs.push(freech);
 
             length++;
         }
-        attachPostsToStream(twister.res[req].board, twists, false,
-            function (twist, req) {
-                return {item: postToElemDM(twist, req.peerAliasLocal, req.peerAliasRemote)
-                    .attr('data-id', twist.id), time: twist.time};
+        attachPostsToStream(freech.res[req].board, freechs, false,
+            function (freech, req) {
+                return {item: postToElemDM(freech, req.peerAliasLocal, req.peerAliasRemote)
+                    .attr('data-id', freech.id), time: freech.time};
             },
-            {peerAliasLocal: defaultScreenName, peerAliasRemote: twister.res[req].query}
+            {peerAliasLocal: defaultScreenName, peerAliasRemote: freech.res[req].query}
         );
-        resetNewDMsCountForPeer(twister.res[req].query);
+        resetNewDMsCountForPeer(freech.res[req].query);
     } else {
-        for (var j = 0; j < twister.res[req].twists.pending.length; j++) {
-            var twist = twister.res[req].twists.cached[twister.res[req].twists.pending[j]];
+        for (var j = 0; j < freech.res[req].freechs.pending.length; j++) {
+            var freech = freech.res[req].freechs.cached[freech.res[req].freechs.pending[j]];
             for (var i = 0; i < length; i++)
-                if (twist.userpost.time > twists[i].userpost.time) {
-                    twists.splice(i, 0, twist);
+                if (freech.userpost.time > freechs[i].userpost.time) {
+                    freechs.splice(i, 0, freech);
                     break;
                 }
 
-            if (length === twists.length)
-                twists.push(twist);
+            if (length === freechs.length)
+                freechs.push(freech);
 
             length++;
         }
-        attachPostsToStream(twister.res[req].board, twists, true,
-            function (twist) {
-                return {item: postToElem(twist, 'original'), time: twist.userpost.time};
+        attachPostsToStream(freech.res[req].board, freechs, true,
+            function (freech) {
+                return {item: postToElem(freech, 'original'), time: freech.userpost.time};
             }
         );
-        if (twister.res[req].resource === 'mention' && twister.res[req].query === defaultScreenName)
+        if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName)
             resetMentionsCount();
     }
 
     queryPendingClear(req);
 
-    if (typeof twister.res[req].drawFinish === 'function')
-        twister.res[req].drawFinish(req, twister.res[req].drawFinishReq);
+    if (typeof freech.res[req].drawFinish === 'function')
+        freech.res[req].drawFinish(req, freech.res[req].drawFinishReq);
     else
         $.MAL.postboardLoaded();
 }

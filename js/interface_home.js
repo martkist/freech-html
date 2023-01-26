@@ -88,7 +88,7 @@ var InterfaceFunctions = function() {
                         }
                      });
 
-                     twisterFollowingO = TwisterFollowing(defaultScreenName);
+                     freechFollowingO = FreechFollowing(defaultScreenName);
 
                      if( args.cbFunc )
                         args.cbFunc(args.cbArg);
@@ -104,10 +104,10 @@ var InterfaceFunctions = function() {
             else
                 killInterfaceModule('new-users');
 
-            if ($.Options.TwistdayReminder.val === 'enable')
-                initTwistdayReminder();
+            if ($.Options.FreechdayReminder.val === 'enable')
+                initFreechdayReminder();
             else
-                killInterfaceModule('twistday-reminder');
+                killInterfaceModule('freechday-reminder');
         }
         if ($.Options.TopTrends.val === 'enable')
             initTopTrends();
@@ -137,7 +137,7 @@ function updateTrendingHashtags() {
         $list.empty().hide();
         $module.find('.refresh-toptrends').hide();
         $module.find('.loading-roller').show();
-        twisterRpc('gettrendinghashtags', [10],
+        freechRpc('gettrendinghashtags', [10],
             function(args, ret) {
                 //console.log('hashtags trends: '+ret);
                 for( var i = 0; i < ret.length; i++ ) {
@@ -170,7 +170,7 @@ function updateTrendingHashtags() {
                 $module.find('.loading-roller').hide();
             }, {},
             function(args, ret) {
-                console.log('Error with gettrendinghashtags. Older twister daemon?');
+                console.log('Error with gettrendinghashtags. Older freech daemon?');
             }, {}
         );
         if ($list.children().length && $.Options.TopTrendsAutoUpdate.val === 'enable' && $.Options.TopTrendsAutoUpdateTimer.val > 0)
@@ -228,20 +228,20 @@ function refreshNewUsers() {
     }
 }
 
-function initTwistdayReminder() {
-    var $module = initInterfaceModule('twistday-reminder');
+function initFreechdayReminder() {
+    var $module = initInterfaceModule('freechday-reminder');
 
     if ($module.length) {
         var $moduleRefresh = $module.find('.refresh');
-            $moduleRefresh.on('click', refreshTwistdayReminder);
+            $moduleRefresh.on('click', refreshFreechdayReminder);
             setTimeout(function() { $moduleRefresh.click() }, 100);
         $module.find('.current').hide();
         $module.find('.upcoming').hide();
     }
 }
 
-function refreshTwistdayReminder() {
-    var module = $('.module.twistday-reminder');
+function refreshFreechdayReminder() {
+    var module = $('.module.freechday-reminder');
     var list = module.find('.list');
 
     if (list.length) {
@@ -252,25 +252,25 @@ function refreshTwistdayReminder() {
             for (var i = 0; i < followingUsers.length; i++) {
                 suggests[i] = {username: followingUsers[i], max_id: 0};
             }
-            twisterRpc('getposts', [suggests.length + 1, suggests],
+            freechRpc('getposts', [suggests.length + 1, suggests],
                 function(arg, posts) {
                     function addLuckyToList(list, post, time) {
                         var lucky = post.userpost.n;
                         if (!list.find('[data-screen-name=' + lucky + ']').length) {
-                            var item = $('#twistday-reminder-suggestion-template').clone(true)
+                            var item = $('#freechday-reminder-suggestion-template').clone(true)
                                 .removeAttr('id');
-                            item.find('.twister-user-info').attr('data-screen-name', lucky);
-                            item.find('.twister-user-name').attr('href', $.MAL.userUrl(lucky));
-                            item.find('.twister-user-tag').text('@' + lucky);
-                            itemTwisterday = item.find('.twisterday');
-                            itemTwisterday.on('click', (function(e) {replyInitPopup(e, post);}).bind(post));
+                            item.find('.freech-user-info').attr('data-screen-name', lucky);
+                            item.find('.freech-user-name').attr('href', $.MAL.userUrl(lucky));
+                            item.find('.freech-user-tag').text('@' + lucky);
+                            itemFreechday = item.find('.freechday');
+                            itemFreechday.on('click', (function(e) {replyInitPopup(e, post);}).bind(post));
                             if (typeof time !== 'undefined')
-                                itemTwisterday.text(timeGmtToText(time));
+                                itemFreechday.text(timeGmtToText(time));
                             else
-                                itemTwisterday.text(timeGmtToText(post.userpost.time));
+                                itemFreechday.text(timeGmtToText(post.userpost.time));
 
-                            getAvatar(lucky, item.find('.twister-user-photo'));
-                            getFullname(lucky, item.find('.twister-user-full'));
+                            getAvatar(lucky, item.find('.freech-user-photo'));
+                            getFullname(lucky, item.find('.freech-user-full'));
 
                             list.append(item);
                         }
@@ -279,8 +279,8 @@ function refreshTwistdayReminder() {
                         list.find('[data-screen-name=' + lucky + ']').closest('li').remove();
                     }
 
-                    var showUpcomingTimer = ($.Options.TwistdayReminderShowUpcoming.val === 'enable') ?
-                        $.Options.TwistdayReminderShowUpcomingTimer.val * 3600 : 0;
+                    var showUpcomingTimer = ($.Options.FreechdayReminderShowUpcoming.val === 'enable') ?
+                        $.Options.FreechdayReminderShowUpcomingTimer.val * 3600 : 0;
                     var listCurrent = module.find('.current .list');
                     var listUpcoming = module.find('.upcoming .list');
                     var d = new Date();
@@ -297,7 +297,7 @@ function refreshTwistdayReminder() {
 
                     for (var i = 0; i < posts.length; i++) {
                         if (followingUsers.indexOf(posts[i].userpost.n) > -1
-                            && posts[i].userpost.height !== posts[i].userpost.k)  // to filter possible promoted twists which may appear suddenly (shame on you Miguel!)
+                            && posts[i].userpost.height !== posts[i].userpost.k)  // to filter possible promoted freechs which may appear suddenly (shame on you Miguel!)
                         {
                             d.setTime(0);
                             d.setUTCSeconds(posts[i].userpost.time);
@@ -330,8 +330,8 @@ function refreshTwistdayReminder() {
                 function(arg, ret) {console.log('ajax error:' + ret);}, null
             );
         }
-        if ($.Options.TwistdayReminderAutoUpdate.val === 'enable' && $.Options.TwistdayReminderAutoUpdateTimer.val > 0)
-            setTimeout(refreshTwistdayReminder, $.Options.TwistdayReminderAutoUpdateTimer.val * 1000);
+        if ($.Options.FreechdayReminderAutoUpdate.val === 'enable' && $.Options.FreechdayReminderAutoUpdateTimer.val > 0)
+            setTimeout(refreshFreechdayReminder, $.Options.FreechdayReminderAutoUpdateTimer.val * 1000);
     }
 }
 
@@ -340,7 +340,7 @@ function initWebTorrent() {
     //localStorage.removeItem('debug')
 
     if ($.localStorage.isSet('torrentIds'))
-        twister.torrentIds = $.localStorage.get('torrentIds');
+        freech.torrentIds = $.localStorage.get('torrentIds');
 
     WEBTORRENT_ANNOUNCE = $.Options.WebTorrentTrackers.val.split(/[ ,]+/)
     $.getScript('js/webtorrent.min.js', function() {
@@ -355,20 +355,20 @@ function initWebTorrent() {
 
         $.getScript('js/localforage.min.js', function() {
             localforage.setDriver([localforage.INDEXEDDB,localforage.WEBSQL]).then(function() {
-                for (var torrentId in twister.torrentIds) {
-                    if( twister.torrentIds[torrentId] ) {
-                        if (typeof(twister.torrentIds[torrentId]) === "string") {
+                for (var torrentId in freech.torrentIds) {
+                    if( freech.torrentIds[torrentId] ) {
+                        if (typeof(freech.torrentIds[torrentId]) === "string") {
                             // get blob file to restart seeding this file
                             var onGetItem = function(torrentId, err, data) {
                                 console.log("onget:", torrentId, err, data)
                                 if (err || data === null) {
                                     // error reading blob, just add torrentId
                                     console.log("WebTorrent auto-download: " + torrentId +
-                                                " (previously seeded as: " + twister.torrentIds[torrentId] + ")" );
+                                                " (previously seeded as: " + freech.torrentIds[torrentId] + ")" );
                                     WebTorrentClient.add(torrentId);
                                 } else {
-                                    var fileBlob = new File([data], twister.torrentIds[torrentId]);
-                                    console.log('WebTorrent seeding: "' + twister.torrentIds[torrentId] +
+                                    var fileBlob = new File([data], freech.torrentIds[torrentId]);
+                                    console.log('WebTorrent seeding: "' + freech.torrentIds[torrentId] +
                                                 '" size: ' + data.size);
                                     WebTorrentClient.seed(fileBlob);
                                 }
@@ -398,8 +398,8 @@ function initWebTorrent() {
                         var magnetLink = "magnet:?xt=urn:btih:" + infoHash
                         var blobFile = new Blob([file]);
                         localforage.setItem(magnetLink, blobFile);
-                        twister.torrentIds[magnetLink] = file.name;
-                        $.localStorage.set('torrentIds', twister.torrentIds);
+                        freech.torrentIds[magnetLink] = file.name;
+                        $.localStorage.set('torrentIds', freech.torrentIds);
                         return magnetLink;
                     }
                     if (seedingTorrent) {

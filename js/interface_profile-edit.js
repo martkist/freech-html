@@ -29,7 +29,7 @@ function initProfileEdit() {
         checkNetworkStatusAndAskRedirect();
 
         loadFollowing(function() {
-            twisterFollowingO = TwisterFollowing(defaultScreenName);
+            freechFollowingO = FreechFollowing(defaultScreenName);
             verifyUserAlreadyInBlockchain();
             initMentionsCount();
             initDMsCount();
@@ -94,7 +94,7 @@ function verifyUserAlreadyInBlockchain() {
 
     dumpPubkey(defaultScreenName, function(args, pubkey) {
         if (pubkey.length > 0) {
-            follow('twister', true, function() {
+            follow('freech', true, function() {
                 $.MAL.enableButton($('.submit-changes'));
             });
         } else {

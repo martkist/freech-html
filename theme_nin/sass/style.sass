@@ -100,7 +100,7 @@
   right: -10px
   width: 250px
   overflow: hidden
-  border-bottom: solid 2px #B4C669
+  border-bottom: solid 2px #C7DCFF
   box-shadow: 8px 10px 15px 0px rgba(0,0,0, .3)
 
 .userMenu-search .dialog-modal:after
@@ -487,10 +487,10 @@ textarea.splited-post
   ol
     @extend .clear-fix
     clear: both
-  .twister-user-info
+  .freech-user-info
     margin-top: 8px
 
-.twister-user
+.freech-user
   clear: both
   width: 100%
   position: relative
@@ -501,7 +501,7 @@ textarea.splited-post
   background: $bloc-background-color
   @extend .clear-fix
 
-.twister-user-photo
+.freech-user-photo
   display: inline-block
   float: left
   vertical-align: middle
@@ -511,7 +511,7 @@ textarea.splited-post
   margin: 10px
   background: $main-background-color
 
-.twister-user-info
+.freech-user-info
   width: 80%
 
 
@@ -527,20 +527,20 @@ textarea.splited-post
   cursor: pointer
   display: block
 
-.twister-user-name, .twister-by-user-name
+.freech-user-name, .freech-by-user-name
   font-weight: bold
   font-size: 14px
   color: $main-color-light
   text-decoration: none
 
-.twister-user-tag
+.freech-user-tag
   font-size: 12px
   line-height: 14px
   opacity: .8
   display: inline-block
   letter-spacing: 0px
 
-.twister-user-remove
+.freech-user-remove
   font-size: 13px
   opacity: .2
   text-decoration: none
@@ -553,13 +553,13 @@ textarea.splited-post
   @extend .icon-cancel
   @extend .extend-icon
 
-.twister-user:hover .twister-user-remove
+.freech-user:hover .freech-user-remove
   text-decoration: none
 
-.twister-user-remove:hover
+.freech-user-remove:hover
   opacity: 1
 
-.refresh-toptrends, .twistday-reminder .refresh, .refresh-users
+.refresh-toptrends, .freechday-reminder .refresh, .refresh-users
   @extend .icon-arrows
   @extend .extend-icon
   color: $main-color-dark
@@ -587,7 +587,7 @@ textarea.splited-post
   margin: 0 0 0 15px
   position: relative
 
-.refresh-toptrends:hover, .twistday-reminder .refresh:hover, .refresh-users:hover, .view-all-users:hover
+.refresh-toptrends:hover, .freechday-reminder .refresh:hover, .refresh-users:hover, .view-all-users:hover
   color: $main-color-color
   text-decoration: none
   background-color: transparent
@@ -623,9 +623,9 @@ ol.toptrends-list
       background: white
       color: $main-color-dark
 
-/********* TWISTDAY REMINDER *******/
+/********* FREECHDAY REMINDER *******/
 
-.twistday-reminder
+.freechday-reminder
   width: 300px
   small
     display: none
@@ -640,15 +640,15 @@ ol.toptrends-list
     text-decoration: none
   .current .label, .upcoming .label
     margin-right: 10%
-  .twister-user-info
+  .freech-user-info
     margin-top: 1.2%
-  .twister-user-tag, .twister-user-full
+  .freech-user-tag, .freech-user-full
     display: block
     margin: 0
     text-align: center
-  img.twister-user-photo
+  img.freech-user-photo
     margin: 0
-  .twisterday
+  .freechday
     font-size: 0.8em
     margin-left: 8%
     &.hover
@@ -785,7 +785,7 @@ ol.toptrends-list
 
 
 .inline-warn
-    background-color: #FEFEDF
+    background-color: #FAFFFF
     padding: 10px
     .close
         float: right
@@ -835,9 +835,9 @@ ol.toptrends-list
     margin: 0px 2px
     padding: 6px 16px
 
-/************ RETWIST POSTS MODAL **********/
+/************ REFREECH POSTS MODAL **********/
 
-.prompt-wrapper.reTwist
+.prompt-wrapper.reFreech
   &.prompt-wrapper
     margin-top: -150px
   .modal-content
@@ -888,7 +888,7 @@ ol.toptrends-list
             margin: 12px 16px
             padding: 2px 4px
         input:focus, select:focus
-            border-bottom: solid 1px #B4C669
+            border-bottom: solid 1px #C7DCFF
         .secret-key
             width: 500px
         .availability
@@ -1100,15 +1100,15 @@ ol.toptrends-list
   .open-profile-modal
     &:hover
       text-decoration: none
-  .twister-user
+  .freech-user
     position: relative
     padding: 5px
-  .twister-user-photo
+  .freech-user-photo
     position: relative
     left: 0
     float: left
     display: block
-  .twister-user-info
+  .freech-user-info
     position: relative
     margin-top: 4px
     padding-left: 70px
@@ -1213,7 +1213,7 @@ ol.toptrends-list
   #filterLangList
     width: 90%
 
-  #filterLangListCont div, #TopTrendsCont div, #TwistdayReminderCont div
+  #filterLangListCont div, #TopTrendsCont div, #FreechdayReminderCont div
     float: none
     padding: 0px 4px
 
@@ -1249,7 +1249,7 @@ ul.dropdown-menu
   list-style: none
   background-color: #fff
   border: 1px solid rgba(0, 0, 0, 0.2)
-  border-bottom: solid 2px #B4C669
+  border-bottom: solid 2px #C7DCFF
   box-shadow: 8px 10px 10px 0px rgba(0,0,0, .2)
   li
   > li > a
@@ -1265,7 +1265,7 @@ ul.dropdown-menu
   text-align: center
 
 .langFilterSimData em
-  color: #B4C669
+  color: #C7DCFF
 
 
 @import _responsive

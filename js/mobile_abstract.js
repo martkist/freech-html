@@ -2,7 +2,7 @@
 // 2013 Miguel Freitas
 //
 // Mobile Abstration Layer
-// Try to sort out lowlevel differences between jquery and jquery mobile twister interfaces
+// Try to sort out lowlevel differences between jquery and jquery mobile freech interfaces
 
 var MAL = function()
 {
@@ -95,17 +95,17 @@ var MAL = function()
         if( $.hasOwnProperty("mobile") ) {
             var newTweetsBar = $(".timeline-refresh .ui-btn-text");
             if( newPosts ) {
-                document.title = "(" + String(newPosts) + ") twister";
+                document.title = "(" + String(newPosts) + ") freech";
                 newTweetsBar.text("(" + String(newPosts) + ")");
             } else {
-                document.title = "twister";
+                document.title = "freech";
                 newTweetsBar.text("Refresh");
             }
         } else {
             var newTweetsBar = $(".wrapper").find(".postboard-news");
             var newTweetsBarMenu = $(".userMenu").find(".menu-news"); // added for home menu entry
             if( newPosts ) {
-                document.title = "(" + String(newPosts) + ") twister";
+                document.title = "(" + String(newPosts) + ") freech";
                 newTweetsBar.text(polyglot.t("new_posts", newPosts));
                 newTweetsBar.fadeIn("slow");
                 newTweetsBarMenu.text(String(newPosts));
@@ -115,7 +115,7 @@ var MAL = function()
                     this.showDesktopNotification({
                         body: polyglot.t('You got') + ' ' + polyglot.t('new_posts', newPosts) + ' '
                             + polyglot.t('in postboard') + '.',
-                        tag: 'twister_notification_new_posts',
+                        tag: 'freech_notification_new_posts',
                         timeout: $.Options.showDesktopNotifPostsTimer.val,
                         funcClick: (function() {
                             requestTimelineUpdate('pending', this.postsCount, followingUsers, promotedPostsOnly);
@@ -127,7 +127,7 @@ var MAL = function()
                 newTweetsBar.text("");
                 newTweetsBarMenu.text("");
                 newTweetsBarMenu.removeClass("show");
-                document.title = "twister";
+                document.title = "freech";
             }
         }
     }
@@ -456,7 +456,7 @@ var MAL = function()
             $("#home .posts").html("");
             newmsgsChangedUser();
             followingChangedUser();
-            twisterInitialized = false;
+            freechInitialized = false;
         } else {
             window.location.href = "home.html";
         }
@@ -487,9 +487,9 @@ var MAL = function()
         if (!req.title)
             req.title = polyglot.t('notify_desktop_title');
         if (!req.icon)
-            req.icon = '../img/twister_mini.png';
+            req.icon = '../img/freech_mini.png';
         if (!req.tag)
-            req.tag = 'twister_notification';
+            req.tag = 'freech_notification';
         if (!req.timeout)
             req.timeout = 2592000;  // 60 * 60 * 24 * 30, one month
 
@@ -583,9 +583,9 @@ function filterLang(string) {
             langFilterReason = polyglot.t('this doesnt contain that', {'this': polyglot.t(langFilterMode), 'that': polyglot.t('language of this')});
 
             // before detection attempts we cut out any mentions, links and /me directives and replace _ with space
-            langFilterSubj = string.replace(/@\S\w*|https?:\/\/\S*|twist:\S\S\S\S\S\S\S\S\S\S\S=|^\/me\s/g, '').replace(/_+/g, ' ')
+            langFilterSubj = string.replace(/@\S\w*|https?:\/\/\S*|freech:\S\S\S\S\S\S\S\S\S\S\S=|^\/me\s/g, '').replace(/_+/g, ' ')
             // cut out common frequently used words FIXME I believe there is a list of similar international stuff somewhere outside which is waiting for us, we should just find it
-                .replace(/\btwister|tox|github|linux|ubuntu|debian|windows|google|twitter|facebook|microsoft|ping|pong|email|javascript\b/ig, '')
+                .replace(/\bfreech|tox|github|linux|ubuntu|debian|windows|google|twitter|facebook|microsoft|ping|pong|email|javascript\b/ig, '')
             // replace zero-width word boundaries, such as between letters from different alphabets [or other symbols], with spaces
                   // FIXME not so good idea because 'Za pomocą białej listy' may turn into 'Za pomoc ą bia ł ej listy' for e.g.
                   // FIXME but first one was recognized as 'hrv' and second as 'pol' and you know it's 'pol' actually
@@ -626,7 +626,7 @@ function filterLang(string) {
 
 function checkUpdatesClient(alertIfNoUpdates) {
     function handleGetFail(jqXHR) {
-        twister.var.updatesCheckClient.isOngoing = false;
+        freech.var.updatesCheckClient.isOngoing = false;
 
         console.warn(polyglot.t('cant_get_requested_resourse', {link: this.url, status: jqXHR.status + ', \'' + jqXHR.statusText + '\''}));
 
@@ -643,14 +643,14 @@ function checkUpdatesClient(alertIfNoUpdates) {
         }
     }
 
-    if (twister.var.updatesCheckClient.isOngoing)
+    if (freech.var.updatesCheckClient.isOngoing)
         return;
 
-    twister.var.updatesCheckClient.isOngoing = true;
+    freech.var.updatesCheckClient.isOngoing = true;
 
     $.get('.git/HEAD', function (ret) {
         if (ret.slice(0, 16) !== 'ref: refs/heads/') {
-            twister.var.updatesCheckClient.isOngoing = false;
+            freech.var.updatesCheckClient.isOngoing = false;
             if (alertIfNoUpdates)
                 alert(polyglot.t('updates_not_available') + '.\n\nCan\'t parse local HEAD: unknown syntax, FUBAR!');
 
@@ -662,20 +662,20 @@ function checkUpdatesClient(alertIfNoUpdates) {
         $.get('.git/refs/heads/' + branch, function (ret) {
             var commit = ret.trim();
             if (!commit) {
-                twister.var.updatesCheckClient.isOngoing = false;
+                freech.var.updatesCheckClient.isOngoing = false;
                 if (alertIfNoUpdates)
                     alert(polyglot.t('updates_not_available') + '.\n\nCan\'t parse local HEAD: \'' + '.git/refs/heads/' + branch + '\' is empty, FUBAR!');
 
                 return;
             }
 
-            var repo = 'twister-html';  // TODO source repo selection in options
-            var repoOwner = 'miguelfreitas';
+            var repo = 'freech-html';  // TODO source repo selection in options
+            var repoOwner = 'martkist';
 
             // TODO notification if local branch was changed ('r u wanna reload the page?')
-            /*if (!twister.var.updatesCheckClient.formerBranch || !twister.var.updatesCheckClient.formerCommit) {
-                twister.var.updatesCheckClient.formerBranch = branch;
-                twister.var.updatesCheckClient.formerCommit = commit;
+            /*if (!freech.var.updatesCheckClient.formerBranch || !freech.var.updatesCheckClient.formerCommit) {
+                freech.var.updatesCheckClient.formerBranch = branch;
+                freech.var.updatesCheckClient.formerCommit = commit;
             }*/
 
             console.log('currently we are on the branch \'' + branch + '\' of ' + repo + ' at the commit ' + commit);
@@ -684,7 +684,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
                 for (var i = 0; i < ret.length; i++) {
                     if (ret[i].name === branch) {
                         if (ret[i].commit.sha === commit) {
-                            twister.var.updatesCheckClient.isOngoing = false;
+                            freech.var.updatesCheckClient.isOngoing = false;
 
                             console.log(polyglot.t('updates_upstream_isnt_changed'));
 
@@ -706,7 +706,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
 
                             $.get('https://api.github.com/repos/' + repoOwner + '/' + repo + '/git/commits/' + commit, function (ret) {
                                 if (ret.sha !== commit) {  // the response is wrong if so, should be 404 instead
-                                    twister.var.updatesCheckClient.isOngoing = false;
+                                    freech.var.updatesCheckClient.isOngoing = false;
                                     console.log('upstream tree doesn\'t have our most recent commit,\nlooks like we are in the process of development locally.');
                                     if (alertIfNoUpdates)
                                         alert(polyglot.t('updates_not_available') + '.\n\nUpstream tree doesn\'t have our most recent commit,\nlooks like we are in the process of development locally.');
@@ -717,7 +717,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
                                 commit = ret;
 
                                 $.get('https://api.github.com/repos/' + repoOwner + '/' + repo + '/git/commits/' + commitUpstream, function (ret) {
-                                    twister.var.updatesCheckClient.isOngoing = false;
+                                    freech.var.updatesCheckClient.isOngoing = false;
 
                                     if (ret.sha !== commitUpstream) {  // the response is wrong if so, should be 404 instead
                                         console.warn('upstream tree doesn\'t have the commit which is named most recent in the list of branches, FUBAR!');
@@ -759,7 +759,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
                                         });
                                 }).fail(function (jqXHR) {
                                     if (jqXHR.status === 404) {
-                                        twister.var.updatesCheckClient.isOngoing = false;
+                                        freech.var.updatesCheckClient.isOngoing = false;
                                         console.warn('upstream tree doesn\'t have the commit which is named most recent in the list of branches, FUBAR!');
                                         if (alertIfNoUpdates)
                                             alert(polyglot.t('updates_not_available') + '.\n\nUpstream tree doesn\'t have the commit which is named most recent in the list of branches, FUBAR!');
@@ -768,7 +768,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
                                 });
                             }).fail(function (jqXHR) {
                                 if (jqXHR.status === 404) {
-                                    twister.var.updatesCheckClient.isOngoing = false;
+                                    freech.var.updatesCheckClient.isOngoing = false;
                                     console.log('upstream tree doesn\'t have our most recent commit,\nlooks like we are in the process of development locally.');
                                     if (alertIfNoUpdates)
                                         alert(polyglot.t('updates_not_available') + '.\n\nUpstream tree doesn\'t have our most recent commit,\nlooks like we are in the process of development locally.');
@@ -779,7 +779,7 @@ function checkUpdatesClient(alertIfNoUpdates) {
                         return;
                     }
                 }
-                twister.var.updatesCheckClient.isOngoing = false;
+                freech.var.updatesCheckClient.isOngoing = false;
                 console.log('upstream tree doesn\'t have our branch,\nlooks like we are in the process of development locally.');
                 if (alertIfNoUpdates)
                     alert(polyglot.t('updates_not_available') + '.\n\nUpstream tree doesn\'t have our branch,\nlooks like we are in the process of development locally.');

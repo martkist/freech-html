@@ -1,13 +1,13 @@
-// twister_io.js
+// freech_io.js
 // 2013 Miguel Freitas
 //
-// low-level twister i/o.
+// low-level freech i/o.
 // implements requests of dht resources. multiple pending requests to the same resource are joined.
 // cache results (profile, avatar, etc) in memory.
 // avatars are cached in localstored (expiration = 24 hours)
 
 // main json rpc method. receives callbacks for success and error
-function twisterRpc(method, params, resultFunc, resultArg, errorFunc, errorArg) {
+function freechRpc(method, params, resultFunc, resultArg, errorFunc, errorArg) {
     // removing hardcoded username from javascript: please use url http://user:pwd@localhost:28332 instead
     //var foo = new $.JsonRpcClient({ ajaxUrl: '/', username: 'user', password: 'pwd'});
     var foo = new $.JsonRpcClient({ajaxUrl: window.location.pathname.replace(/[^\/]*$/, '')});
@@ -114,7 +114,7 @@ function dhtget(peerAlias, resource, multi, cbFunc, cbReq, timeoutArgs) {
 // null is passed to callback in case of an error
 function decodeShortURI(locator, cbFunc, cbReq, timeoutArgs) {
     if (!locator) return;
-    if (parseInt(twisterVersion) < 93500) {
+    if (parseInt(freechVersion) < 93500) {
         console.warn('can\'t fetch URI "' + req + '" — '
             + polyglot.t('daemon_is_obsolete', {versionReq: '0.9.35'}));
         return;
@@ -142,7 +142,7 @@ function _dhtgetInternal(peerAlias, resource, multi, timeoutArgs) {
     if (typeof timeoutArgs !== 'undefined') {
         argsList = argsList.concat(timeoutArgs);
     }
-    twisterRpc('dhtget', argsList,
+    freechRpc('dhtget', argsList,
         function(req, ret) {
             _dhtgetsInProgress--;
             _dhtgetProcessPending(req.locator, req.multi, ret);
@@ -163,7 +163,7 @@ function _decodeshorturlInternal(locator, timeoutArgs) {
     if (typeof timeoutArgs !== 'undefined') {
         argsList = argsList.concat(timeoutArgs);
     }
-    twisterRpc('decodeshorturl', argsList,
+    freechRpc('decodeshorturl', argsList,
         function(req, ret) {
             _dhtgetsInProgress--;
             _dhtgetProcessPending(req, 'url', ret);
@@ -212,7 +212,7 @@ function removeUsersFromDhtgetQueue(users) {
 
 // store value at the dht resource
 function dhtput(peerAlias, resource, multi, value, sig_user, seq, cbFunc, cbReq) {
-    twisterRpc('dhtput', [peerAlias, resource, multi, value, sig_user, seq],
+    freechRpc('dhtput', [peerAlias, resource, multi, value, sig_user, seq],
         function(req, ret) {
             if (req.cbFunc)
                 req.cbFunc(req.cbReq, true);
@@ -266,22 +266,22 @@ function getFullname(peerAlias, elem) {
             if (name && (name = name.trim()))
                 req.elem.text(name);
 
-            if (typeof twisterFollowingO !== 'undefined' &&  // FIXME delete this check when you fix client init sequence
+            if (typeof freechFollowingO !== 'undefined' &&  // FIXME delete this check when you fix client init sequence
                 ($.Options.isFollowingMe.val === 'everywhere' || req.elem.hasClass('profile-name'))) {
                 // here we try to detect if peer follows us and then display it
-                if (twisterFollowingO.knownFollowers.indexOf(req.peerAlias) > -1) {
+                if (freechFollowingO.knownFollowers.indexOf(req.peerAlias) > -1) {
                     req.elem.addClass('isFollowing');
                     req.elem.attr('title', polyglot.t('follows you'));
-                } else if (twisterFollowingO.notFollowers.indexOf(req.peerAlias) === -1) {
-                    if (twisterFollowingO.followingsFollowings[req.peerAlias] &&
-                        twisterFollowingO.followingsFollowings[req.peerAlias].following) {
-                        if (twisterFollowingO.followingsFollowings[req.peerAlias].following.indexOf(defaultScreenName) > -1) {
-                            if (twisterFollowingO.knownFollowers.indexOf(req.peerAlias) === -1) {
-                                twisterFollowingO.knownFollowers.push(req.peerAlias);
-                                twisterFollowingO.save();
+                } else if (freechFollowingO.notFollowers.indexOf(req.peerAlias) === -1) {
+                    if (freechFollowingO.followingsFollowings[req.peerAlias] &&
+                        freechFollowingO.followingsFollowings[req.peerAlias].following) {
+                        if (freechFollowingO.followingsFollowings[req.peerAlias].following.indexOf(defaultScreenName) > -1) {
+                            if (freechFollowingO.knownFollowers.indexOf(req.peerAlias) === -1) {
+                                freechFollowingO.knownFollowers.push(req.peerAlias);
+                                freechFollowingO.save();
                                 addPeerToFollowersList(getElem('.followers-modal .followers-list'), req.peerAlias, true);
                                 $('.module.mini-profile .open-followers')
-                                    .attr('title', twisterFollowingO.knownFollowers.length.toString());
+                                    .attr('title', freechFollowingO.knownFollowers.length.toString());
                             }
                             req.elem.addClass('isFollowing');
                             req.elem.attr('title', polyglot.t('follows you'));
@@ -290,18 +290,18 @@ function getFullname(peerAlias, elem) {
                         loadFollowingFromDht(req.peerAlias, 1, [], 0,
                             function (req, following, seqNum) {
                                 if (following.indexOf(defaultScreenName) > -1) {
-                                    if (twisterFollowingO.knownFollowers.indexOf(req.peerAlias) === -1) {
-                                        twisterFollowingO.knownFollowers.push(req.peerAlias);
+                                    if (freechFollowingO.knownFollowers.indexOf(req.peerAlias) === -1) {
+                                        freechFollowingO.knownFollowers.push(req.peerAlias);
                                         addPeerToFollowersList(getElem('.followers-modal .followers-list'), req.peerAlias, true);
                                         $('.module.mini-profile .open-followers')
-                                            .attr('title', twisterFollowingO.knownFollowers.length.toString());
+                                            .attr('title', freechFollowingO.knownFollowers.length.toString());
                                     }
                                     req.elem.addClass('isFollowing');
                                     req.elem.attr('title', polyglot.t('follows you'));
-                                } else if (twisterFollowingO.notFollowers.indexOf(req.peerAlias) === -1)
-                                    twisterFollowingO.notFollowers.push(req.peerAlias);
+                                } else if (freechFollowingO.notFollowers.indexOf(req.peerAlias) === -1)
+                                    freechFollowingO.notFollowers.push(req.peerAlias);
 
-                                twisterFollowingO.save();
+                                freechFollowingO.save();
                             }, {elem: req.elem, peerAlias: req.peerAlias}
                         );
                     }
@@ -362,7 +362,7 @@ function getWebpage(peerAlias, elem) {
 }
 
 function getGroupChatName(groupAlias, elem) {
-    twisterRpc('getgroupinfo', [groupAlias],
+    freechRpc('getgroupinfo', [groupAlias],
         function(elem, ret) {
             elem.text(ret.description);
         }, elem,
@@ -540,7 +540,7 @@ function getStatusTime(peerAlias, elem) {
 }
 
 function getPostMaxAvailability(peerAlias, k, cbFunc, cbReq) {
-    twisterRpc('getpiecemaxseen', [peerAlias, k],
+    freechRpc('getpiecemaxseen', [peerAlias, k],
         function(req, ret) {
             req.cbFunc(req.cbReq, ret);
         }, {cbFunc: cbFunc, cbReq: cbReq},
@@ -553,7 +553,7 @@ function getPostMaxAvailability(peerAlias, k, cbFunc, cbReq) {
 function checkPubkeyExists(peerAlias, cbFunc, cbReq) {
     // pubkey is checked in block chain db.
     // so only accepted registrations are reported (local wallet users are not)
-    twisterRpc('dumppubkey', [peerAlias],
+    freechRpc('dumppubkey', [peerAlias],
         function(req, ret) {
             req.cbFunc(req.cbReq, ret.length > 0);
         }, {cbFunc: cbFunc, cbReq: cbReq},
@@ -573,7 +573,7 @@ function dumpPubkey(peerAlias, cbFunc, cbReq) {
         if (cbFunc)
             cbFunc(cbReq, _pubkeyMap[peerAlias]);
     } else {
-        twisterRpc('dumppubkey', [peerAlias],
+        freechRpc('dumppubkey', [peerAlias],
             function (req, ret) {
                 if (ret.length > 0) {
                     _pubkeyMap[peerAlias] = ret;
@@ -593,7 +593,7 @@ function dumpPubkey(peerAlias, cbFunc, cbReq) {
 // privkey is obtained from wallet db
 // so privkey is returned even for unsent transactions
 function dumpPrivkey(peerAlias, cbFunc, cbReq) {
-    twisterRpc('dumpprivkey', [peerAlias],
+    freechRpc('dumpprivkey', [peerAlias],
         function(req, ret) {
             req.cbFunc(req.cbReq, ret);
         }, {cbFunc: cbFunc, cbReq: cbReq},

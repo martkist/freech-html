@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>twister</title>
+    <title>freech</title>
     <link id="stylecss" rel="stylesheet" href="css/style.css" type="text/css"/>
     <link id="profilecss" rel="stylesheet" href="css/profile.css" type="text/css"/>
     <script src="js/jquery.min.js"></script>
@@ -14,23 +14,23 @@
     <script src="js/franc.js"></script>
     <script src="js/notify.js"></script>
     <script src="js/mobile_abstract.js"></script>
-    <script src="js/twister_io.js"></script>
+    <script src="js/freech_io.js"></script>
     <script src="js/polyglot.min.js"></script>
     <script src="js/interface_localization.js"></script>
-    <script src="js/twister_network.js"></script>
-    <script src="js/twister_user.js"></script>
-    <script src="js/twister_formatpost.js"></script>
-    <script src="js/twister_following.js"></script>
-    <script src="js/twister_timeline.js"></script>
-    <script src="js/twister_newmsgs.js"></script>
-    <script src="js/twister_actions.js"></script>
-    <script src="js/twister_directmsg.js"></script>
+    <script src="js/freech_network.js"></script>
+    <script src="js/freech_user.js"></script>
+    <script src="js/freech_formatpost.js"></script>
+    <script src="js/freech_following.js"></script>
+    <script src="js/freech_timeline.js"></script>
+    <script src="js/freech_newmsgs.js"></script>
+    <script src="js/freech_actions.js"></script>
+    <script src="js/freech_directmsg.js"></script>
     <script src="js/interface_common.js"></script>
     <script src="js/interface_home.js"></script>
     <script src="js/jquery.textcomplete.min.js"></script>
-    <script src="js/twister-crypto-bundle.js"></script>
+    <script src="js/freech-crypto-bundle.js"></script>
 
-    <link rel="shortcut icon" type="image/png" href="img/twister_mini.png" />
+    <link rel="shortcut icon" type="image/png" href="img/freech_mini.png" />
   </head>
   <body>
   <!-- MENU SUPERIOR INIT -->
@@ -146,8 +146,8 @@
       <!-- TOP TRENDS MODULE -->
       <div class="module toptrends" style="display: none;"></div>
 
-      <!-- TWISTDAY REMINDER MODULE -->
-      <div class="module twistday-reminder" style="display: none;"></div>
+      <!-- FREECHDAY REMINDER MODULE -->
+      <div class="module freechday-reminder" style="display: none;"></div>
 
       <div class="module new-users" style="display: none;"></div>
     </div>
@@ -257,22 +257,22 @@
       </div>
     </div>
 
-    <!-- TEMPLATE DE TWISTDAY REMINDER MODULE -->
-    <div id="twistday-reminder-template">
+    <!-- TEMPLATE DE FREECHDAY REMINDER MODULE -->
+    <div id="freechday-reminder-template">
       <div>
-        <h3 class="label">Who's celebrating Twistday</h3>
+        <h3 class="label">Who's celebrating Freechday</h3>
         <small>.</small>
         <a class="refresh label">Refresh</a>
         <div class="current">
             <h4 class="label">Today's luckies:</h4>
             <ol class="list">
-                <!-- use "twistday-reminder-suggestion-template" here -->
+                <!-- use "freechday-reminder-suggestion-template" here -->
             </ol>
         </div>
         <div class="upcoming">
             <h4 class="label">Upcoming ones:</h4>
             <ol class="list">
-                <!-- use "twistday-reminder-suggestion-template" here -->
+                <!-- use "freechday-reminder-suggestion-template" here -->
             </ol>
         </div>
       </div>
@@ -281,44 +281,44 @@
       </div>
     </div>
 
-    <!-- TEMPLATE DE TWISTDAY REMINDER SUGGESTION -->
-    <li id="twistday-reminder-suggestion-template" class="twister-user">
-      <div class="twister-user-photo">
-        <a href="#" class="twister-user-name open-profile-modal">
-          <img class="twister-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
+    <!-- TEMPLATE DE FREECHDAY REMINDER SUGGESTION -->
+    <li id="freechday-reminder-suggestion-template" class="freech-user">
+      <div class="freech-user-photo">
+        <a href="#" class="freech-user-name open-profile-modal">
+          <img class="freech-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
         </a>
       </div>
-      <div class="twister-user-info" data-screen-name="">
-        <a href="#" class="twister-user-name open-profile-modal">
-          <div class="twister-user-full"></div>
-          <div class="twister-user-tag"></div>
+      <div class="freech-user-info" data-screen-name="">
+        <a href="#" class="freech-user-name open-profile-modal">
+          <div class="freech-user-full"></div>
+          <div class="freech-user-tag"></div>
         </a>
       </div>
       <div>
-        <span class="twisterday"></span>
+        <span class="freechday"></span>
       </div>
     </li>
 
     <div id="template-whotofollow-peer">
-    <li class="twister-user">
+    <li class="freech-user">
       <div class="">
-        <a href="#" class="twister-user-name open-profile-modal">
-          <img class="twister-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
+        <a href="#" class="freech-user-name open-profile-modal">
+          <img class="freech-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
         </a>
       </div>
-      <div class="twister-user-info" data-screen-name="">
-        <a href="#" class="twister-user-name open-profile-modal">
-          <span class="twister-user-full"></span>
-          <span class="twister-user-tag"></span>
+      <div class="freech-user-info" data-screen-name="">
+        <a href="#" class="freech-user-name open-profile-modal">
+          <span class="freech-user-full"></span>
+          <span class="freech-user-tag"></span>
         </a>
         <div class="bio"></div>
         <div class="followers">
             <span class="label">Followed by</span>
-          <a href="#" class="twister-by-user-name open-profile-modal">
+          <a href="#" class="freech-by-user-name open-profile-modal">
             <span class="followed-by"></span>
           </a>
         </div>
-        <a class="twister-user-remove">&times;</a>
+        <a class="freech-user-remove">&times;</a>
         <div class="latest-activity" data-screen-name="" data-id="" data-time="0">
           <span class="label">Last activity</span>
           <span class="time"></span>
@@ -410,7 +410,7 @@
     <div id="template-post-rt-by">
         <i class="post-rt-icon"></i>
         <div class="post-rt-sign">
-            <span class="prep">twisted again by</span><a class="open-profile-modal"></a>
+            <span class="prep">freeched again by</span><a class="open-profile-modal"></a>
         </div>
         <div class="post-rt-time">
             <span class="prep">at</span><span class="time"></span>
@@ -511,7 +511,7 @@
         </div>
     </div>
 
-    <div id="reTwist-modal-template">
+    <div id="reFreech-modal-template">
       <div class="post-area">
         <form class="post-area-new open">
           <textarea placeholder="New Post..."></textarea>
@@ -640,16 +640,16 @@
     </div>
 
     <div id="group-profile-member-template">
-        <div class="twister-user">
+        <div class="freech-user">
             <div>
-                <a class="twister-user-name open-profile-modal">
-                    <img class="twister-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
+                <a class="freech-user-name open-profile-modal">
+                    <img class="freech-user-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
                 </a>
             </div>
-            <div class="twister-user-info" data-screen-name="">
-                <a class="twister-user-name open-profile-modal">
-                    <span class="twister-user-full"></span>
-                    <span class="twister-user-tag"></span>
+            <div class="freech-user-info" data-screen-name="">
+                <a class="freech-user-name open-profile-modal">
+                    <span class="freech-user-full"></span>
+                    <span class="freech-user-tag"></span>
                 </a>
                 <div class="bio"></div>
             </div>
@@ -695,7 +695,7 @@
 
     <div id="groups-list-item-template">
         <li>
-            <input type="checkbox" /> <a class="twister-user-name open-profile-modal"></a> // <span class="description"></span>
+            <input type="checkbox" /> <a class="freech-user-name open-profile-modal"></a> // <span class="description"></span>
         </li>
     </div>
 
@@ -724,7 +724,7 @@
                 </div>
               </div>
             </div>
-            <div class="twister-user-info">
+            <div class="freech-user-info">
               <div class="clearfix">
                 <ul class="module profile-data">
                   <li><a href="#"><span class="posts-count">&nbsp;</span><span class="label">Posts</span></a></li>
@@ -789,7 +789,7 @@
     </div>
 
     <div id="template-followers-peer">
-        <li class="twister-peer">
+        <li class="freech-peer">
             <div class="avatar"><img src="img/grayed_avatar_placeholder_24.png" alt="avatar" /></div>
             <div class="name"></div>
             <div class="alias"></div>

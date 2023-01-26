@@ -1,11 +1,11 @@
 // tmobile.js
 // 2013 Miguel Freitas
 //
-// mobile interface for twister using jquery mobile + router
+// mobile interface for freech using jquery mobile + router
 
-var twisterInitialized = false;
+var freechInitialized = false;
 var handlersInstalled = false;
-function initializeTwister( redirectNetwork, redirectLogin, cbFunc, cbArg ) {
+function initializeFreech( redirectNetwork, redirectLogin, cbFunc, cbArg ) {
     if( !handlersInstalled ) {
         interfaceNetworkHandlers();
         installUserSearchHandler();
@@ -33,12 +33,12 @@ function initializeTwister( redirectNetwork, redirectLogin, cbFunc, cbArg ) {
         handlersInstalled = true;
     }
 
-    if( twisterInitialized ) {
+    if( freechInitialized ) {
         if( cbFunc )
             cbFunc(cbArg);
     } else {
         networkUpdate( function() {
-            if( redirectNetwork && !twisterdConnectedAndUptodate ) {
+            if( redirectNetwork && !freechdConnectedAndUptodate ) {
                 $.MAL.goNetwork();
                 return;
             }
@@ -54,9 +54,9 @@ function initializeTwister( redirectNetwork, redirectLogin, cbFunc, cbArg ) {
                         requestLastHave();
                         initMentionsCount();
                         initDMsCount();
-                        twisterFollowingO = TwisterFollowing(defaultScreenName);
+                        freechFollowingO = FreechFollowing(defaultScreenName);
 
-                        twisterInitialized = true;
+                        freechInitialized = true;
                         if( cbFunc )
                             cbFunc(cbArg);
                         setInterval("tmobileTick()", 2000);
@@ -91,13 +91,13 @@ var router=new $.mobile.Router(
     ],{
         index: function(type,match,ui) {
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 //$.MAL.goHome();
             });
         },
         home: function(type,match,ui) {
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 if( !$("#home .posts").children().length ) {
                     $.mobile.showPageLoadingMsg();
                     cleanupStorage();
@@ -112,7 +112,7 @@ var router=new $.mobile.Router(
             var params=router.getParams(match[1]);
             clearProfilePage();
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var user;
                 if( params && params.hasOwnProperty("user") ) {
                     user = params.user;
@@ -133,7 +133,7 @@ var router=new $.mobile.Router(
         },
         profileedit: function(type,match,ui) {
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 loadAvatarForEdit();
                 loadProfileForEdit();
                 dumpPrivkey(defaultScreenName, function(args, key) {
@@ -145,7 +145,7 @@ var router=new $.mobile.Router(
             var params=router.getParams(match[1]);
             clearProfilePage();
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var user;
                 if( params && params.hasOwnProperty("user") ) {
                     user = params.user;
@@ -160,7 +160,7 @@ var router=new $.mobile.Router(
                 }
                 $.mobile.showPageLoadingMsg();
                 $("#following a.ui-btn").removeClass("ui-btn-active");
-                var followingList = twister.tmpl.followingList.clone(true).appendTo($("#following .content"))
+                var followingList = freech.tmpl.followingList.clone(true).appendTo($("#following .content"))
                     .closest('.following-list').listview();
                 appendFollowingToElem(followingList);
                 followingList.find('[data-role="button"]').button();
@@ -168,7 +168,7 @@ var router=new $.mobile.Router(
         },
         post: function(type,match,ui) {
             var params=router.getParams(match[1]);
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var $ulPost = $("#post ul.posts");
                 $ulPost.text("");
                 $.MAL.setPostTemplate( $("#post-template-post") );
@@ -187,7 +187,7 @@ var router=new $.mobile.Router(
         },
         newmsg: function(type,match,ui) {
             var params=router.getParams(match[1]);
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var $replyTextarea = $("#newmsg .post-area-new textarea");
                 $replyTextarea.attr("placeholder", polyglot.t("New Post..."));
                 if( params && params.hasOwnProperty("replyto") ) {
@@ -211,7 +211,7 @@ var router=new $.mobile.Router(
         },
         rt: function(type,match,ui) {
             var params=router.getParams(match[1]);
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var $rtOriginal = $(".rt-original-post")
                 $rtOriginal.html("");
                 $.MAL.setPostTemplate( $("#post-template-home") );
@@ -225,7 +225,7 @@ var router=new $.mobile.Router(
         mentions: function(type,match,ui) {
             var params=router.getParams(match[1]);
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var user;
                 var $newmsgLink = $("a.mention-newmsg");
                 if( params && params.hasOwnProperty("user") ) {
@@ -244,7 +244,7 @@ var router=new $.mobile.Router(
         hashtag: function(type,match,ui) {
             var params=router.getParams(match[1]);
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 $("#hashtag .rtitle").text("#" + params.hashtag);
                 $("a.hashtag-newmsg").attr("href",$.MAL.newPostHashtagToUrl(params.hashtag));
                 var $ulHashtag = $("#hashtag ul.posts");
@@ -253,16 +253,16 @@ var router=new $.mobile.Router(
         },
         login: function(type,match,ui) {
             if (!$('#login .content').children().length)
-                $('#login .content').append(twister.tmpl.loginMC.clone(true)).trigger('create');
+                $('#login .content').append(freech.tmpl.loginMC.clone(true)).trigger('create');
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, false, function() {
+            initializeFreech( true, false, function() {
                 $.mobile.hidePageLoadingMsg();
                 $("select.local-usernames").selectmenu("refresh", true);
             });
         },
         network: function(type,match,ui) {
             $.mobile.showPageLoadingMsg();
-            initializeTwister( false, false, function() {
+            initializeFreech( false, false, function() {
                 $.mobile.hidePageLoadingMsg();
                 $("select.local-usernames.spam-user").selectmenu("refresh", true);
                 getSpamMsg();
@@ -271,7 +271,7 @@ var router=new $.mobile.Router(
         },
         directmsg: function(type,match,ui) {
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 $.mobile.showPageLoadingMsg();
                 modalDMsSummaryDraw($('#directmsg .direct-messages-list'));
             });
@@ -279,7 +279,7 @@ var router=new $.mobile.Router(
         dmchat: function(type,match,ui) {
             var params=router.getParams(match[1]);
             $.mobile.showPageLoadingMsg();
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 var peerAlias = params.user;
                 var board = $('#dmchat .direct-messages-thread').empty();
 
@@ -294,11 +294,11 @@ var router=new $.mobile.Router(
                     lastId: 0,
                     lengthNew: 0,
                     ready: function (req, peerAlias) {
-                        twister.DMs[peerAlias] = twister.res[req];
+                        freech.DMs[peerAlias] = freech.res[req];
                     },
                     readyReq: peerAlias,
                     drawFinish: function (req) {
-                        setTimeout($.MAL.dmConversationLoaded, 200, twister.res[req].board);
+                        setTimeout($.MAL.dmConversationLoaded, 200, freech.res[req].board);
                     },
                     skidoo: function (req) {
                         return $.mobile.activePage.attr('id') !== 'dmchat' || req !== tmobileQueryReq;
@@ -307,12 +307,12 @@ var router=new $.mobile.Router(
             });
         },
         search: function(type,match,ui) {
-            initializeTwister( true, true, function() {
+            initializeFreech( true, true, function() {
                 /**/
             });
         },
         newusermodal: function(type,match,ui) {
-            initializeTwister( false, false, function() {
+            initializeFreech( false, false, function() {
                 /* dumpPrivkey(defaultScreenName, function(args, key) {
                     $(".secret-key").text(key);
                 }, {}); */
@@ -569,7 +569,7 @@ function tmobileTick() {
         dumpPubkey(defaultScreenName, function(args, pubkey) {
                     //pubkey = "";
                     if( pubkey.length > 0 ) {
-                        follow('twister', true, function() {
+                        follow('freech', true, function() {
                             $.MAL.goProfileEdit();
                         });
                     }

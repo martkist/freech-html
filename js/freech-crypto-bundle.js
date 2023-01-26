@@ -7623,8 +7623,8 @@ var getNAF = elliptic.utils.getNAF;
 
 function EdwardsCurve(conf) {
   // NOTE: Important as we are creating point in Base.call()
-  this.twisted = conf.a != 1;
-  this.mOneA = this.twisted && conf.a == -1;
+  this.freeched = conf.a != 1;
+  this.mOneA = this.freeched && conf.a == -1;
   this.extended = this.mOneA;
 
   Base.call(this, 'mont', conf);
@@ -7635,7 +7635,7 @@ function EdwardsCurve(conf) {
   this.d = new bn(conf.d, 16).toRed(this.red);
   this.dd = this.d.redAdd(this.d);
 
-  assert(!this.twisted || this.c.fromRed().cmpn(1) === 0);
+  assert(!this.freeched || this.c.fromRed().cmpn(1) === 0);
   this.oneC = conf.c == 1;
 }
 inherits(EdwardsCurve, Base);
@@ -7752,7 +7752,7 @@ Point.prototype.isInfinity = function isInfinity() {
 };
 
 Point.prototype._extDbl = function _extDbl() {
-  // http://hyperelliptic.org/EFD/g1p/auto-twisted-extended-1.html#doubling-dbl-2008-hwcd
+  // http://hyperelliptic.org/EFD/g1p/auto-freeched-extended-1.html#doubling-dbl-2008-hwcd
   // 4M + 4S
 
   // A = X1^2
@@ -7784,7 +7784,7 @@ Point.prototype._extDbl = function _extDbl() {
 };
 
 Point.prototype._projDbl = function _projDbl() {
-  // http://hyperelliptic.org/EFD/g1p/auto-twisted-projective.html#doubling-dbl-2008-bbjlp
+  // http://hyperelliptic.org/EFD/g1p/auto-freeched-projective.html#doubling-dbl-2008-bbjlp
   // http://hyperelliptic.org/EFD/g1p/auto-edwards-projective.html#doubling-dbl-2007-bl
   // and others
   // Generally 3M + 4S or 2M + 4S
@@ -7796,7 +7796,7 @@ Point.prototype._projDbl = function _projDbl() {
   // D = Y1^2
   var d = this.y.redSqr();
 
-  if (this.curve.twisted) {
+  if (this.curve.freeched) {
     // E = a * C
     var e = this.curve._mulA(c);
     // F = E + D
@@ -7849,7 +7849,7 @@ Point.prototype.dbl = function dbl() {
 };
 
 Point.prototype._extAdd = function _extAdd(p) {
-  // http://hyperelliptic.org/EFD/g1p/auto-twisted-extended-1.html#addition-add-2008-hwcd-3
+  // http://hyperelliptic.org/EFD/g1p/auto-freeched-extended-1.html#addition-add-2008-hwcd-3
   // 8M
 
   // A = (Y1 - X1) * (Y2 - X2)
@@ -7880,7 +7880,7 @@ Point.prototype._extAdd = function _extAdd(p) {
 };
 
 Point.prototype._projAdd = function _projAdd(p) {
-  // http://hyperelliptic.org/EFD/g1p/auto-twisted-projective.html#addition-add-2008-bbjlp
+  // http://hyperelliptic.org/EFD/g1p/auto-freeched-projective.html#addition-add-2008-bbjlp
   // http://hyperelliptic.org/EFD/g1p/auto-edwards-projective.html#addition-add-2007-bl
   // 10M + 1S
 
@@ -7901,7 +7901,7 @@ Point.prototype._projAdd = function _projAdd(p) {
   // X3 = A * F * ((X1 + Y1) * (X2 + Y2) - C - D)
   var tmp = this.x.redAdd(this.y).redMul(p.x.redAdd(p.y)).redISub(c).redISub(d);
   var nx = a.redMul(f).redMul(tmp);
-  if (this.curve.twisted) {
+  if (this.curve.freeched) {
     // Y3 = A * G * (D - a * C)
     var ny = a.redMul(g).redMul(d.redSub(this.curve._mulA(c)));
     // Z3 = F * G
@@ -11357,7 +11357,7 @@ module.exports={
 
 },{}],71:[function(require,module,exports){
 module.exports=require(29)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],72:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],72:[function(require,module,exports){
 exports.strip = function strip(artifact) {
   artifact = artifact.toString()
   var startRegex = /^-----BEGIN (.*)-----\n/;
@@ -13723,49 +13723,49 @@ module.exports = function (crypto, exports) {
 };
 },{"./ecdh":85}],87:[function(require,module,exports){
 module.exports=require(50)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],88:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],88:[function(require,module,exports){
 module.exports=require(51)
-},{"../package.json":108,"./elliptic/curve":91,"./elliptic/curves":94,"./elliptic/ec":95,"./elliptic/hmac-drbg":98,"./elliptic/utils":99,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":100}],89:[function(require,module,exports){
+},{"../package.json":108,"./elliptic/curve":91,"./elliptic/curves":94,"./elliptic/ec":95,"./elliptic/hmac-drbg":98,"./elliptic/utils":99,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":100}],89:[function(require,module,exports){
 module.exports=require(52)
-},{"../../elliptic":88,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":87}],90:[function(require,module,exports){
+},{"../../elliptic":88,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":87}],90:[function(require,module,exports){
 module.exports=require(53)
-},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":87,"inherits":107}],91:[function(require,module,exports){
+},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":87,"inherits":107}],91:[function(require,module,exports){
 module.exports=require(54)
-},{"./base":89,"./edwards":90,"./mont":92,"./short":93,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],92:[function(require,module,exports){
+},{"./base":89,"./edwards":90,"./mont":92,"./short":93,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],92:[function(require,module,exports){
 module.exports=require(55)
-},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":87,"inherits":107}],93:[function(require,module,exports){
+},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":87,"inherits":107}],93:[function(require,module,exports){
 module.exports=require(56)
-},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":87,"inherits":107}],94:[function(require,module,exports){
+},{"../../elliptic":88,"../curve":91,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":87,"inherits":107}],94:[function(require,module,exports){
 module.exports=require(57)
-},{"../elliptic":88,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":87,"hash.js":101}],95:[function(require,module,exports){
+},{"../elliptic":88,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":87,"hash.js":101}],95:[function(require,module,exports){
 module.exports=require(58)
-},{"../../elliptic":88,"./key":96,"./signature":97,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":87}],96:[function(require,module,exports){
+},{"../../elliptic":88,"./key":96,"./signature":97,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":87}],96:[function(require,module,exports){
 module.exports=require(59)
-},{"../../elliptic":88,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":87}],97:[function(require,module,exports){
+},{"../../elliptic":88,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":87}],97:[function(require,module,exports){
 module.exports=require(60)
-},{"../../elliptic":88,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":87}],98:[function(require,module,exports){
+},{"../../elliptic":88,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":87}],98:[function(require,module,exports){
 module.exports=require(61)
-},{"../elliptic":88,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":101}],99:[function(require,module,exports){
+},{"../elliptic":88,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":101}],99:[function(require,module,exports){
 module.exports=require(62)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":87}],100:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":87}],100:[function(require,module,exports){
 module.exports=require(63)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],101:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],101:[function(require,module,exports){
 module.exports=require(64)
-},{"./hash/common":102,"./hash/hmac":103,"./hash/ripemd":104,"./hash/sha":105,"./hash/utils":106,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],102:[function(require,module,exports){
+},{"./hash/common":102,"./hash/hmac":103,"./hash/ripemd":104,"./hash/sha":105,"./hash/utils":106,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],102:[function(require,module,exports){
 module.exports=require(65)
-},{"../hash":101,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],103:[function(require,module,exports){
+},{"../hash":101,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],103:[function(require,module,exports){
 module.exports=require(66)
-},{"../hash":101,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],104:[function(require,module,exports){
+},{"../hash":101,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],104:[function(require,module,exports){
 module.exports=require(67)
-},{"../hash":101,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],105:[function(require,module,exports){
+},{"../hash":101,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],105:[function(require,module,exports){
 module.exports=require(68)
-},{"../hash":101,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],106:[function(require,module,exports){
+},{"../hash":101,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],106:[function(require,module,exports){
 module.exports=require(69)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],107:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],107:[function(require,module,exports){
 module.exports=require(29)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],108:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],108:[function(require,module,exports){
 module.exports=require(70)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/package.json":70}],109:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/package.json":70}],109:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -14083,7 +14083,7 @@ module.exports = function (crypto, exports) {
 }).call(this,require("buffer").Buffer)
 },{"./dh":109,"./generatePrime":110,"./primes.json":115,"buffer":157}],112:[function(require,module,exports){
 module.exports=require(50)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],113:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],113:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -14201,7 +14201,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
 
 },{"bn.js":112,"brorand":114}],114:[function(require,module,exports){
 module.exports=require(63)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],115:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],115:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -19009,24 +19009,24 @@ module.exports = {
 },{"assert":155,"bs58":152,"buffer":157,"crypto":164}],154:[function(require,module,exports){
 (function (Buffer){
 // Process with:
-// browserify twister-crypto.js -o twister-crypto-bundle.js
+// browserify freech-crypto.js -o freech-crypto-bundle.js
 
 var Bitcoin = require('bitcoinjs-lib');
 var Crypto = require('crypto');
 window.Buffer = require('buffer').Buffer;
 window.Bencode = require('bencode');
 
-var twister_network = {
-    magicPrefix: '\x18twister Signed Message:\n',
+var freech_network = {
+    magicPrefix: '\x18freech Signed Message:\n',
     pubKeyHash: 0x00,
 }
 
-window.TwisterCrypto = {}
+window.FreechCrypto = {}
 
-TwisterCrypto.PubKey = Bitcoin.ECPubKey;
-TwisterCrypto.PrivKey = Bitcoin.ECKey;
+FreechCrypto.PubKey = Bitcoin.ECPubKey;
+FreechCrypto.PrivKey = Bitcoin.ECKey;
 
-TwisterCrypto.PubKey.prototype.encrypt = function ( message, enc )
+FreechCrypto.PubKey.prototype.encrypt = function ( message, enc )
 {
 	var sec = { orig: message.length }
 	var ephemeral = Bitcoin.ECKey.makeRandom()
@@ -19052,7 +19052,7 @@ TwisterCrypto.PubKey.prototype.encrypt = function ( message, enc )
 	return sec;
 }
 
-TwisterCrypto.PrivKey.prototype.decrypt = function ( sec )
+FreechCrypto.PrivKey.prototype.decrypt = function ( sec )
 {
 	var sec_key = sec["key"];
 	var sec_body = sec["body"];
@@ -19091,18 +19091,18 @@ TwisterCrypto.PrivKey.prototype.decrypt = function ( sec )
 	return decrypted;
 }
 
-TwisterCrypto.PrivKey.prototype.messageSign = function ( message, enc )
+FreechCrypto.PrivKey.prototype.messageSign = function ( message, enc )
 {
-	var signature = Bitcoin.Message.sign(this, message, twister_network);
+	var signature = Bitcoin.Message.sign(this, message, freech_network);
 	return enc ? signature.toString(enc) : signature;
 }
 
-TwisterCrypto.PubKey.prototype.messageVerify = function ( message, signature )
+FreechCrypto.PubKey.prototype.messageVerify = function ( message, signature )
 {
 	if (!Buffer.isBuffer(signature)) {
 		signature = new Buffer(signature, 'hex')
 	}
-	return Bitcoin.Message.verify(this.getAddress(), signature, message, twister_network)
+	return Bitcoin.Message.verify(this.getAddress(), signature, message, freech_network)
 }
 
 }).call(this,require("buffer").Buffer)
@@ -20769,127 +20769,127 @@ module.exports = isArray || function (val) {
 
 },{}],161:[function(require,module,exports){
 module.exports=require(8)
-},{"./md5":165,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/create-hash.js":8,"buffer":157,"ripemd160":258,"sha.js":260,"stream":283,"util":286}],162:[function(require,module,exports){
+},{"./md5":165,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/create-hash.js":8,"buffer":157,"ripemd160":258,"sha.js":260,"stream":283,"util":286}],162:[function(require,module,exports){
 module.exports=require(9)
-},{"./create-hash":161,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/create-hmac.js":9,"buffer":157,"stream":283,"util":286}],163:[function(require,module,exports){
+},{"./create-hash":161,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/create-hmac.js":9,"buffer":157,"stream":283,"util":286}],163:[function(require,module,exports){
 module.exports=require(10)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/helpers.js":10,"buffer":157}],164:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/helpers.js":10,"buffer":157}],164:[function(require,module,exports){
 module.exports=require(11)
-},{"./create-hash":161,"./create-hmac":162,"./pbkdf2":266,"./rng":267,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/index.js":11,"browserify-aes/inject":173,"browserify-sign/algos":185,"browserify-sign/inject":188,"buffer":157,"create-ecdh/inject":228,"diffie-hellman/inject":252}],165:[function(require,module,exports){
+},{"./create-hash":161,"./create-hmac":162,"./pbkdf2":266,"./rng":267,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/index.js":11,"browserify-aes/inject":173,"browserify-sign/algos":185,"browserify-sign/inject":188,"buffer":157,"create-ecdh/inject":228,"diffie-hellman/inject":252}],165:[function(require,module,exports){
 module.exports=require(12)
-},{"./helpers":163,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/md5.js":12}],166:[function(require,module,exports){
+},{"./helpers":163,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/md5.js":12}],166:[function(require,module,exports){
 module.exports=require(13)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/EVP_BytesToKey.js":13,"buffer":157}],167:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/EVP_BytesToKey.js":13,"buffer":157}],167:[function(require,module,exports){
 module.exports=require(14)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/aes.js":14,"buffer":157}],168:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/aes.js":14,"buffer":157}],168:[function(require,module,exports){
 module.exports=require(15)
-},{"./aes":167,"./cipherBase":169,"./ghash":172,"./xor":183,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/authCipher.js":15,"buffer":157,"inherits":269}],169:[function(require,module,exports){
+},{"./aes":167,"./cipherBase":169,"./ghash":172,"./xor":183,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/authCipher.js":15,"buffer":157,"inherits":269}],169:[function(require,module,exports){
 module.exports=require(16)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/cipherBase.js":16,"buffer":157,"inherits":269,"stream":283}],170:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/cipherBase.js":16,"buffer":157,"inherits":269,"stream":283}],170:[function(require,module,exports){
 module.exports=require(17)
-},{"./EVP_BytesToKey":166,"./aes":167,"./authCipher":168,"./cipherBase":169,"./modes":174,"./modes/cbc":175,"./modes/cfb":176,"./modes/cfb1":177,"./modes/cfb8":178,"./modes/ctr":179,"./modes/ecb":180,"./modes/ofb":181,"./streamCipher":182,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/decrypter.js":17,"buffer":157,"inherits":269}],171:[function(require,module,exports){
+},{"./EVP_BytesToKey":166,"./aes":167,"./authCipher":168,"./cipherBase":169,"./modes":174,"./modes/cbc":175,"./modes/cfb":176,"./modes/cfb1":177,"./modes/cfb8":178,"./modes/ctr":179,"./modes/ecb":180,"./modes/ofb":181,"./streamCipher":182,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/decrypter.js":17,"buffer":157,"inherits":269}],171:[function(require,module,exports){
 module.exports=require(18)
-},{"./EVP_BytesToKey":166,"./aes":167,"./authCipher":168,"./cipherBase":169,"./modes":174,"./modes/cbc":175,"./modes/cfb":176,"./modes/cfb1":177,"./modes/cfb8":178,"./modes/ctr":179,"./modes/ecb":180,"./modes/ofb":181,"./streamCipher":182,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/encrypter.js":18,"buffer":157,"inherits":269}],172:[function(require,module,exports){
+},{"./EVP_BytesToKey":166,"./aes":167,"./authCipher":168,"./cipherBase":169,"./modes":174,"./modes/cbc":175,"./modes/cfb":176,"./modes/cfb1":177,"./modes/cfb8":178,"./modes/ctr":179,"./modes/ecb":180,"./modes/ofb":181,"./streamCipher":182,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/encrypter.js":18,"buffer":157,"inherits":269}],172:[function(require,module,exports){
 module.exports=require(19)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/ghash.js":19,"buffer":157}],173:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/ghash.js":19,"buffer":157}],173:[function(require,module,exports){
 module.exports=require(20)
-},{"./decrypter":170,"./encrypter":171,"./modes":174,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/inject.js":20}],174:[function(require,module,exports){
+},{"./decrypter":170,"./encrypter":171,"./modes":174,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/inject.js":20}],174:[function(require,module,exports){
 module.exports=require(21)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes.js":21}],175:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes.js":21}],175:[function(require,module,exports){
 module.exports=require(22)
-},{"../xor":183,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cbc.js":22}],176:[function(require,module,exports){
+},{"../xor":183,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cbc.js":22}],176:[function(require,module,exports){
 module.exports=require(23)
-},{"../xor":183,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb.js":23,"buffer":157}],177:[function(require,module,exports){
+},{"../xor":183,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb.js":23,"buffer":157}],177:[function(require,module,exports){
 module.exports=require(24)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb1.js":24,"buffer":157}],178:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb1.js":24,"buffer":157}],178:[function(require,module,exports){
 module.exports=require(25)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb8.js":25,"buffer":157}],179:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/cfb8.js":25,"buffer":157}],179:[function(require,module,exports){
 module.exports=require(26)
-},{"../xor":183,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ctr.js":26,"buffer":157}],180:[function(require,module,exports){
+},{"../xor":183,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ctr.js":26,"buffer":157}],180:[function(require,module,exports){
 module.exports=require(27)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ecb.js":27}],181:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ecb.js":27}],181:[function(require,module,exports){
 module.exports=require(28)
-},{"../xor":183,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ofb.js":28,"buffer":157}],182:[function(require,module,exports){
+},{"../xor":183,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/modes/ofb.js":28,"buffer":157}],182:[function(require,module,exports){
 module.exports=require(30)
-},{"./aes":167,"./cipherBase":169,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/streamCipher.js":30,"buffer":157,"inherits":269}],183:[function(require,module,exports){
+},{"./aes":167,"./cipherBase":169,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/streamCipher.js":30,"buffer":157,"inherits":269}],183:[function(require,module,exports){
 module.exports=require(31)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/xor.js":31,"buffer":157}],184:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/xor.js":31,"buffer":157}],184:[function(require,module,exports){
 module.exports=require(32)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/aesid.json":32}],185:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/aesid.json":32}],185:[function(require,module,exports){
 module.exports=require(33)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/algos.js":33,"buffer":157}],186:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/algos.js":33,"buffer":157}],186:[function(require,module,exports){
 module.exports=require(34)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/asn1.js":34,"asn1.js":190,"asn1.js-rfc3280":189}],187:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/asn1.js":34,"asn1.js":190,"asn1.js-rfc3280":189}],187:[function(require,module,exports){
 module.exports=require(35)
-},{"./inject":188,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/index.js":35,"crypto":164}],188:[function(require,module,exports){
+},{"./inject":188,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/index.js":35,"crypto":164}],188:[function(require,module,exports){
 module.exports=require(36)
-},{"./algos":185,"./sign":225,"./verify":226,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/inject.js":36,"buffer":157,"inherits":269,"readable-stream":280}],189:[function(require,module,exports){
+},{"./algos":185,"./sign":225,"./verify":226,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/inject.js":36,"buffer":157,"inherits":269,"readable-stream":280}],189:[function(require,module,exports){
 module.exports=require(37)
-},{"../..":187,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js-rfc3280/index.js":37,"asn1.js":190}],190:[function(require,module,exports){
+},{"../..":187,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js-rfc3280/index.js":37,"asn1.js":190}],190:[function(require,module,exports){
 module.exports=require(38)
-},{"./asn1/api":191,"./asn1/base":193,"./asn1/constants":197,"./asn1/decoders":199,"./asn1/encoders":201,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1.js":38,"bn.js":202}],191:[function(require,module,exports){
+},{"./asn1/api":191,"./asn1/base":193,"./asn1/constants":197,"./asn1/decoders":199,"./asn1/encoders":201,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1.js":38,"bn.js":202}],191:[function(require,module,exports){
 module.exports=require(39)
-},{"../asn1":190,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/api.js":39,"util":286,"vm":287}],192:[function(require,module,exports){
+},{"../asn1":190,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/api.js":39,"util":286,"vm":287}],192:[function(require,module,exports){
 module.exports=require(40)
-},{"../base":193,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/buffer.js":40,"assert":155,"buffer":157,"util":286}],193:[function(require,module,exports){
+},{"../base":193,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/buffer.js":40,"assert":155,"buffer":157,"util":286}],193:[function(require,module,exports){
 module.exports=require(41)
-},{"./buffer":192,"./node":194,"./reporter":195,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/index.js":41}],194:[function(require,module,exports){
+},{"./buffer":192,"./node":194,"./reporter":195,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/index.js":41}],194:[function(require,module,exports){
 module.exports=require(42)
-},{"../base":193,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/node.js":42,"assert":155}],195:[function(require,module,exports){
+},{"../base":193,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/node.js":42,"assert":155}],195:[function(require,module,exports){
 module.exports=require(43)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/reporter.js":43,"util":286}],196:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/base/reporter.js":43,"util":286}],196:[function(require,module,exports){
 module.exports=require(44)
-},{"../constants":197,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/constants/der.js":44}],197:[function(require,module,exports){
+},{"../constants":197,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/constants/der.js":44}],197:[function(require,module,exports){
 module.exports=require(45)
-},{"./der":196,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/constants/index.js":45}],198:[function(require,module,exports){
+},{"./der":196,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/constants/index.js":45}],198:[function(require,module,exports){
 module.exports=require(46)
-},{"../../asn1":190,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/decoders/der.js":46,"util":286}],199:[function(require,module,exports){
+},{"../../asn1":190,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/decoders/der.js":46,"util":286}],199:[function(require,module,exports){
 module.exports=require(47)
-},{"./der":198,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/decoders/index.js":47}],200:[function(require,module,exports){
+},{"./der":198,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/decoders/index.js":47}],200:[function(require,module,exports){
 module.exports=require(48)
-},{"../../asn1":190,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/encoders/der.js":48,"buffer":157,"util":286}],201:[function(require,module,exports){
+},{"../../asn1":190,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/encoders/der.js":48,"buffer":157,"util":286}],201:[function(require,module,exports){
 module.exports=require(49)
-},{"./der":200,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/encoders/index.js":49}],202:[function(require,module,exports){
+},{"./der":200,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/asn1.js/lib/asn1/encoders/index.js":49}],202:[function(require,module,exports){
 module.exports=require(50)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],203:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],203:[function(require,module,exports){
 arguments[4][51][0].apply(exports,arguments)
-},{"../package.json":222,"./elliptic/curve":206,"./elliptic/curves":209,"./elliptic/ec":210,"./elliptic/hmac-drbg":213,"./elliptic/utils":214,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":215}],204:[function(require,module,exports){
+},{"../package.json":222,"./elliptic/curve":206,"./elliptic/curves":209,"./elliptic/ec":210,"./elliptic/hmac-drbg":213,"./elliptic/utils":214,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":215}],204:[function(require,module,exports){
 arguments[4][52][0].apply(exports,arguments)
-},{"../../elliptic":203,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":202}],205:[function(require,module,exports){
+},{"../../elliptic":203,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":202}],205:[function(require,module,exports){
 arguments[4][53][0].apply(exports,arguments)
-},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":202,"inherits":269}],206:[function(require,module,exports){
+},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":202,"inherits":269}],206:[function(require,module,exports){
 module.exports=require(54)
-},{"./base":204,"./edwards":205,"./mont":207,"./short":208,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],207:[function(require,module,exports){
+},{"./base":204,"./edwards":205,"./mont":207,"./short":208,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],207:[function(require,module,exports){
 arguments[4][55][0].apply(exports,arguments)
-},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":202,"inherits":269}],208:[function(require,module,exports){
+},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":202,"inherits":269}],208:[function(require,module,exports){
 arguments[4][56][0].apply(exports,arguments)
-},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":202,"inherits":269}],209:[function(require,module,exports){
+},{"../../elliptic":203,"../curve":206,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":202,"inherits":269}],209:[function(require,module,exports){
 arguments[4][57][0].apply(exports,arguments)
-},{"../elliptic":203,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":202,"hash.js":216}],210:[function(require,module,exports){
+},{"../elliptic":203,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":202,"hash.js":216}],210:[function(require,module,exports){
 arguments[4][58][0].apply(exports,arguments)
-},{"../../elliptic":203,"./key":211,"./signature":212,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":202}],211:[function(require,module,exports){
+},{"../../elliptic":203,"./key":211,"./signature":212,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":202}],211:[function(require,module,exports){
 arguments[4][59][0].apply(exports,arguments)
-},{"../../elliptic":203,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":202}],212:[function(require,module,exports){
+},{"../../elliptic":203,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":202}],212:[function(require,module,exports){
 arguments[4][60][0].apply(exports,arguments)
-},{"../../elliptic":203,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":202}],213:[function(require,module,exports){
+},{"../../elliptic":203,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":202}],213:[function(require,module,exports){
 arguments[4][61][0].apply(exports,arguments)
-},{"../elliptic":203,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":216}],214:[function(require,module,exports){
+},{"../elliptic":203,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":216}],214:[function(require,module,exports){
 module.exports=require(62)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":202}],215:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":202}],215:[function(require,module,exports){
 module.exports=require(63)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],216:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],216:[function(require,module,exports){
 module.exports=require(64)
-},{"./hash/common":217,"./hash/hmac":218,"./hash/ripemd":219,"./hash/sha":220,"./hash/utils":221,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],217:[function(require,module,exports){
+},{"./hash/common":217,"./hash/hmac":218,"./hash/ripemd":219,"./hash/sha":220,"./hash/utils":221,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],217:[function(require,module,exports){
 module.exports=require(65)
-},{"../hash":216,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],218:[function(require,module,exports){
+},{"../hash":216,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],218:[function(require,module,exports){
 module.exports=require(66)
-},{"../hash":216,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],219:[function(require,module,exports){
+},{"../hash":216,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],219:[function(require,module,exports){
 module.exports=require(67)
-},{"../hash":216,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],220:[function(require,module,exports){
+},{"../hash":216,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],220:[function(require,module,exports){
 module.exports=require(68)
-},{"../hash":216,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],221:[function(require,module,exports){
+},{"../hash":216,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],221:[function(require,module,exports){
 module.exports=require(69)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],222:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],222:[function(require,module,exports){
 module.exports={
   "name": "elliptic",
   "version": "0.15.15",
@@ -20954,95 +20954,95 @@ module.exports={
 
 },{}],223:[function(require,module,exports){
 module.exports=require(72)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/pemstrip/index.js":72}],224:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/pemstrip/index.js":72}],224:[function(require,module,exports){
 module.exports=require(82)
-},{"./aesid.json":184,"./asn1":186,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/parseKeys.js":82,"buffer":157,"pemstrip":223}],225:[function(require,module,exports){
+},{"./aesid.json":184,"./asn1":186,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/parseKeys.js":82,"buffer":157,"pemstrip":223}],225:[function(require,module,exports){
 arguments[4][83][0].apply(exports,arguments)
-},{"./parseKeys":224,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/sign.js":83,"bn.js":202,"buffer":157,"elliptic":203}],226:[function(require,module,exports){
+},{"./parseKeys":224,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/sign.js":83,"bn.js":202,"buffer":157,"elliptic":203}],226:[function(require,module,exports){
 arguments[4][84][0].apply(exports,arguments)
-},{"./parseKeys":224,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/verify.js":84,"bn.js":202,"buffer":157,"elliptic":203}],227:[function(require,module,exports){
+},{"./parseKeys":224,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/verify.js":84,"bn.js":202,"buffer":157,"elliptic":203}],227:[function(require,module,exports){
 arguments[4][85][0].apply(exports,arguments)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/create-ecdh/ecdh.js":85,"bn.js":229,"buffer":157,"elliptic":230}],228:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/create-ecdh/ecdh.js":85,"bn.js":229,"buffer":157,"elliptic":230}],228:[function(require,module,exports){
 module.exports=require(86)
-},{"./ecdh":227,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/create-ecdh/inject.js":86}],229:[function(require,module,exports){
+},{"./ecdh":227,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/create-ecdh/inject.js":86}],229:[function(require,module,exports){
 module.exports=require(50)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],230:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],230:[function(require,module,exports){
 arguments[4][51][0].apply(exports,arguments)
-},{"../package.json":249,"./elliptic/curve":233,"./elliptic/curves":236,"./elliptic/ec":237,"./elliptic/hmac-drbg":240,"./elliptic/utils":241,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":242}],231:[function(require,module,exports){
+},{"../package.json":249,"./elliptic/curve":233,"./elliptic/curves":236,"./elliptic/ec":237,"./elliptic/hmac-drbg":240,"./elliptic/utils":241,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic.js":51,"brorand":242}],231:[function(require,module,exports){
 arguments[4][52][0].apply(exports,arguments)
-},{"../../elliptic":230,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":229}],232:[function(require,module,exports){
+},{"../../elliptic":230,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/base.js":52,"assert":155,"bn.js":229}],232:[function(require,module,exports){
 arguments[4][53][0].apply(exports,arguments)
-},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":229,"inherits":269}],233:[function(require,module,exports){
+},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/edwards.js":53,"assert":155,"bn.js":229,"inherits":269}],233:[function(require,module,exports){
 module.exports=require(54)
-},{"./base":231,"./edwards":232,"./mont":234,"./short":235,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],234:[function(require,module,exports){
+},{"./base":231,"./edwards":232,"./mont":234,"./short":235,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/index.js":54}],234:[function(require,module,exports){
 arguments[4][55][0].apply(exports,arguments)
-},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":229,"inherits":269}],235:[function(require,module,exports){
+},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/mont.js":55,"assert":155,"bn.js":229,"inherits":269}],235:[function(require,module,exports){
 arguments[4][56][0].apply(exports,arguments)
-},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":229,"inherits":269}],236:[function(require,module,exports){
+},{"../../elliptic":230,"../curve":233,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curve/short.js":56,"assert":155,"bn.js":229,"inherits":269}],236:[function(require,module,exports){
 arguments[4][57][0].apply(exports,arguments)
-},{"../elliptic":230,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":229,"hash.js":243}],237:[function(require,module,exports){
+},{"../elliptic":230,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/curves.js":57,"assert":155,"bn.js":229,"hash.js":243}],237:[function(require,module,exports){
 arguments[4][58][0].apply(exports,arguments)
-},{"../../elliptic":230,"./key":238,"./signature":239,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":229}],238:[function(require,module,exports){
+},{"../../elliptic":230,"./key":238,"./signature":239,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/index.js":58,"assert":155,"bn.js":229}],238:[function(require,module,exports){
 arguments[4][59][0].apply(exports,arguments)
-},{"../../elliptic":230,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":229}],239:[function(require,module,exports){
+},{"../../elliptic":230,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/key.js":59,"assert":155,"bn.js":229}],239:[function(require,module,exports){
 arguments[4][60][0].apply(exports,arguments)
-},{"../../elliptic":230,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":229}],240:[function(require,module,exports){
+},{"../../elliptic":230,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/ec/signature.js":60,"assert":155,"bn.js":229}],240:[function(require,module,exports){
 arguments[4][61][0].apply(exports,arguments)
-},{"../elliptic":230,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":243}],241:[function(require,module,exports){
+},{"../elliptic":230,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/hmac-drbg.js":61,"assert":155,"hash.js":243}],241:[function(require,module,exports){
 module.exports=require(62)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":229}],242:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/lib/elliptic/utils.js":62,"assert":155,"bn.js":229}],242:[function(require,module,exports){
 module.exports=require(63)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],243:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],243:[function(require,module,exports){
 module.exports=require(64)
-},{"./hash/common":244,"./hash/hmac":245,"./hash/ripemd":246,"./hash/sha":247,"./hash/utils":248,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],244:[function(require,module,exports){
+},{"./hash/common":244,"./hash/hmac":245,"./hash/ripemd":246,"./hash/sha":247,"./hash/utils":248,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash.js":64}],244:[function(require,module,exports){
 module.exports=require(65)
-},{"../hash":243,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],245:[function(require,module,exports){
+},{"../hash":243,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/common.js":65}],245:[function(require,module,exports){
 module.exports=require(66)
-},{"../hash":243,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],246:[function(require,module,exports){
+},{"../hash":243,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/hmac.js":66}],246:[function(require,module,exports){
 module.exports=require(67)
-},{"../hash":243,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],247:[function(require,module,exports){
+},{"../hash":243,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/ripemd.js":67}],247:[function(require,module,exports){
 module.exports=require(68)
-},{"../hash":243,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],248:[function(require,module,exports){
+},{"../hash":243,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/sha.js":68}],248:[function(require,module,exports){
 module.exports=require(69)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],249:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/hash.js/lib/hash/utils.js":69}],249:[function(require,module,exports){
 module.exports=require(222)
 },{"/usr/lib/node_modules/browserify/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/package.json":222}],250:[function(require,module,exports){
 module.exports=require(109)
-},{"./generatePrime":251,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/dh.js":109,"bn.js":253,"buffer":157,"miller-rabin":254}],251:[function(require,module,exports){
+},{"./generatePrime":251,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/dh.js":109,"bn.js":253,"buffer":157,"miller-rabin":254}],251:[function(require,module,exports){
 module.exports=require(110)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/generatePrime.js":110,"bn.js":253,"miller-rabin":254}],252:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/generatePrime.js":110,"bn.js":253,"miller-rabin":254}],252:[function(require,module,exports){
 module.exports=require(111)
-},{"./dh":250,"./generatePrime":251,"./primes.json":256,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/inject.js":111,"buffer":157}],253:[function(require,module,exports){
+},{"./dh":250,"./generatePrime":251,"./primes.json":256,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/inject.js":111,"buffer":157}],253:[function(require,module,exports){
 module.exports=require(50)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],254:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/bn.js/lib/bn.js":50}],254:[function(require,module,exports){
 module.exports=require(113)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/node_modules/miller-rabin/lib/mr.js":113,"bn.js":253,"brorand":255}],255:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/node_modules/miller-rabin/lib/mr.js":113,"bn.js":253,"brorand":255}],255:[function(require,module,exports){
 module.exports=require(63)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],256:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/elliptic/node_modules/brorand/index.js":63}],256:[function(require,module,exports){
 module.exports=require(115)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/primes.json":115}],257:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/diffie-hellman/primes.json":115}],257:[function(require,module,exports){
 module.exports=require(116)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/pbkdf2-compat/pbkdf2.js":116,"buffer":157}],258:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/pbkdf2-compat/pbkdf2.js":116,"buffer":157}],258:[function(require,module,exports){
 module.exports=require(117)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/ripemd160/lib/ripemd160.js":117,"buffer":157}],259:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/ripemd160/lib/ripemd160.js":117,"buffer":157}],259:[function(require,module,exports){
 module.exports=require(118)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/hash.js":118,"buffer":157}],260:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/hash.js":118,"buffer":157}],260:[function(require,module,exports){
 module.exports=require(119)
-},{"./sha1":261,"./sha224":262,"./sha256":263,"./sha384":264,"./sha512":265,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/index.js":119}],261:[function(require,module,exports){
+},{"./sha1":261,"./sha224":262,"./sha256":263,"./sha384":264,"./sha512":265,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/index.js":119}],261:[function(require,module,exports){
 module.exports=require(120)
-},{"./hash":259,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha1.js":120,"buffer":157,"util":286}],262:[function(require,module,exports){
+},{"./hash":259,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha1.js":120,"buffer":157,"util":286}],262:[function(require,module,exports){
 module.exports=require(121)
-},{"./hash":259,"./sha256":263,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha224.js":121,"buffer":157,"util":286}],263:[function(require,module,exports){
+},{"./hash":259,"./sha256":263,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha224.js":121,"buffer":157,"util":286}],263:[function(require,module,exports){
 module.exports=require(122)
-},{"./hash":259,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha256.js":122,"buffer":157,"util":286}],264:[function(require,module,exports){
+},{"./hash":259,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha256.js":122,"buffer":157,"util":286}],264:[function(require,module,exports){
 module.exports=require(123)
-},{"./hash":259,"./sha512":265,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha384.js":123,"buffer":157,"util":286}],265:[function(require,module,exports){
+},{"./hash":259,"./sha512":265,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha384.js":123,"buffer":157,"util":286}],265:[function(require,module,exports){
 module.exports=require(124)
-},{"./hash":259,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha512.js":124,"buffer":157,"util":286}],266:[function(require,module,exports){
+},{"./hash":259,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/sha.js/sha512.js":124,"buffer":157,"util":286}],266:[function(require,module,exports){
 module.exports=require(125)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/pbkdf2.js":125,"pbkdf2-compat/pbkdf2":257}],267:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/pbkdf2.js":125,"pbkdf2-compat/pbkdf2":257}],267:[function(require,module,exports){
 module.exports=require(126)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/rng.js":126,"buffer":157,"crypto":156}],268:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/rng.js":126,"buffer":157,"crypto":156}],268:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -21347,9 +21347,9 @@ function isUndefined(arg) {
 
 },{}],269:[function(require,module,exports){
 module.exports=require(29)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],270:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-aes/node_modules/inherits/inherits_browser.js":29}],270:[function(require,module,exports){
 module.exports=require(79)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/isarray/index.js":79}],271:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/isarray/index.js":79}],271:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -21442,22 +21442,22 @@ module.exports = require("./lib/_stream_duplex.js")
 
 },{"./lib/_stream_duplex.js":273}],273:[function(require,module,exports){
 module.exports=require(73)
-},{"./_stream_readable":275,"./_stream_writable":277,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js":73,"_process":271,"core-util-is":278,"inherits":269}],274:[function(require,module,exports){
+},{"./_stream_readable":275,"./_stream_writable":277,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js":73,"_process":271,"core-util-is":278,"inherits":269}],274:[function(require,module,exports){
 module.exports=require(74)
-},{"./_stream_transform":276,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js":74,"core-util-is":278,"inherits":269}],275:[function(require,module,exports){
+},{"./_stream_transform":276,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js":74,"core-util-is":278,"inherits":269}],275:[function(require,module,exports){
 module.exports=require(75)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_readable.js":75,"_process":271,"buffer":157,"core-util-is":278,"events":268,"inherits":269,"isarray":270,"stream":283,"string_decoder/":284}],276:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_readable.js":75,"_process":271,"buffer":157,"core-util-is":278,"events":268,"inherits":269,"isarray":270,"stream":283,"string_decoder/":284}],276:[function(require,module,exports){
 module.exports=require(76)
-},{"./_stream_duplex":273,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js":76,"core-util-is":278,"inherits":269}],277:[function(require,module,exports){
+},{"./_stream_duplex":273,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js":76,"core-util-is":278,"inherits":269}],277:[function(require,module,exports){
 module.exports=require(77)
-},{"./_stream_duplex":273,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_writable.js":77,"_process":271,"buffer":157,"core-util-is":278,"inherits":269,"stream":283}],278:[function(require,module,exports){
+},{"./_stream_duplex":273,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_writable.js":77,"_process":271,"buffer":157,"core-util-is":278,"inherits":269,"stream":283}],278:[function(require,module,exports){
 module.exports=require(78)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/core-util-is/lib/util.js":78,"buffer":157}],279:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/core-util-is/lib/util.js":78,"buffer":157}],279:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
 },{"./lib/_stream_passthrough.js":274}],280:[function(require,module,exports){
 module.exports=require(81)
-},{"./lib/_stream_duplex.js":273,"./lib/_stream_passthrough.js":274,"./lib/_stream_readable.js":275,"./lib/_stream_transform.js":276,"./lib/_stream_writable.js":277,"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/readable.js":81,"stream":283}],281:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":273,"./lib/_stream_passthrough.js":274,"./lib/_stream_readable.js":275,"./lib/_stream_transform.js":276,"./lib/_stream_writable.js":277,"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/readable.js":81,"stream":283}],281:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
 },{"./lib/_stream_transform.js":276}],282:[function(require,module,exports){
@@ -21594,7 +21594,7 @@ Stream.prototype.pipe = function(dest, options) {
 
 },{"events":268,"inherits":269,"readable-stream/duplex.js":272,"readable-stream/passthrough.js":279,"readable-stream/readable.js":280,"readable-stream/transform.js":281,"readable-stream/writable.js":282}],284:[function(require,module,exports){
 module.exports=require(80)
-},{"/home/miguel/softs/twister-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/string_decoder/index.js":80,"buffer":157}],285:[function(require,module,exports){
+},{"/home/miguel/softs/freech-jscrypto/node_modules/bitcoinjs-lib/node_modules/crypto-browserify/node_modules/browserify-sign/node_modules/readable-stream/node_modules/string_decoder/index.js":80,"buffer":157}],285:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'

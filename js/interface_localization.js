@@ -39,7 +39,7 @@ if(preferredLanguage == "en"){
       "Appearance": "Appearance",
       "Apply": "Apply",
       "Block chain information": "Block chain information",
-      "Block chain is up-to-date, twister is ready to use!": "Block chain is up-to-date, twister is ready to use!",
+      "Block chain is up-to-date, freech is ready to use!": "Block chain is up-to-date, freech is ready to use!",
       "Block generation": "Block generation ",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -54,7 +54,7 @@ if(preferredLanguage == "en"){
             "Local daemon is not connected to the network or block chain is outdated.\n" +
             "If you stay in this page your actions may not work.\n" +
             "Do you want to check [Network Status page](%{page}) instead?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Change user",
@@ -63,7 +63,7 @@ if(preferredLanguage == "en"){
       "Configure block generation": "Configure block generation",
       "Connections:": "Connections: ", // to network
       "Connection lost.": "Connection lost.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} day |||| %{smart_count} days",
       "Detailed information": "Detailed information",
       "DHT network down.": "DHT network down.",
@@ -85,7 +85,7 @@ if(preferredLanguage == "en"){
       "download_posts_status": "Downloaded %{portion} posts", // Downloaded 10/30 posts
       "Enable": "Enable",
       "error": "Error: %{error}",
-      "error_connecting_to_daemon": "Error connecting to local twister daemon.",
+      "error_connecting_to_daemon": "Error connecting to local freech daemon.",
       "Error in 'createwalletuser' RPC.": "Error in 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Error in 'importprivkey' RPC: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Error in 'sendnewusertransaction' RPC.",
@@ -137,16 +137,16 @@ if(preferredLanguage == "en"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nobody", // used to promote a post without attaching the user
       "Not available": "Not available", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -181,8 +181,8 @@ if(preferredLanguage == "en"){
       "Setup account": "Setup account",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "The File APIs are not fully supported in this browser.",
@@ -217,7 +217,7 @@ if(preferredLanguage == "en"){
                 "The 'Save Changes' will be automatically enabled\n" +
                 "when the process completes. (I promise this is\n"+
                 "the last time you will have to wait before using\n" +
-                "twister).\n\n" +
+                "freech).\n\n" +
                 "Tip: choose your avatar in the meantime!",
       "users_mentions": "Mentions of @%{username}",
       "users_profile": "%{username}'s Profile",
@@ -226,7 +226,7 @@ if(preferredLanguage == "en"){
       "View All": "View All",
       "Who to Follow": "Who to Follow",
       "Your message was sent!": "Your message was sent!",
-      "twister login": "twister login",
+      "freech login": "freech login",
       "Existing local users": "Existing local users",
       "Or...": "Or...",
       "Create a new user": "Create a new user",
@@ -305,7 +305,7 @@ if(preferredLanguage == "en"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "second(s)",
@@ -347,12 +347,12 @@ if(preferredLanguage == "en"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -409,7 +409,7 @@ if(preferredLanguage == "es"){
       "Appearance": "Appearance",
       "Apply": "Aplicar",
       "Block chain information": "Información de la cadena de bloques",
-      "Block chain is up-to-date, twister is ready to use!": "La cadena de bloques está puesta al día, twister está listo para usar!",
+      "Block chain is up-to-date, freech is ready to use!": "La cadena de bloques está puesta al día, freech está listo para usar!",
       "Block generation": "Generación de bloques ",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -424,7 +424,7 @@ if(preferredLanguage == "es"){
             "Demonio local no está conectado a la red o la cadena de bloques no está actualizada.\n" +
             "Si te quedas en esta página tus acciones pueden no funcionar.\n" +
             "¿Quieres comprobar la [página de estado de la red](%{page}) en su lugar?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Cambiar de usuario",
@@ -433,7 +433,7 @@ if(preferredLanguage == "es"){
       "Configure block generation": "Configure la generación de bloques",
       "Connections:": "Conexiones: ", // to network
       "Connection lost.": "Conexión perdida.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} día |||| %{smart_count} días",
       "Detailed information": "Información detallada",
       "DHT network down.": "Red DHT caida.",
@@ -455,7 +455,7 @@ if(preferredLanguage == "es"){
       "download_posts_status": "Post %{portion} descargados", // Downloaded 10/30 posts
       "Enable": "Permitir",
       "error": "Error: %{error}",
-      "error_connecting_to_daemon": "Error al conectar con el demonio twister local.",
+      "error_connecting_to_daemon": "Error al conectar con el demonio freech local.",
       "Error in 'createwalletuser' RPC.": "Error en RPC 'createwalletuser'.",
       "Error in 'importprivkey'": "Error en RPC 'importprivkey': %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Error en 'sendnewusertransaction' RPC.",
@@ -507,16 +507,16 @@ if(preferredLanguage == "es"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "Nadie", // used to promote a post without attaching the user
       "Not available": "No disponible", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -551,8 +551,8 @@ if(preferredLanguage == "es"){
       "Setup account": "Configuración de la cuenta",
       "shorten_URI": "Acortar URL",
       "shorten_URI_enter_link": "Introducir el enlace largo.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "Las API de archivos no son totalmente compatibles con este navegador.",
@@ -587,7 +587,7 @@ if(preferredLanguage == "es"){
                 "El 'Guardar cambios' se activará automáticamente\n" +
                 "cuando el proceso se complete. (Prometo esto es\n"+
                 "la última vez que tendrá que esperar antes de usar\n" +
-                "twister).\n\n" +
+                "freech).\n\n" +
                 "Consejo: elija su avatar mientras tanto!",
       "users_mentions": "Las menciones de @%{username}",
       "users_profile": "%{username}'s Profile",
@@ -596,7 +596,7 @@ if(preferredLanguage == "es"){
       "View All": "Ver todos",
       "Who to Follow": "A quién seguir",
       "Your message was sent!": "¡Tu mensaje ha sido enviado!",
-      "twister login": "twister inicio de sesión",
+      "freech login": "freech inicio de sesión",
       "Existing local users": "Los usuarios locales existentes",
       "Or...": "O...",
       "Create a new user": "Crear un nuevo usuario",
@@ -675,7 +675,7 @@ if(preferredLanguage == "es"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hora(s)",
       "second(s)": "segundo(s)",
@@ -717,12 +717,12 @@ if(preferredLanguage == "es"){
       "Messages": "Mensajes",
       "Edit profile": "Editar perfil",
       "Top Trends": "Tendencias principales",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "deshacer",
       "Daemon exited...": "Daemon exited...",
@@ -776,7 +776,7 @@ if(preferredLanguage == "uk"){
       "Appearance": "Вигляд",
       "Apply": "Apply",
       "Block chain information": "Інформація про ланцюжок блоків",
-      "Block chain is up-to-date, twister is ready to use!": "Ланцюг блоків оновлено, twister готовий до використання!",
+      "Block chain is up-to-date, freech is ready to use!": "Ланцюг блоків оновлено, freech готовий до використання!",
       "Block generation": "Генерація блоку ",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -791,7 +791,7 @@ if(preferredLanguage == "uk"){
             "Локальний сервер не підєднаний до мережі або ланцюг блоків не актуальний.\n" +
             "Якщо ви залишитесь на цій сторінці ваші дії можуть не спрацювати.\n" +
             "Чи бажаєте ви перевірити [сторінку зі статусом мережі](%{page})?",
-      "confirm_terminate_daemon": "Ви впевнені, що бажаєте завершити роботу?\nКлієнт Twister буде зупинено допоки ви не запустите його знову.",
+      "confirm_terminate_daemon": "Ви впевнені, що бажаєте завершити роботу?\nКлієнт Freech буде зупинено допоки ви не запустите його знову.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Змінити користувача",
@@ -800,7 +800,7 @@ if(preferredLanguage == "uk"){
       "Configure block generation": "Налаштувати генерацію блоку",
       "Connections:": "З’єднання: ", // to network
       "Connection lost.": "З’єднання втрачено.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} день |||| %{smart_count} днів",
       "Detailed information": "Детальна інформація",
       "DHT network down.": "Мережа DHT недоступна.",
@@ -823,7 +823,7 @@ if(preferredLanguage == "uk"){
       "download_posts_status": "Завантажено %{portion} твістів", // Downloaded 10/30 posts
       "Enable": "Включено",
       "error": "Помилка: %{error}",
-      "error_connecting_to_daemon": "Помилка з’єднання з локальним сервером twister.",
+      "error_connecting_to_daemon": "Помилка з’єднання з локальним сервером freech.",
       "Error in 'createwalletuser' RPC.": "Помилка у 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Помилка у 'importprivkey' RPC: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Помилка у 'sendnewusertransaction' RPC.",
@@ -875,14 +875,14 @@ if(preferredLanguage == "uk"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "анонім", // used to promote a post without attaching the user
       "Not available": "Не доступне", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister не може створити сповіщення: невідома помилка.",
-      "notify_desktop_perm_denied": "Twister не може створити сповіщення на робочому столі: доступ обмежено.\n\nЯкщо ви бажаєте отримувати сповіщення, дозвольте їх виконання в налаштуваннях браузера для %{this_domain}.",
+      "notify_desktop_error": "Freech не може створити сповіщення: невідома помилка.",
+      "notify_desktop_perm_denied": "Freech не може створити сповіщення на робочому столі: доступ обмежено.\n\nЯкщо ви бажаєте отримувати сповіщення, дозвольте їх виконання в налаштуваннях браузера для %{this_domain}.",
       "notify_desktop_test": "Є дещо новеньке у стрічці.",
       "notify_desktop_title": "Погляньте сюди!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
@@ -919,8 +919,8 @@ if(preferredLanguage == "uk"){
       "Setup account": "Обліковий запис",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "File APIs не повністю підтримується браузером.",
@@ -952,7 +952,7 @@ if(preferredLanguage == "uk"){
                 "У цей час не можна редагувати профіль та надсилати повідомлення.\n\n" +
                 "Будь ласка, зачекайте декілька хвилин.\n" +
                 "Кнопка 'Зберегти зміни' стане доступною автоматично коли цей процес завершится.\n\n"+
-                "Це востаннє, коли потрібно чекати перед використанням Twister",
+                "Це востаннє, коли потрібно чекати перед використанням Freech",
       "users_mentions": "Події @%{username}",
       "users_profile": "Профіль %{username}",
       "username_undefined": "Користувач невизначений, необхідно вказати нік.",
@@ -960,7 +960,7 @@ if(preferredLanguage == "uk"){
       "View All": "Дивитись все",
       "Who to Follow": "Знайомтесь",
       "Your message was sent!": "Ваше повідомлення відправлене!",
-      "twister login": "Вхід до Twister",
+      "freech login": "Вхід до Freech",
       "Existing local users": "Вже зареєстровані",
       "Or...": "Або...",
       "Create a new user": "Створити нового користувача",
@@ -976,7 +976,7 @@ if(preferredLanguage == "uk"){
       "Mining difficulty:": "Складність майнінгу:",
       "Block generation status": "Статус генерації блоків",
       "Current hash rate:": "Поточна швидкість хешування:",
-      "Terminate Daemon:": "Зупинити Twister:",
+      "Terminate Daemon:": "Зупинити Freech:",
       "Exit": "Вихід",
       "Save Changes": "Зберегти зміни",
       "profile_saved": "Profile data has been saved to DHT.",
@@ -1039,7 +1039,7 @@ if(preferredLanguage == "uk"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Відображення публікацій",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Показувати, якщо оригінал старіше за",
       "hour(s)": "годин",
       "second(s)": "секунд",
@@ -1081,15 +1081,15 @@ if(preferredLanguage == "uk"){
       "Messages": "Повідомлення",
       "Edit profile": "Профіль",
       "Top Trends": "Тренди",
-      "Twistday Reminder": "Нагадування про перший твіст",
+      "Freechday Reminder": "Нагадування про перший твіст",
       "Show upcoming in near future": "Відображати претендентів",
-      "Who's celebrating Twistday": "Річницю святкує",
+      "Who's celebrating Freechday": "Річницю святкує",
       "Today's luckies:": "Сьогоднішні щасливчики:",
       "Upcoming ones:": "Найближчим часом:",
       "post_rt_sign_prep": "ретвіст від",
       "post_rt_time_prep": "at",
       "undo": "відмінити",
-      "Daemon exited...": "Twister заверив роботу...",
+      "Daemon exited...": "Freech заверив роботу...",
       "Secret Key": "Секретний ключ",
       "Copy to clipboard": "Скопіювати до буферу",
       "Full name here": "Повне ім’я",
@@ -1141,7 +1141,7 @@ if(preferredLanguage == "zh-CN"){
       "Appearance": "外观",
       "Apply": "应用",
       "Block chain information": "区块链信息",
-      "Block chain is up-to-date, twister is ready to use!": "区块链已经更新，Twister 已经可以使用！",
+      "Block chain is up-to-date, freech is ready to use!": "区块链已经更新，Freech 已经可以使用！",
       "Block generation": "区块生成器",
       "busted_oh": "噢，阻挡！",
       "busted_avowal": "系统检测到此用户试图在这里注入恶意代码",
@@ -1156,7 +1156,7 @@ if(preferredLanguage == "zh-CN"){
             "本地的后台进程没有连接到网络，或者区块链已经过时。\n" +
             "如果你留在此页面你的操作将不会生效。\n" +
             "你要跳转到[网络状态页](%{page})吗？",
-      "confirm_terminate_daemon": "你确定要退出后台进程？\nTwister 客户端将停止工作。",
+      "confirm_terminate_daemon": "你确定要退出后台进程？\nFreech 客户端将停止工作。",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "切换用户",
@@ -1165,7 +1165,7 @@ if(preferredLanguage == "zh-CN"){
       "Configure block generation": "配置区块生成器",
       "Connections:": "连接数：", // to network
       "Connection lost.": "连接中断。",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} 天",
       "Detailed information": "详细信息",
       "DHT network down.": "DHT网络中断。",
@@ -1187,7 +1187,7 @@ if(preferredLanguage == "zh-CN"){
       "download_posts_status": "已下载 %{portion} 推文", // Downloaded 10/30 posts
       "Enable": "开启",
       "error": "错误：%{error}",
-      "error_connecting_to_daemon": "连接本地的 Twister 后台进程时出错",
+      "error_connecting_to_daemon": "连接本地的 Freech 后台进程时出错",
       "Error in 'createwalletuser' RPC.": "'createwalletuser' RPC 错误",
       "Error in 'importprivkey'": "'importprivkey' 错误：%{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "'sendnewusertransaction' RPC 错误。",
@@ -1239,16 +1239,16 @@ if(preferredLanguage == "zh-CN"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "无名", // used to promote a post without attaching the user
       "Not available": "用户名不可用", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister 无法发出桌面提醒：发生未知错误。",
-      "notify_desktop_perm_denied": "Twister 无法发出桌面提醒：权限被拒绝。\n\n如果你想收到提醒，请在你的浏览器设置中允许 %{this_domain} 发出提醒。",
-      "notify_desktop_test": "我们都在用 Twister。\n欢迎你的加入。",
-      "notify_desktop_title": "注意，Twister 在这里！",
+      "notify_desktop_error": "Freech 无法发出桌面提醒：发生未知错误。",
+      "notify_desktop_perm_denied": "Freech 无法发出桌面提醒：权限被拒绝。\n\n如果你想收到提醒，请在你的浏览器设置中允许 %{this_domain} 发出提醒。",
+      "notify_desktop_test": "我们都在用 Freech。\n欢迎你的加入。",
+      "notify_desktop_title": "注意，Freech 在这里！",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -1283,8 +1283,8 @@ if(preferredLanguage == "zh-CN"){
       "Setup account": "设置账号",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "这个浏览器不能完全支持 File API。",
@@ -1318,7 +1318,7 @@ if(preferredLanguage == "zh-CN"){
         "请稍等几分钟再试试。\n\n" +
         "当相应操作完成后\n" +
         "“保存更改”按钮将会自动转换为可用。（我保证这是\n"+
-        "在你使用 Twister 前的最后一次等待。\n\n" +
+        "在你使用 Freech 前的最后一次等待。\n\n" +
         "小提示：在这时你可以先选好你的头像！",
       "users_mentions": "提及 @%{username}",
       "users_profile": "%{username} 的个人简介",
@@ -1327,7 +1327,7 @@ if(preferredLanguage == "zh-CN"){
       "View All": "查看全部",
       "Who to Follow": "推荐关注",
       "Your message was sent!": "你的信息已发送！",
-      "twister login": "登录 Twister",
+      "freech login": "登录 Freech",
       "Existing local users": "现有本地用户",
       "Or...": "或...",
       "Create a new user": "创建新用户",
@@ -1406,7 +1406,7 @@ if(preferredLanguage == "zh-CN"){
       "Show only if I am in": "只显示如果我在其中",
       "Show if it's between users I follow": "显示我关注的用户",
       "Postboard displays": "信息流显示偏好",
-      "RTs those are close to original twist": "靠近原推文的 RT",
+      "RTs those are close to original freech": "靠近原推文的 RT",
       "Show if the original is older than": "显示，如果比原件晚",
       "hour(s)": "小时",
       "second(s)": "秒",
@@ -1448,9 +1448,9 @@ if(preferredLanguage == "zh-CN"){
       "Messages": "消息",
       "Edit profile": "编辑个人简介",
       "Top Trends": "热门趋势",
-      "Twistday Reminder": "Twistday周年纪念日提醒",
-      "Show upcoming in near future": "显示Twistday周年纪念日预告",
-      "Who's celebrating Twistday": "谁在庆祝自己的Twistday周年纪念日",
+      "Freechday Reminder": "Freechday周年纪念日提醒",
+      "Show upcoming in near future": "显示Freechday周年纪念日预告",
+      "Who's celebrating Freechday": "谁在庆祝自己的Freechday周年纪念日",
       "Today's luckies:": "今天的幸运用户：",
       "Upcoming ones:": "即将到来的幸运用户：",
       "post_rt_sign_prep": "转推由",
@@ -1511,7 +1511,7 @@ if(preferredLanguage == "nl"){
       "Appearance": "Appearance",
       "Apply": "Apply",
       "Block chain information": "Block chain informatie",
-      "Block chain is up-to-date, twister is ready to use!": "Block chain is up-to-date, twister is klaar voor gebruik!",
+      "Block chain is up-to-date, freech is ready to use!": "Block chain is up-to-date, freech is klaar voor gebruik!",
       "Block generation": "Block productie",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -1526,7 +1526,7 @@ if(preferredLanguage == "nl"){
             "Local daemon is not connected to the network or block chain is outdated.\n" +
             "If you stay in this page your actions may not work.\n" +
             "Do you want to check [Network Status page](%{page}) instead?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Gebruiker wijzigen",
@@ -1535,7 +1535,7 @@ if(preferredLanguage == "nl"){
       "Configure block generation": "Block productie configureren",
       "Connections:": "Connecties: ", // to network
       "Connection lost.": "Verbinding kwijt.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} dag |||| %{smart_count} dagen",
       "Detailed information": "Gedetailleerde informatie",
       "DHT network down.": "DHT netwerk down.",
@@ -1557,7 +1557,7 @@ if(preferredLanguage == "nl"){
       "download_posts_status": "%{portion} berichten gedownload", // Downloaded 10/30 posts
       "Enable": "Activeren",
       "error": "Error: %{error}",
-      "error_connecting_to_daemon": "Error connecting to local twister daemon.",
+      "error_connecting_to_daemon": "Error connecting to local freech daemon.",
       "Error in 'createwalletuser' RPC.": "Error in 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Error in 'importprivkey' RPC: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Error in 'sendnewusertransaction' RPC.",
@@ -1609,16 +1609,16 @@ if(preferredLanguage == "nl"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nobody", // used to promote a post without attaching the user
       "Not available": "Niet beschikbaar", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -1653,8 +1653,8 @@ if(preferredLanguage == "nl"){
       "Setup account": "Account instellingen",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "The File APIs are not fully supported in this browser.",
@@ -1689,7 +1689,7 @@ if(preferredLanguage == "nl"){
                 "The 'Save Changes' will be automatically enabled\n" +
                 "when the process completes. (I promise this is\n"+
                 "the last time you will have to wait before using\n" +
-                "twister).\n\n" +
+                "freech).\n\n" +
                 "Tip: choose your avatar in the meantime!",
       "users_mentions": "Vermeldingen voor @%{username}",
       "users_profile": "%{username}'s profiel",
@@ -1698,7 +1698,7 @@ if(preferredLanguage == "nl"){
       "View All": "Toon alles",
       "Who to Follow": "Wie volgen?",
       "Your message was sent!": "Je bericht is verzonden!",
-      "twister login": "twister login",
+      "freech login": "freech login",
       "Existing local users": "Bestaande lokale gebruikers",
       "Or...": "Of...",
       "Create a new user": "Maak een nieuwe gebruiker aan",
@@ -1777,7 +1777,7 @@ if(preferredLanguage == "nl"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "seconde(n)",
@@ -1819,12 +1819,12 @@ if(preferredLanguage == "nl"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -1878,7 +1878,7 @@ if(preferredLanguage == "it"){
       "Appearance": "Appearance",
       "Apply": "Apply",
       "Block chain information": "Informazioni sulla catena di blocchi",
-      "Block chain is up-to-date, twister is ready to use!": "Catena di blocchi aggiornata, Twister è pronto per l'uso!",
+      "Block chain is up-to-date, freech is ready to use!": "Catena di blocchi aggiornata, Freech è pronto per l'uso!",
       "Block generation": "Generatore di blocchi:",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -1890,10 +1890,10 @@ if(preferredLanguage == "it"){
       "сonfirm_group_leaving_header": "Confirm group leaving",
       "сonfirm_group_leaving_body": "Are you sure want to leave %{alias} group?",
       "confirm_switch_to_network":
-            "Il servizio locale non è connesso alla rete Twister o la catena di blocchi è vecchia.\n" +
-            "Se rimani su questa pagina, Twister potrebbe non funzionare.\n" +
-            "Vuoi controllare lo [stato della rete Twister](%{page}), invece?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+            "Il servizio locale non è connesso alla rete Freech o la catena di blocchi è vecchia.\n" +
+            "Se rimani su questa pagina, Freech potrebbe non funzionare.\n" +
+            "Vuoi controllare lo [stato della rete Freech](%{page}), invece?",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Cambia utente",
@@ -1902,7 +1902,7 @@ if(preferredLanguage == "it"){
       "Configure block generation": "Configura generatore di blocchi",
       "Connections:": "Connessioni: ", // to network
       "Connection lost.": "Connessione interrotta.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} giorno |||| %{smart_count} giorni",
       "Detailed information": "Informazioni dettagliate",
       "DHT network down.": "DHT network inaccessibile.",
@@ -1924,7 +1924,7 @@ if(preferredLanguage == "it"){
       "download_posts_status": "Scaricati %{portion} messaggi", // Downloaded 10/30 posts
       "Enable": "Attivato",
       "error": "Errore: %{error}",
-      "error_connecting_to_daemon": "Errore nella connessione al servizio Twister locale.",
+      "error_connecting_to_daemon": "Errore nella connessione al servizio Freech locale.",
       "Error in 'createwalletuser' RPC.": "Errore in 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Errore in 'importprivkey' RPC: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Errore in 'sendnewusertransaction' RPC.",
@@ -1943,7 +1943,7 @@ if(preferredLanguage == "it"){
       "Force connection to peer:": "Forza connessione al nodo:",
       "General information": "Informazioni",
       "Generate blocks (send promoted messages)": "Genera blocchi (invia messaggi pubblicitari)",
-      "Home": "Twister", // homepage -- no direct translation in Italian...?
+      "Home": "Freech", // homepage -- no direct translation in Italian...?
       "hours": "%{smart_count} ora |||| %{smart_count} ore",
       "Internal error: lastPostId unknown (following yourself may fix!)": "Errore interno: lastPostId sconosciuto (prova a seguire te stesso per risolvere!)",
       "Known peers:": "Nodi conosciuti: ",
@@ -1976,16 +1976,16 @@ if(preferredLanguage == "it"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nessuno", // used to promote a post without attaching the user
       "Not available": "Non disponibile", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -2020,8 +2020,8 @@ if(preferredLanguage == "it"){
       "Setup account": "Configurazione Utente",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "Le API File non sono interamente supportate da questo browser.",
@@ -2054,7 +2054,7 @@ if(preferredLanguage == "it"){
                 "Attendi qualche minuto prima di continuare.\n\n" +
                 "Please wait a few minutes to continue.\n\n" +
                 "Il pulsante 'Salva modifiche' sarà abilitato automaticamente appena il processo sarà completato.\n" +
-                "(Prometto che è l'ultima attesa prima di poter usare Twister!).\n\n" +
+                "(Prometto che è l'ultima attesa prima di poter usare Freech!).\n\n" +
                 "Suggerimento: nel frattempo, trova un'immagine da usare come avatar!",
       "users_mentions": "Menzioni di @%{username}",
       "users_profile": "Profilo di %{username}",
@@ -2063,7 +2063,7 @@ if(preferredLanguage == "it"){
       "View All": "Mostra tutti",
       "Who to Follow": "Chi seguire?",
       "Your message was sent!": "Il messaggio è stato inviato!",
-      "twister login": "twister login",
+      "freech login": "freech login",
       "Existing local users": "Existing local users",
       "Or...": "Or...",
       "Create a new user": "Create a new user",
@@ -2142,7 +2142,7 @@ if(preferredLanguage == "it"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "secondo(i)",
@@ -2184,12 +2184,12 @@ if(preferredLanguage == "it"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -2243,7 +2243,7 @@ if(preferredLanguage == "fr"){
       "Appearance": "Apparence",
       "Apply": "Apply",
       "Block chain information": "Informations à propos de la chaîne de blocs",
-      "Block chain is up-to-date, twister is ready to use!": "La chaîne de blocs est à jour, Twister est maintenant fonctionnel!",
+      "Block chain is up-to-date, freech is ready to use!": "La chaîne de blocs est à jour, Freech est maintenant fonctionnel!",
       "Block generation": "Production de blocs",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -2258,7 +2258,7 @@ if(preferredLanguage == "fr"){
             "Le démon local n'est pas connecté au réseau ou la chaîne de blocs n'est pas à jour.\n" +
             "Si vous restez dans cette page vos actions peuvent ne pas être prises en compte.\n" +
             "Voulez-vous consulter la [page d'état du réseau](%{page}) à la place?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Changer d'utilisateur",
@@ -2267,7 +2267,7 @@ if(preferredLanguage == "fr"){
       "Configure block generation": "Configuration de la production de blocs",
       "Connections:": "Connexions: ", // to network
       "Connection lost.": "Connexion perdue.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} jour |||| %{smart_count} jours",
       "Detailed information": "Informations détaillées",
       "DHT network down.": "Panne du réseau DHT.",
@@ -2289,7 +2289,7 @@ if(preferredLanguage == "fr"){
       "download_posts_status": "%{portion} billets téléchargés", // Downloaded 10/30 posts
       "Enable": "Activer",
       "error": "Erreur: %{error}",
-      "error_connecting_to_daemon": "Erreur de connexion, impossible de se connecter au démon Twister.",
+      "error_connecting_to_daemon": "Erreur de connexion, impossible de se connecter au démon Freech.",
       "Error in 'createwalletuser' RPC.": "Erreur RPC dans 'createwalletuser'.",
       "Error in 'importprivkey'": "Erreur RPC dans 'importprivkey': %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Error RPC dans 'sendnewusertransaction'.",
@@ -2341,7 +2341,7 @@ if(preferredLanguage == "fr"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nobody", // used to promote a post without attaching the user
       "Not available": "Non disponible", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
@@ -2349,8 +2349,8 @@ if(preferredLanguage == "fr"){
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
       "notify_desktop_error": "Impossible d'afficher les notifications: une erreur inconnue est survenue.",
       "notify_desktop_perm_denied": "Impossible d'afficher les notifications: autorisation refusée.\n\nSi tu souhaites afficher les notifications, autorise le %{this_domain} dans les paramêtres de ton navigateur.",
-      "notify_desktop_test": "All the twisters gonna twist.\nBienvenue à toi!",
-      "notify_desktop_title": "Youhou! Ça bouge sur ton twister!",
+      "notify_desktop_test": "All the freechs gonna freech.\nBienvenue à toi!",
+      "notify_desktop_title": "Youhou! Ça bouge sur ton freech!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -2385,8 +2385,8 @@ if(preferredLanguage == "fr"){
       "Setup account": "Configuration du compte",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "L'API de fichier n'est pas entièrement pris en charge dans votre navigateur.",
@@ -2421,7 +2421,7 @@ if(preferredLanguage == "fr"){
                 "Le bouton 'enregistrer' s'affichera automatiquement\n" +
                 "lorsque le processus sera terminé. (Je vous promets que\n"+
                 "c'est la dernière fois que vous devrez attendre avant d'utiliser\n" +
-                "Twister).\n\n" +
+                "Freech).\n\n" +
                 "Astuce: pendant ce temps, choisissez votre avatar !",
       "users_mentions": "Mentions de @%{username}",
       "users_profile": "Profil de %{username}",
@@ -2430,7 +2430,7 @@ if(preferredLanguage == "fr"){
       "View All": "Voir tous",
       "Who to Follow": "Qui suivre",
       "Your message was sent!": "Votre message a été envoyé!",
-      "twister login": "Nom d'utilisateur Twister",
+      "freech login": "Nom d'utilisateur Freech",
       "Existing local users": "Utilisateurs locaux existants",
       "Or...": "Ou...",
       "Create a new user": "Créer un nouvel utilisateur",
@@ -2509,7 +2509,7 @@ if(preferredLanguage == "fr"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "seconde(s)",
@@ -2551,12 +2551,12 @@ if(preferredLanguage == "fr"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -2611,7 +2611,7 @@ if(preferredLanguage == "ru"){
        "Appearance": "Отображение",
        "Apply": "Применять",
        "Block chain information": "Информация цепочки блоков",
-       "Block chain is up-to-date, twister is ready to use!": "Цепочка блоков обновлена, twister готов к использованию!",
+       "Block chain is up-to-date, freech is ready to use!": "Цепочка блоков обновлена, freech готов к использованию!",
        "Block generation": "Майнинг блоков ",
        "busted_oh": "о нет!",
        "busted_avowal": "я пойман на попытке вставить этот подозрительный код здесь",
@@ -2626,7 +2626,7 @@ if(preferredLanguage == "ru"){
             "Локальный демон не подключен к сети или цепочка блоков устарела.\n" +
             "Если вы останетесь на этой странице ваши действия могут быть не выполнены.\n" +
             "Не хотите перейти на [страницу настройки сети](%{page})?",
-       "confirm_terminate_daemon": "Вы уверены, что хотите выключить демон?\nTwister клиент перестанет работать.",
+       "confirm_terminate_daemon": "Вы уверены, что хотите выключить демон?\nFreech клиент перестанет работать.",
        "confirm_unfollow_@": "Действительно отписаться от @%{alias}?",
        "confirm_uri_shortener_clear_cache": "В самом деле очистить кэш сокращённых URI в браузере?",
        "Change user": "Сменить пользователя",
@@ -2657,7 +2657,7 @@ if(preferredLanguage == "ru"){
        "download_posts_status": "Загружено %{portion} постов", // Downloaded 10/30 posts
        "Enable": "Включено",
        "error": "Ошибка: %{error}",
-       "error_connecting_to_daemon": "Ошибка подключения к локальному демону twisterd.",
+       "error_connecting_to_daemon": "Ошибка подключения к локальному демону freechd.",
        "Error in 'createwalletuser' RPC.": "Ошибка при обращении к RPC - при попытке выполнить 'createwalletuser'.",
        "Error in 'importprivkey'": "Ошибка при обращении к RPC - при попытке выполнить 'importprivkey' %{rpc}",
        "Error in 'sendnewusertransaction' RPC.": "Ошибка при обращении к RPC - при попытке выполнить 'sendnewusertransaction'",
@@ -2718,7 +2718,7 @@ if(preferredLanguage == "ru"){
        "notify_desktop_error": "Твистер не может выполнить уведомление: произошла неизвестная ошибка.",
        "notify_desktop_perm_denied": "Твистер не может выполнить уведомление: разрешение не получено.\n\nЧтобы получать уведомления, разрешите их для %{this_domain} в настройках вашего браузера.",
        "notify_desktop_test": "Одна лягушка сказала:\n'если не буду квакать — лопну'.\nВы нужны нам, берегите себя.",
-       "notify_desktop_title": "Watch out, it's twister over here!",
+       "notify_desktop_title": "Watch out, it's freech over here!",
        "post_preview_dummy": 'это *полужирный*, ~курсивный~, -зачёркнутый- и _подчёркнутый_ текст.\n'
          + 'экранированный: `*полужирный*, ~курсивный~, -зачёркнутый- и _подчёркнутый_`.\n'
          + 'ссылки на [наш потрясный логотип](%{logo}) и наш великолепный сайт: %{site}.',
@@ -2789,7 +2789,7 @@ if(preferredLanguage == "ru"){
                  "Кнопка 'Сохранить' будет доступна автоматически после того,\n" +
                  "как процес регистрации завершится. (Я обещаю, это\n"+
                  "последний раз, когда вы ждете перед использованием\n" +
-                 "twister'a).\n\n" +
+                 "freech'a).\n\n" +
                  "Хозяйке на заметку: Сейчас вы можете выбрать аватар!",
        "users_mentions": "Ответ от @%{username}",
        "users_profile": "Профиль @%{username}",
@@ -2798,7 +2798,7 @@ if(preferredLanguage == "ru"){
        "View All": "Просмотреть Всё",
        "Who to Follow": "Кого почитать",
        "Your message was sent!": "Ваше сообщение было отправлено!",
-       "twister login": "Вход в twister",
+       "freech login": "Вход в freech",
        "Existing local users": "Уже зарегистрированные",
        "Or...": "Или...",
        "Create a new user": "Зарегистрировать нового пользователя",
@@ -2814,7 +2814,7 @@ if(preferredLanguage == "ru"){
        "Mining difficulty:": "Сложность майнинга:",
        "Block generation status": "Статус майнинга блоков",
        "Current hash rate:": "Текущая скорость хэширования:",
-       "Terminate Daemon:": "Остановить twister:",
+       "Terminate Daemon:": "Остановить freech:",
        "Exit": "Выход",
        "Save Changes": "Сохранить изменения",
        "profile_saved": "Данные профайла сохранены в DHT.",
@@ -2877,7 +2877,7 @@ if(preferredLanguage == "ru"){
        "Show only if I am in": "Показывать только если я в адресатах",
        "Show if it's between users I follow": "Показывать если между пользователями, на которых я подписан",
        "Postboard displays": "Отображение ленты",
-       "RTs those are close to original twist": "Перепосты сразу после исходного сообщения",
+       "RTs those are close to original freech": "Перепосты сразу после исходного сообщения",
        "Show if the original is older than": "Показывать если исходное сообщение старше",
        "hour(s)": "час(ов)",
        "second(s)": "секунд(а,ы)",
@@ -2919,15 +2919,15 @@ if(preferredLanguage == "ru"){
        "Messages": "Сообщения",
        "Edit profile": "Изменить профиль",
        "Top Trends": "Топ Трендов",
-       "Twistday Reminder": "Твистоденный Календарь",
+       "Freechday Reminder": "Твистоденный Календарь",
        "Show upcoming in near future": "Показывать намечающиеся юбиляров",
-       "Who's celebrating Twistday": "Кто празднует Твистодень",
+       "Who's celebrating Freechday": "Кто празднует Твистодень",
        "Today's luckies:": "Сегодняшные счастливчики", // няшные, ок?
        "Upcoming ones:": "Намечающиеся вскоре",
        "post_rt_sign_prep": "ретвистит",
        "post_rt_time_prep": "в",
        "undo": "отменить",
-       "Daemon exited...": "Демон twister выключен...",
+       "Daemon exited...": "Демон freech выключен...",
        "Secret Key": "Секретный ключ",
        "Copy to clipboard": "Копировать в буфер обмена",
        "Full name here": "Укажите Ваше имя",
@@ -2941,7 +2941,7 @@ if(preferredLanguage == "ru"){
        "Users": "Пользователи",
       'dm_copy_outgoing_to_self': 'Синхронизировать отправленные личные сообщения',
       'dm_encrypt_local_cache': 'Шифровать локальный кэш данных',
-       "Terminate Daemon": "Выключить twister демон",
+       "Terminate Daemon": "Выключить freech демон",
        "New post": "Новый пост",
        "Search": "Поиск",
        "Direct Msg": "ЛС",
@@ -2982,7 +2982,7 @@ if(preferredLanguage == "de"){
       "Appearance": "Aussehen",
       "Apply": "Apply",
       "Block chain information": "Block-Chain Informationen",
-      "Block chain is up-to-date, twister is ready to use!": "Block-Chain ist aktuell, twister ist benutzbar!",
+      "Block chain is up-to-date, freech is ready to use!": "Block-Chain ist aktuell, freech ist benutzbar!",
       "Block generation": "Block-Generierung ",
       "busted_oh": "Oh nein!",
       "busted_avowal": "Ich bin ertappt, habe versucht, hier Schadcode einzugeben!",
@@ -2997,7 +2997,7 @@ if(preferredLanguage == "de"){
             "Lokaler daemon ist nicht mit dem Netzwerk verbunden oder Block-Chain ist veraltet.\n" +
             "Wenn du auf dieser Seite bleibst können deine Handlungen nicht funktionieren.\n" +
             "Möchtest du stattdessen den [Netzwerkstatus](%{page}) überprüfen?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Benutzer wechseln",
@@ -3006,7 +3006,7 @@ if(preferredLanguage == "de"){
       "Configure block generation": "Block-Generierung einstellen",
       "Connections:": "Verbindungen: ", // to network
       "Connection lost.": "Verbindung verloren.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} Tag |||| %{smart_count} Tage",
       "Detailed information": "Detaillierte Informationen",
       "DHT network down.": "DHT-Netzwerk nicht verfügbar.",
@@ -3029,7 +3029,7 @@ if(preferredLanguage == "de"){
       "download_posts_status": "%{portion} Posts heruntergeladen", // Downloaded 10/30 posts
       "Enable": "Aktivieren",
       "error": "Fehler: %{error}",
-      "error_connecting_to_daemon": "Fehler beim Verbinden zum lokalen twister-daemon.",
+      "error_connecting_to_daemon": "Fehler beim Verbinden zum lokalen freech-daemon.",
       "Error in 'createwalletuser' RPC.": "Fehler in 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Fehler in 'importprivkey' RPC: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Fehler in 'sendnewusertransaction' RPC.",
@@ -3081,16 +3081,16 @@ if(preferredLanguage == "de"){
       "new_group_messages": "%{smart_count} neue Gruppen-Nachricht |||| %{smart_count} neue Gruppen-Nachrichten",
       "nobody": "nobody", // used to promote a post without attaching the user
       "Not available": "Nicht verfügbar", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister kann keine Desktop-Meldungen anzeigen: ein unbekannter Fehler trat auf.",
-      "notify_desktop_perm_denied": "Twister kann keine Desktop-Meldungen anzeigen: Keine Berechtigung.\n\nWenn Du Meldungen angezeigt haben möchtest, erlaube sie für %{this_domain} in den Einstellungen Deines Browsers.",
-      "notify_desktop_test": "All die Twisterer werden twisten..\nDu bist nun auch willkommen!",
-      "notify_desktop_title": "Achtung, hier ist Twister am Gange!",
+      "notify_desktop_error": "Freech kann keine Desktop-Meldungen anzeigen: ein unbekannter Fehler trat auf.",
+      "notify_desktop_perm_denied": "Freech kann keine Desktop-Meldungen anzeigen: Keine Berechtigung.\n\nWenn Du Meldungen angezeigt haben möchtest, erlaube sie für %{this_domain} in den Einstellungen Deines Browsers.",
+      "notify_desktop_test": "All die Freecher werden freechen..\nDu bist nun auch willkommen!",
+      "notify_desktop_title": "Achtung, hier ist Freech am Gange!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -3125,8 +3125,8 @@ if(preferredLanguage == "de"){
       "Setup account": "Accounteinstellungen",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "Die File-API's werden von diesem Browser nicht vollständig unterstützt.",
@@ -3161,7 +3161,7 @@ if(preferredLanguage == "de"){
                 "'Änderungen speichern' wird automatisch aktiviert\n" +
                 "wenn der Prozess abgeschlossen ist. (Ich verspreche,\n"+
                 "das ist das letzte Mal, dass du warten musst, bevor\n" +
-                "du twister benutzten kannst).\n\n" +
+                "du freech benutzten kannst).\n\n" +
                 "Tip: Wähle in der Zwischenzeit deinen Avatar aus!",
       "users_mentions": "Erwähnungen von @%{username}",
       "users_profile": "%{username}'s Profil",
@@ -3170,7 +3170,7 @@ if(preferredLanguage == "de"){
       "View All": "Alle ansehen",
       "Who to Follow": "Wem Folgen?",
       "Your message was sent!": "Deine Nachricht wurde gesendet!",
-      "twister login": "twister login",
+      "freech login": "freech login",
       "Existing local users": "Existierende lokale Benutzer",
       "Or...": "Oder...",
       "Create a new user": "Neuen Benutzer erstellen",
@@ -3250,7 +3250,7 @@ if(preferredLanguage == "de"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "In der Timeline anzeigen",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Anzeigen, wenn das Original älter ist als",
       "hour(s)": "Stunde(n)",
       "second(s)": "Sekunde(n)",
@@ -3292,12 +3292,12 @@ if(preferredLanguage == "de"){
       "Messages": "Nachrichten",
       "Edit profile": "Profil bearbeiten",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Erinnerung",
+      "Freechday Reminder": "Freechday Erinnerung",
       "Show upcoming in near future": "Zeige bevorstehende in naher Zukunft",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Die Glücklichen von heute:",
       "Upcoming ones:": "Demnächst:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -3351,7 +3351,7 @@ if(preferredLanguage == "ja"){
       "Appearance": "Appearance",
       "Apply": "Apply",
       "Block chain information": "ブロックチェイン",
-      "Block chain is up-to-date, twister is ready to use!": "ブロックチェインは最新の状態です。",
+      "Block chain is up-to-date, freech is ready to use!": "ブロックチェインは最新の状態です。",
       "Block generation": "ブロック生成",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -3366,7 +3366,7 @@ if(preferredLanguage == "ja"){
             "ローカルデーモンが切断しているか、ブロックチェーンが最新状態ではない。\n" +
             "このページを使用しつづければ、あなたの変更が適用されないおそれがあります。\n" +
             "[ネットワーク状態ペー](%{page})ジへ移動して確認しますか？",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "ユーザーを変更",
@@ -3375,7 +3375,7 @@ if(preferredLanguage == "ja"){
       "Configure block generation": "ブロック生成の設定",
       "Connections:": "接続数: ", // to network
       "Connection lost.": "切断されました。",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count}日 |||| %{smart_count}日",
       "Detailed information": "詳細",
       "DHT network down.": "DHTネットワークがダウンしています",
@@ -3397,7 +3397,7 @@ if(preferredLanguage == "ja"){
       "download_posts_status": "ダウンロード済みの投稿 %{portion}", // Downloaded 10/30 posts
       "Enable": "有効",
       "error": "Error: %{error}",
-      "error_connecting_to_daemon": "ロカールtwisterデーモンに接続したが、エラーが発生しました。",
+      "error_connecting_to_daemon": "ロカールfreechデーモンに接続したが、エラーが発生しました。",
       "Error in 'createwalletuser' RPC.": "'createwalletuser' RPCにエラー発生",
       "Error in 'importprivkey'": "'importprivkey' RPC: %{rpc}にエラー発生",
       "Error in 'sendnewusertransaction' RPC.": "'sendnewusertransaction' RPCにエラー発生",
@@ -3449,16 +3449,16 @@ if(preferredLanguage == "ja"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "ナナシ", // used to promote a post without attaching the user
       "Not available": "使用中", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -3493,8 +3493,8 @@ if(preferredLanguage == "ja"){
       "Setup account": "アカウント設定",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "ご使用のブラウザーは完全にファイルAPIに対応していません。",
@@ -3526,7 +3526,7 @@ if(preferredLanguage == "ja"){
                 "なので、プロファイルの保存やメッセージの投稿は現在不可能です。\n" +
                 "しばらくしてから続行してください。\n\n" +
                 "処理が終了したら、「保存」ボタンは有効化されます。\n" +
-                "twisterを使用するあいだ、待たされることはこれが最後です。\n\n"+
+                "freechを使用するあいだ、待たされることはこれが最後です。\n\n"+
                 "待っている間、アバターを選択したら？",
       "users_mentions": "@%{username}へのメンション",
       "users_profile": "%{username}のプロフィール",
@@ -3535,7 +3535,7 @@ if(preferredLanguage == "ja"){
       "View All": "すべて見る",
       "Who to Follow": "おすすめユーザー",
       "Your message was sent!": "投稿が送信されました！",
-      "twister login": "Twisterログイン",
+      "freech login": "Freechログイン",
       "Existing local users": "既存のローカルユーザー",
       "Or...": "もしくは...",
       "Create a new user": "新規ユーザーを作成",
@@ -3614,7 +3614,7 @@ if(preferredLanguage == "ja"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "second(s)",
@@ -3656,12 +3656,12 @@ if(preferredLanguage == "ja"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -3716,7 +3716,7 @@ if(preferredLanguage == "pt-BR"){
       "Appearance": "Appearance",
       "Apply": "Apply",
       "Block chain information": "Informações da Cadeia de Blocos",
-      "Block chain is up-to-date, twister is ready to use!": "A Cadeida de Blocos está sincronizada, Twister está pronto para uso!",
+      "Block chain is up-to-date, freech is ready to use!": "A Cadeida de Blocos está sincronizada, Freech está pronto para uso!",
       "Block generation": "Geração de blocos ",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -3728,10 +3728,10 @@ if(preferredLanguage == "pt-BR"){
       "сonfirm_group_leaving_header": "Confirm group leaving",
       "сonfirm_group_leaving_body": "Are you sure want to leave %{alias} group?",
       "confirm_switch_to_network":
-            "O Cliente do Twister não está conectado à rede ou a cadeia de blocos está desatualizada.\n" +
+            "O Cliente do Freech não está conectado à rede ou a cadeia de blocos está desatualizada.\n" +
             "Se permanecer nesta página suas ações podem não ter efeito.\n" +
             "Gostaria de verificar o [Estado da Rede](%{page}) ao invés disso?",
-      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Twister client will stop working.",
+      "confirm_terminate_daemon": "Are you sure you want to exit the daemon?\nThe Freech client will stop working.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Trocar usuário",
@@ -3740,7 +3740,7 @@ if(preferredLanguage == "pt-BR"){
       "Configure block generation": "Configurar a geração de blocos",
       "Connections:": "Conexões: ", // to network
       "Connection lost.": "Conexão perdida.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} dia |||| %{smart_count} dias",
       "Detailed information": "Informações detalhadas",
       "DHT network down.": "Falha na rede DHT",
@@ -3762,7 +3762,7 @@ if(preferredLanguage == "pt-BR"){
       "download_posts_status": "%{portion} postagens carregadas.", // Downloaded 10/30 posts
       "Enable": "Habilitado",
       "error": "Erro: %{error}",
-      "error_connecting_to_daemon": "Erro ao tentar se conectar com o Cliente do Twister.",
+      "error_connecting_to_daemon": "Erro ao tentar se conectar com o Cliente do Freech.",
       "Error in 'createwalletuser' RPC.": "Erro ao executar a RPC 'createwalletuser'.",
       "Error in 'importprivkey'": "Erro ao executar a RPC 'importprivkey' : %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "Erro ao executar a RPC 'sendnewusertransaction'",
@@ -3814,16 +3814,16 @@ if(preferredLanguage == "pt-BR"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nobody", // used to promote a post without attaching the user
       "Not available": "Indisponível", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twister cannot perform desktop notification: unknown error occured.",
-      "notify_desktop_perm_denied": "Twister cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
-      "notify_desktop_test": "All the twisters gonna twist.\nNow you are welcome too.",
-      "notify_desktop_title": "Watch out, it's twister over here!",
+      "notify_desktop_error": "Freech cannot perform desktop notification: unknown error occured.",
+      "notify_desktop_perm_denied": "Freech cannot perform desktop notification: permission denied.\n\nIf you want to get notifications, allow them for %{this_domain} in settings of your browser.",
+      "notify_desktop_test": "All the freechs gonna freech.\nNow you are welcome too.",
+      "notify_desktop_title": "Watch out, it's freech over here!",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -3859,8 +3859,8 @@ if(preferredLanguage == "pt-BR"){
       "Setup account": "Configurar conta",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "O gerenciamento de arquivos não é completamente suportado neste navegador.",
@@ -3895,7 +3895,7 @@ if(preferredLanguage == "pt-BR"){
                 "O botão 'Salvar Alterações' será habilitado automaticamente\n" +
                 "qundo o processo for completado (Eu prometo que\n"+
                 "está será a última vez que você terá que esperar\n" +
-                "antes de utilizar o Twister).\n\n" +
+                "antes de utilizar o Freech).\n\n" +
                 "Dica: escolha uma foto para o seu avatar enquanto espera!",
       "users_mentions": "Menções de @%{username}",
       "users_profile": "Perfil de %{username}",
@@ -3904,7 +3904,7 @@ if(preferredLanguage == "pt-BR"){
       "View All": "Visualizar Todos",
       "Who to Follow": "Quem seguir",
       "Your message was sent!": "Sua mensagem foi enviada!",
-      "twister login": "Login no Twister",
+      "freech login": "Login no Freech",
       "Existing local users": "Usuários recentes",
       "Or...": "Ou...",
       "Create a new user": "Crie um novo usuário",
@@ -3920,7 +3920,7 @@ if(preferredLanguage == "pt-BR"){
       "Mining difficulty:": "Dificulade de mineração:",
       "Block generation status": "Estado da geração de blocos",
       "Current hash rate:": "Taxa de 'hash' atual:",
-      "Terminate Daemon:": "Encerrar a execução do Cliente do Twister",
+      "Terminate Daemon:": "Encerrar a execução do Cliente do Freech",
       "Exit": "Sair",
       "Save Changes": "Salvar Alterações",
       "profile_saved": "Profile data has been saved to DHT.",
@@ -3984,7 +3984,7 @@ if(preferredLanguage == "pt-BR"){
       "Show only if I am in": "Show only if I am in",
       "Show if it's between users I follow": "Show if it's between users I follow",
       "Postboard displays": "Postboard displays",
-      "RTs those are close to original twist": "RTs those are close to original twist",
+      "RTs those are close to original freech": "RTs those are close to original freech",
       "Show if the original is older than": "Show if the original is older than",
       "hour(s)": "hour(s)",
       "second(s)": "segundo(s)",
@@ -4026,12 +4026,12 @@ if(preferredLanguage == "pt-BR"){
       "Messages": "Messages",
       "Edit profile": "Edit profile",
       "Top Trends": "Top Trends",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
-      "post_rt_sign_prep": "twisted again by",
+      "post_rt_sign_prep": "freeched again by",
       "post_rt_time_prep": "at",
       "undo": "undo",
       "Daemon exited...": "Daemon exited...",
@@ -4084,7 +4084,7 @@ if(preferredLanguage == "tr"){
       "Appearance": "Görünüm",
       "Apply": "Uygula",
       "Block chain information": "Blok zincir bilgisi",
-      "Block chain is up-to-date, twister is ready to use!": "Blok zinciri güncel, twister kullanıma hazır!",
+      "Block chain is up-to-date, freech is ready to use!": "Blok zinciri güncel, freech kullanıma hazır!",
       "Block generation": "Blok üretimi ",
       "busted_oh": "haydaaa!",
       "busted_avowal": "Şüpheli bir şeyler iliştirmeye çalışırken enselendim.",
@@ -4099,7 +4099,7 @@ if(preferredLanguage == "tr"){
             "Yerel servis ağa bağlı değil ya da blok zinciri güncel değil.\n" +
             "Eğer bu sayfada kalırsanız eylemlerinizi işlemeyebilir.\n" +
             "Bunun yerine [Ağ Durumu sayfasını](%{page}) kontrol etmek ister misiniz?",
-      "confirm_terminate_daemon": "Hizmeti sonlandırmak istiyor musun?\nTwister istemcisi çalışmayacak.",
+      "confirm_terminate_daemon": "Hizmeti sonlandırmak istiyor musun?\nFreech istemcisi çalışmayacak.",
       "confirm_unfollow_@": "@%{alias} kullanıcısını takip etmeyi bırakmak istiyor musun?",
       "confirm_uri_shortener_clear_cache": "Kısaltılmış adres geçimişini temizlemek istiyor musun?",
       "Change user": "Kullanıcı değiştir",
@@ -4108,7 +4108,7 @@ if(preferredLanguage == "tr"){
       "Configure block generation": "Blok üretim ayarları",
       "Connections:": "Bağlantılar: ", // to network
       "Connection lost.": "Bağlantı koptu.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} gün |||| %{smart_count} gün",
       "Detailed information": "Detaylı bilgi",
       "DHT network down.": "DHT ağı çalışmıyor.",
@@ -4130,7 +4130,7 @@ if(preferredLanguage == "tr"){
       "download_posts_status": "Göderilerin indirilme oranı: %{portion}", // Downloaded 10/30 posts
       "Enable": "Kullanılabilir",
       "error": "Hata: %{error}",
-      "error_connecting_to_daemon": "Yerel twister servisine bağlanma hatası.",
+      "error_connecting_to_daemon": "Yerel freech servisine bağlanma hatası.",
       "Error in 'createwalletuser' RPC.": "'createwalletuser' RPC'de (Uzak Yordam Çağrısında) hata.",
       "Error in 'importprivkey'": "'importprivkey' RPC'de (Uzak Yordam Çağrısında) hata: %{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "'sendnewusertransaction' RPC'de (Uzak Yordam Çağrısında) hata.",
@@ -4188,10 +4188,10 @@ if(preferredLanguage == "tr"){
         + "aşağıdaki liste çoğunlukla takip ettiklerinden seni takip edenleri içerir.",
       "warn_followers_not_all_of": "Tüm takipçilerini belirlemenin kolay bir yolu bulunmuyor.\n"
         + "Aşağıdaki liste takipçilerin bir kısmını ve çoğunlukla takip ettiklerinden @%{alias} kullanıcısını gizlemeden takip edenleri içerir.",
-      "notify_desktop_error": "Twister masaüstü uyarısını gösterimiyor: bilimeyen bir hata oluştu.",
-      "notify_desktop_perm_denied": "Twister masaüstü uyarısını gösteremiyor: yetkilendirme hatası.\n\nUyarıları almak istiyorsanız, tarayıcı ayarlarında %{this_domain} alan adı için izin veriniz.",
+      "notify_desktop_error": "Freech masaüstü uyarısını gösterimiyor: bilimeyen bir hata oluştu.",
+      "notify_desktop_perm_denied": "Freech masaüstü uyarısını gösteremiyor: yetkilendirme hatası.\n\nUyarıları almak istiyorsanız, tarayıcı ayarlarında %{this_domain} alan adı için izin veriniz.",
       "notify_desktop_test": "Kasırga her yanı saracak\nBu karnavala hoşgeldin!",
-      "notify_desktop_title": "İyi bak, twister her yerde!",
+      "notify_desktop_title": "İyi bak, freech her yerde!",
       "post_preview_dummy": 'işte *kalın*, ~yatık~, -üstü-çizik- ve _alt çizgili_ yazı.\n'
         + 'düz hali: `*kalın*, ~yatık~, -üstü-çizik- ve _alt çizgili_`.\n'
         + '[güzel logomuz](%{logo})\'un ve harika sitemizin: %{site} bağlantıları.',
@@ -4226,8 +4226,8 @@ if(preferredLanguage == "tr"){
       "Setup account": "Hesap ayarları",
       "shorten_URI": "URL kısalt",
       "shorten_URI_enter_link": "Uzun bağlantıyı yazın.\n"
-        + "Not: URL kısaltma işlemi tam URL'i barındıran 'boş' bir twist oluşturacak.\n"
-        + "Bu özel twist görüntülenmeyecek, fakat gönderi sayınızda hesaba katılacak.",
+        + "Not: URL kısaltma işlemi tam URL'i barındıran 'boş' bir freech oluşturacak.\n"
+        + "Bu özel freech görüntülenmeyecek, fakat gönderi sayınızda hesaba katılacak.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "Adres kısalt",
       "The File APIs are not fully supported in this browser.": "Dosya API'si tarayıcınızda tam olarak desteklenmiyor.",
@@ -4260,7 +4260,7 @@ if(preferredLanguage == "tr"){
                 "ileti gönedermek mümkün değil.\n\n" +
                 "Lütfen devam etmek için bir kaç dakika bekleyin.\n\n" +
                 "İşlem tamamlandığında 'Değişiklikleri Kaydet'\n" +
-                "kediliğinden kullanılabilir olacaktır. (Twister'ı kullanmak için\n"+
+                "kediliğinden kullanılabilir olacaktır. (Freech'ı kullanmak için\n"+
                 "bu son bekleyişiniz olduğu konusunda size teminat veriyorum).\n\n" +
                 "İpucu: beklerken profil resminizi seçiniz!",
       "users_mentions": "@%{username} kullanıcısından bahsedenler",
@@ -4270,7 +4270,7 @@ if(preferredLanguage == "tr"){
       "View All": "Hepsini Göster",
       "Who to Follow": "Kimi takip etmeli",
       "Your message was sent!": "Mesajınız gönderildi!",
-      "twister login": "twister girişi",
+      "freech login": "freech girişi",
       "Existing local users": "Var olan yerel kullanıcılar",
       "Or...": "Ya da...",
       "Create a new user": "Yeni bir kullanıcı oluştur",
@@ -4349,7 +4349,7 @@ if(preferredLanguage == "tr"){
       "Show only if I am in": "Sadece ben içindeysem göster",
       "Show if it's between users I follow": "Takip ettiğim kullanıcılar arasında ise göster",
       "Postboard displays": "Zaman çizelgesinde",
-      "RTs those are close to original twist": "Orjinal twist'e yakın olan RTler",
+      "RTs those are close to original freech": "Orjinal freech'e yakın olan RTler",
       "Show if the original is older than": "Orjinali yandaki süreden daha eskiyse göster",
       "hour(s)": "saat",
       "second(s)": "saniye",
@@ -4391,9 +4391,9 @@ if(preferredLanguage == "tr"){
       "Messages": "İletiler",
       "Edit profile": "Profili düzenle",
       "Top Trends": "Gündem",
-      "Twistday Reminder": "Twistgünü Hatırlatıcı",
+      "Freechday Reminder": "Freechgünü Hatırlatıcı",
       "Show upcoming in near future": "Yakın gelecektekileri göster",
-      "Who's celebrating Twistday": "Twistgünü'nü kutlayanlar",
+      "Who's celebrating Freechday": "Freechgünü'nü kutlayanlar",
       "Today's luckies:": "Günün talihlileri:",
       "Upcoming ones:": "Yakında:",
       "post_rt_sign_prep": "yeniden ileten",
@@ -4450,7 +4450,7 @@ if(preferredLanguage == "cs"){
       "Appearance": "Vzhled",
       "Apply": "Apply",
       "Block chain information": "Informace o blockchainu",
-      "Block chain is up-to-date, twister is ready to use!": "Blockchain je aktuální, twister je připraven k použití!",
+      "Block chain is up-to-date, freech is ready to use!": "Blockchain je aktuální, freech je připraven k použití!",
       "Block generation": "Generování bloků ",
       "busted_oh": "oh noes!",
       "busted_avowal": "I\'m busted trying inject this suspicious stuff here",
@@ -4465,7 +4465,7 @@ if(preferredLanguage == "cs"){
             "Váš lokální server ještě není připojen k síti, nebo teprve stahuje aktuální blockchain.\n" +
             "Pokud zůstanete na této stránce, vaše akce možná nebudou fungovat.\n" +
             "Chcete se místo toho podívat na [stav sítě](%{page})?",
-      "confirm_terminate_daemon": "Skutečně chcete ukončit server?\nTwister tím vypnete.",
+      "confirm_terminate_daemon": "Skutečně chcete ukončit server?\nFreech tím vypnete.",
       "confirm_unfollow_@": "Are you sure you want to unfollow @%{alias}?",
       "confirm_uri_shortener_clear_cache": "Are you sure you want to clear browser cache of shortened URIs?",
       "Change user": "Změnit uživatele",
@@ -4474,7 +4474,7 @@ if(preferredLanguage == "cs"){
       "Configure block generation": "Nastavení generace bloků",
       "Connections:": "Připojení: ", // to network
       "Connection lost.": "Žádné připojení do sítě.",
-      "daemon_is_obsolete": "twister daemon is obsolete, version %{versionReq} or higher is required",
+      "daemon_is_obsolete": "freech daemon is obsolete, version %{versionReq} or higher is required",
       "days": "%{smart_count} dnem |||| %{smart_count} dny |||| %{smart_count} dny",
       "Detailed information": "Podrobné informace",
       "DHT network down.": "Síť DHT je nedostupná.",
@@ -4548,16 +4548,16 @@ if(preferredLanguage == "cs"){
       "new_group_messages": "%{smart_count} new group message |||| %{smart_count} new group messages",
       "nobody": "nikdo", // used to promote a post without attaching the user
       "Not available": "Tuto přezdívku již někdo používá", // username is not available
-      "warn_following_not_any": "Not following any twisters!\nSearch and follow someone.",
+      "warn_following_not_any": "Not following any freechs!\nSearch and follow someone.",
       "warn_followers_not_all": "Well, currently here's no easy way to obtain all your followers.\n"
         + "The counter indicates only a number of known peers sharing your torrent.\n"
         + "In the list below are included ones, mostly, who are followed by you.",
       "warn_followers_not_all_of": "Well, currently here's no easy way to obtain all followers of whoever.\n"
         + "In the list below are included only few, perhaps, of ones who follow @%{alias} publicly.",
-      "notify_desktop_error": "Twisteru se nepodařilo zobrazit upozornění na ploše: došlo k neznámé chybě.",
-      "notify_desktop_perm_denied": "Twisteru se nepodařilo zobrazit upozornění na ploše: přístup byl odepřen.\n\nPokud chcete používat upozornění na ploše, povolte je pro %{this_domain} v nastavení vašeho prohlížeče.",
-      "notify_desktop_test": "Twister to umí pořádně roztočit.\nKaždý je tu vítán.",
-      "notify_desktop_title": "Twister",
+      "notify_desktop_error": "Freechu se nepodařilo zobrazit upozornění na ploše: došlo k neznámé chybě.",
+      "notify_desktop_perm_denied": "Freechu se nepodařilo zobrazit upozornění na ploše: přístup byl odepřen.\n\nPokud chcete používat upozornění na ploše, povolte je pro %{this_domain} v nastavení vašeho prohlížeče.",
+      "notify_desktop_test": "Freech to umí pořádně roztočit.\nKaždý je tu vítán.",
+      "notify_desktop_title": "Freech",
       "post_preview_dummy": 'here is *bold*, ~italic~, -strike-trough- and _underlined_ text.\n'
         + 'same but escaped: `*bold*, ~italic~, -strike-trough- and _underlined_`.\n'
         + 'links to [our awesome logo](%{logo}) and our gorgeous site: %{site}.',
@@ -4593,8 +4593,8 @@ if(preferredLanguage == "cs"){
       "Setup account": "Upravit profil",
       "shorten_URI": "Shorten URL",
       "shorten_URI_enter_link": "Enter the long link.\n"
-        + "Note: shortening an URL will produce an 'empty' twist on your behalf containing the full URL.\n"
-        + "This special twist is not displayed by twister clients, but your twist counter will increase.",
+        + "Note: shortening an URL will produce an 'empty' freech on your behalf containing the full URL.\n"
+        + "This special freech is not displayed by freech clients, but your freech counter will increase.",
       "shorten_URI_its_public_is_it_ok": "Your link will be public available! Are you OK with that?",
       "URI_shortener": "URI Shortener",
       "The File APIs are not fully supported in this browser.": "Upozornění: váš webový prohlížeč nepodporuje File API.",
@@ -4627,7 +4627,7 @@ if(preferredLanguage == "cs"){
                 "Počkejte prosím pár minut.\n\n" +
                 "Tlačítko \"Uložit změny\" bude po dokončení tohoto procesu automaticky\n" +
                 "povoleno. Slibujeme, že je to naposledy, co musíte čekat než budete moci\n"+
-                "používat twister.\n" +
+                "používat freech.\n" +
                 "Tip: vyberte si mezitím svůj obrázek!",
       "users_mentions": "Zmínky o @%{username}",
       "users_profile": "Profil %{username}",
@@ -4636,7 +4636,7 @@ if(preferredLanguage == "cs"){
       "View All": "Zobrazit vše",
       "Who to Follow": "Koho sledovat",
       "Your message was sent!": "Vaše zpráva byla odeslána!",
-      "twister login": "přihlášení na twister",
+      "freech login": "přihlášení na freech",
       "Existing local users": "Existující lokální účty",
       "Or...": "Nebo...",
       "Create a new user": "Vytvořit nový účet",
@@ -4715,7 +4715,7 @@ if(preferredLanguage == "cs"){
       "Show only if I am in": "Ukázat jen když zmiňují mně",
       "Show if it's between users I follow": "Ukázat pokud jsou posílány mezi uživateli, které sleduji",
       "Postboard displays": "Zobrazení na nástěnce",
-      "RTs those are close to original twist": "Přeposlání blízká původnímu příspěvku",
+      "RTs those are close to original freech": "Přeposlání blízká původnímu příspěvku",
       "Show if the original is older than": "Ukázat pokud je už originál starší než",
       "hour(s)": "hodin",
       "second(s)": "vteřin",
@@ -4757,9 +4757,9 @@ if(preferredLanguage == "cs"){
       "Messages": "Zprávy",
       "Edit profile": "Upravit profil",
       "Top Trends": "Hlavní trendy",
-      "Twistday Reminder": "Twistday Reminder",
+      "Freechday Reminder": "Freechday Reminder",
       "Show upcoming in near future": "Show upcoming in near future",
-      "Who's celebrating Twistday": "Who's celebrating Twistday",
+      "Who's celebrating Freechday": "Who's celebrating Freechday",
       "Today's luckies:": "Today's luckies:",
       "Upcoming ones:": "Upcoming ones:",
       "post_rt_sign_prep": "přeposlal(a)",
@@ -4828,7 +4828,7 @@ if(preferredLanguage == "cmn"){
       "Appearance": "外觀",
       "Apply": "套用",
       "Block chain information": "區塊鏈資訊",
-      "Block chain is up-to-date, twister is ready to use!": "區塊鏈已更新，Twister 備妥待用！",
+      "Block chain is up-to-date, freech is ready to use!": "區塊鏈已更新，Freech 備妥待用！",
       "Block generation": "區塊生成：",
       "busted_oh": "噢，不！",
       "busted_avowal": "檢測到有人嘗試注入惡意材料",
@@ -4843,7 +4843,7 @@ if(preferredLanguage == "cmn"){
             "本地守護程式還未連線到網路，或者區塊鏈已經過期。\n" +
             "如果您待在這個頁面，您的動作可能沒有效用。\n" +
             "您要檢查 [網路] 狀態頁面(%{page}) 做為替代嗎？",
-      "confirm_terminate_daemon": "確定要退離守護程式？\nTwister 客戶端將停止作用。",
+      "confirm_terminate_daemon": "確定要退離守護程式？\nFreech 客戶端將停止作用。",
       "confirm_unfollow_@": "確定要取消跟隨 @%{alias}？",
       "confirm_uri_shortener_clear_cache": "確定要清空瀏覽器的短版網址快取？",
       "Change user": "變更使用者",
@@ -4852,7 +4852,7 @@ if(preferredLanguage == "cmn"){
       "Configure block generation": "組配區塊生成",
       "Connections:": "連接：", // to network
       "Connection lost.": "連線已經中斷。",
-      "daemon_is_obsolete": "Twister 守護程式已過時，必須使用 %{versionReq} 或更高版本",
+      "daemon_is_obsolete": "Freech 守護程式已過時，必須使用 %{versionReq} 或更高版本",
       "days": "%{smart_count} 天",
       "Detailed information": "詳細資訊",
       "DHT network down.": "分散式雜湊表 網路斷線。",
@@ -4874,7 +4874,7 @@ if(preferredLanguage == "cmn"){
       "download_posts_status": "已下載 %{portion} 則推文", // Downloaded 10/30 posts
       "Enable": "啟用",
       "error": "錯誤：%{error}",
-      "error_connecting_to_daemon": "連線到本地 Twister 守護程式時發生錯誤。",
+      "error_connecting_to_daemon": "連線到本地 Freech 守護程式時發生錯誤。",
       "Error in 'createwalletuser' RPC.": "在 createwalletuser RPC 時發生錯誤。",
       "Error in 'importprivkey'": "在 importprivkey RPC 時發生錯誤：%{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "在 sendnewusertransaction RPC 時發生錯誤。",
@@ -4932,10 +4932,10 @@ if(preferredLanguage == "cmn"){
        +"以下列表包含的推友，大多是您所跟隨的人。",
       "warn_followers_not_all_of": "好吧，目前還沒有容易的方式，可以知道某人的所有跟隨者。\n"
        +"以下列表衹包括幾個，或許是公開跟隨 @%{alias} 的人。",
-      "notify_desktop_error": "Twister 無法進行桌面通知：發生不明錯誤。",
-      "notify_desktop_perm_denied": "Twister 無法進行桌面通知：權限被拒。\n\n如果您要獲得通知，請在您的瀏覽器設定值中，允許它們用於 %{this_domain}。",
+      "notify_desktop_error": "Freech 無法進行桌面通知：發生不明錯誤。",
+      "notify_desktop_perm_denied": "Freech 無法進行桌面通知：權限被拒。\n\n如果您要獲得通知，請在您的瀏覽器設定值中，允許它們用於 %{this_domain}。",
       "notify_desktop_test": "所有人都在推文。\n歡迎您的加入。",
-      "notify_desktop_title": "注意，這裡是 Twister！",
+      "notify_desktop_title": "注意，這裡是 Freech！",
       "post_preview_dummy": '這裡有 *粗體*、~斜體~、-刪除線- 以及 _加底線_ 的文字。\n'
         + '同樣但是例外排除的：`*粗體*、~斜體~、-刪除線- 以及 _加底線_`。\n'
         + '鏈結到 [最棒的圖標](%{logo}) 以及我們華麗的站臺：%{site}。',
@@ -4971,7 +4971,7 @@ if(preferredLanguage == "cmn"){
       "shorten_URI": "短版網址",
       "shorten_URI_enter_link": "輸入長版網址鏈結。\n"
        +"註記：短版網址將為您產生空的推文以包含完整網址。\n"
-       +"這一則特殊推文不會顯示於 Twister 客戶端，但是您的推文計數將會增加。",
+       +"這一則特殊推文不會顯示於 Freech 客戶端，但是您的推文計數將會增加。",
       "shorten_URI_its_public_is_it_ok": "您的鏈結將是公開可讀的！確定這樣可以嗎？",
       "URI_shortener": "網址縮短器",
       "The File APIs are not fully supported in this browser.": "這個瀏覽器並不完全支援檔案應用軟體介面。",
@@ -5005,7 +5005,7 @@ if(preferredLanguage == "cmn"){
                 "請稍待幾分鐘再繼續。\n\n"+
                 "「儲存變更」將在處理完成時\n"+
                 "自動啟用。（我保證這是您\n"+
-                "使用 Twister 之前的最後一次\n"+
+                "使用 Freech 之前的最後一次\n"+
                 "等待）。\n\n"+
                 "祕訣：趁這時選擇您的頭像！",
       "users_mentions": "@%{username} 的提及次數",
@@ -5015,7 +5015,7 @@ if(preferredLanguage == "cmn"){
       "View All": "檢視全部",
       "Who to Follow": "可以跟隨誰",
       "Your message was sent!": "您的訊息已發送！",
-      "twister login": "Twister 登入",
+      "freech login": "Freech 登入",
       "Existing local users": "既有本地使用者",
       "Or...": "或…",
       "Create a new user": "建立新使用者",
@@ -5094,7 +5094,7 @@ if(preferredLanguage == "cmn"){
       "Show only if I am in": "衹顯示有我的推文",
       "Show if it's between users I follow": "如果是我跟隨的使用者才顯示",
       "Postboard displays": "推布欄顯示",
-      "RTs those are close to original twist": "與原始推文相近的轉推",
+      "RTs those are close to original freech": "與原始推文相近的轉推",
       "Show if the original is older than": "衹顯示原始推文出現超過",
       "hour(s)": "小時",
       "second(s)": "秒",
@@ -5136,9 +5136,9 @@ if(preferredLanguage == "cmn"){
       "Messages": "訊息",
       "Edit profile": "編輯側寫",
       "Top Trends": "熱門趨勢",
-      "Twistday Reminder": "開推周年紀念日提醒訊息",
+      "Freechday Reminder": "開推周年紀念日提醒訊息",
       "Show upcoming in near future": "顯示不久即將迎來慶祝的人",
-      "Who's celebrating Twistday": "誰正在慶祝開推周年紀念日",
+      "Who's celebrating Freechday": "誰正在慶祝開推周年紀念日",
       "Today's luckies:": "今天的幸運兒：",
       "Upcoming ones:": "即將迎來慶祝的人：",
       "post_rt_sign_prep": "再次推文自",
@@ -5207,7 +5207,7 @@ if(preferredLanguage == "yue"){
       "Appearance": "外觀",
       "Apply": "改實",
       "Block chain information": "區塊捵資訊",
-      "Block chain is up-to-date, twister is ready to use!": "區塊捵已更加新，Twister 備妥待用！",
+      "Block chain is up-to-date, freech is ready to use!": "區塊捵已更加新，Freech 備妥待用！",
       "Block generation": "區塊生成：",
       "busted_oh": "噢，毋！",
       "busted_avowal": "檢測到有人嘗試斟惡意材料",
@@ -5222,7 +5222,7 @@ if(preferredLanguage == "yue"){
             "本地守護程式尚未連綫到網絡，定抑區塊捵經已過期。\n" +
             "若果閣下待繫個頁面，閣下其動作似無效用。\n" +
             "閣下要檢查 [網絡] 狀態頁面(%{page}) 做為幫代啊？",
-      "confirm_terminate_daemon": "直煞要退出守護程式嘛？\nTwister 客戶端將閘住作用。",
+      "confirm_terminate_daemon": "直煞要退出守護程式嘛？\nFreech 客戶端將閘住作用。",
       "confirm_unfollow_@": "直煞要毋做發摟 @%{alias}嘛？",
       "confirm_uri_shortener_clear_cache": "直煞要清空瀏覽器其短版網址快取嘛？",
       "Change user": "更改用家",
@@ -5231,7 +5231,7 @@ if(preferredLanguage == "yue"){
       "Configure block generation": "組襯區塊生成",
       "Connections:": "接通：", // to network
       "Connection lost.": "連綫經已掹開。",
-      "daemon_is_obsolete": "Twister 守護程式過着時，必須用 %{versionReq} 或更加高版本",
+      "daemon_is_obsolete": "Freech 守護程式過着時，必須用 %{versionReq} 或更加高版本",
       "days": "%{smart_count} 天",
       "Detailed information": "詳細資訊",
       "DHT network down.": "分散式雜湊表 網絡斷綫。",
@@ -5253,7 +5253,7 @@ if(preferredLanguage == "yue"){
       "download_posts_status": "已取得 %{portion} 則推文", // Downloaded 10/30 posts
       "Enable": "啟用",
       "error": "錯誤：%{error}",
-      "error_connecting_to_daemon": "連綫到本地 Twister 守護程式時發生錯誤。",
+      "error_connecting_to_daemon": "連綫到本地 Freech 守護程式時發生錯誤。",
       "Error in 'createwalletuser' RPC.": "繫 createwalletuser RPC 時發生錯誤。",
       "Error in 'importprivkey'": "繫 importprivkey RPC 時發生錯誤：%{rpc}",
       "Error in 'sendnewusertransaction' RPC.": "繫 sendnewusertransaction RPC 時發生錯誤。",
@@ -5311,10 +5311,10 @@ if(preferredLanguage == "yue"){
        +"以下列表埋其推友，大多係閣下所發摟其人。",
       "warn_followers_not_all_of": "好吧，而今尚未易其方式，得知某人其所有發摟者。\n"
        +"以下列表衹埋幾個，一係係公開發摟 @%{alias} 其人。",
-      "notify_desktop_error": "Twister 無法去枱面通知：發生未知錯誤。",
-      "notify_desktop_perm_denied": "Twister 無法去枱面通知：權限畀拒。\n\n若果閣下要攎到通知，請繫閣下其瀏覽器設定值中，允許佢用嚮 %{this_domain}。",
+      "notify_desktop_error": "Freech 無法去枱面通知：發生未知錯誤。",
+      "notify_desktop_perm_denied": "Freech 無法去枱面通知：權限畀拒。\n\n若果閣下要攎到通知，請繫閣下其瀏覽器設定值中，允許佢用嚮 %{this_domain}。",
       "notify_desktop_test": "冚不論都繫推文。\n歡迎閣下其添加。",
-      "notify_desktop_title": "留意，呢度係 Twister！",
+      "notify_desktop_title": "留意，呢度係 Freech！",
       "post_preview_dummy": '呢度有 *粗字*、~斜字~、-刪清綫- 同埋 _加底綫_ 其文字。\n'
         + '同樣但例外飛起其：`*粗字*、~斜字~、-刪清綫- 同埋 _加底綫_`。\n'
         + '連結到 [一流其圖標](%{logo}) 同埋我地華麗其站台：%{site}。',
@@ -5350,7 +5350,7 @@ if(preferredLanguage == "yue"){
       "shorten_URI": "短版網址",
       "shorten_URI_enter_link": "輸入長版網址連結。\n"
        +"註記：短版網址將為閣下產生空其推文俾埋齊煞網址。\n"
-       +"則特意推文毋會顯示嚮 Twister 客戶端，但閣下其推文計數會提返。",
+       +"則特意推文毋會顯示嚮 Freech 客戶端，但閣下其推文計數會提返。",
       "shorten_URI_its_public_is_it_ok": "閣下其連結將係公開可讀其！直煞敢得啩？",
       "URI_shortener": "網址縮短器",
       "The File APIs are not fully supported in this browser.": "個瀏覽器兼毋完全支援快勞應用軟件界面。",
@@ -5384,7 +5384,7 @@ if(preferredLanguage == "yue"){
                 "請稍待幾分鐘再繼續。\n\n"+
                 "「保存更改」將繫處理搞直時\n"+
                 "自動啟用。（我包呢係閣下\n"+
-                "用 Twister 之前其最後一次\n"+
+                "用 Freech 之前其最後一次\n"+
                 "等待）。\n\n"+
                 "秘訣：趁呢時揀閣下其頭像！",
       "users_mentions": "@%{username} 其提及次數",
@@ -5394,7 +5394,7 @@ if(preferredLanguage == "yue"){
       "View All": "查看煞",
       "Who to Follow": "得發摟焉位",
       "Your message was sent!": "閣下其口訊已寄個！",
-      "twister login": "Twister 登入",
+      "freech login": "Freech 登入",
       "Existing local users": "既有本地用家",
       "Or...": "或…",
       "Create a new user": "建立新用家",
@@ -5473,7 +5473,7 @@ if(preferredLanguage == "yue"){
       "Show only if I am in": "衹顯示有我其推文",
       "Show if it's between users I follow": "若果係我發摟其用家先顯示",
       "Postboard displays": "推布欄顯示",
-      "RTs those are close to original twist": "同原始推文相近其轉推",
+      "RTs those are close to original freech": "同原始推文相近其轉推",
       "Show if the original is older than": "衹顯示原始推文浮頭超過",
       "hour(s)": "個鐘",
       "second(s)": "秒",
@@ -5515,9 +5515,9 @@ if(preferredLanguage == "yue"){
       "Messages": "口訊",
       "Edit profile": "編輯個人資料",
       "Top Trends": "熱門趨勢",
-      "Twistday Reminder": "開推周年紀念日提醒口訊",
+      "Freechday Reminder": "開推周年紀念日提醒口訊",
       "Show upcoming in near future": "顯示毋耐來緊迎來慶祝其人",
-      "Who's celebrating Twistday": "焉位正係慶祝開推周年紀念日",
+      "Who's celebrating Freechday": "焉位正係慶祝開推周年紀念日",
       "Today's luckies:": "今天其幸逳兒：",
       "Upcoming ones:": "來緊迎來慶祝其人：",
       "post_rt_sign_prep": "再次推文自",

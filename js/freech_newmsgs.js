@@ -1,4 +1,4 @@
-// twister_newmsgs.js
+// freech_newmsgs.js
 // 2013 Miguel Freitas
 //
 // Periodically check for new mentions and private messages (DMs)
@@ -9,25 +9,25 @@
 var groupChatAliases = []
 
 function saveMentionsToStorage() {
-    var twists = [], length = 0;
-    for (var j in twister.mentions.twists.cached) {
+    var freechs = [], length = 0;
+    for (var j in freech.mentions.freechs.cached) {
         for (var i = 0; i < length; i++)
-            if (twister.mentions.twists.cached[j].userpost.time > twists[i].userpost.time) {
-                twists.splice(i, 0, twister.mentions.twists.cached[j]);
+            if (freech.mentions.freechs.cached[j].userpost.time > freechs[i].userpost.time) {
+                freechs.splice(i, 0, freech.mentions.freechs.cached[j]);
                 break;
             }
 
-        if (length === twists.length)
-            twists.push(twister.mentions.twists.cached[j]);
+        if (length === freechs.length)
+            freechs.push(freech.mentions.freechs.cached[j]);
 
         length++;
     }
 
     $.initNamespaceStorage(defaultScreenName).localStorage
         .set('mentions', {
-            twists: twists.slice(0, 100),  // TODO add an option to specify number of mentions to cache
-            lastTime: twister.mentions.lastTime,
-            lastTorrentId: twister.mentions.lastTorrentId
+            freechs: freechs.slice(0, 100),  // TODO add an option to specify number of mentions to cache
+            lastTime: freech.mentions.lastTime,
+            lastTorrentId: freech.mentions.lastTorrentId
         })
     ;
 }
@@ -38,19 +38,19 @@ function loadMentionsFromStorage() {
     if (storage.isSet('mentions')) {
         var mentions = storage.get('mentions');
         if (typeof mentions === 'object') {
-            for (var i = 0; i < mentions.twists.length; i++) {
-                var j = mentions.twists[i].userpost.n + '/' + mentions.twists[i].userpost.time;
-                if (typeof twister.mentions.twists.cached[j] === 'undefined') {
-                    twister.mentions.twists.cached[j] = mentions.twists[i];
-                    twister.mentions.lengthCached++;
-                    if (twister.mentions.twists.cached[j].isNew)
-                        twister.mentions.lengthNew++;
+            for (var i = 0; i < mentions.freechs.length; i++) {
+                var j = mentions.freechs[i].userpost.n + '/' + mentions.freechs[i].userpost.time;
+                if (typeof freech.mentions.freechs.cached[j] === 'undefined') {
+                    freech.mentions.freechs.cached[j] = mentions.freechs[i];
+                    freech.mentions.lengthCached++;
+                    if (freech.mentions.freechs.cached[j].isNew)
+                        freech.mentions.lengthNew++;
 
-                    twister.mentions.lengthFromTorrent++;
+                    freech.mentions.lengthFromTorrent++;
                 }
             }
-            twister.mentions.lastTime = mentions.lastTime;
-            twister.mentions.lastTorrentId = mentions.lastTorrentId;
+            freech.mentions.lastTime = mentions.lastTime;
+            freech.mentions.lastTorrentId = mentions.lastTorrentId;
         }
     }
 
@@ -60,24 +60,24 @@ function loadMentionsFromStorage() {
         if (typeof mentions === 'object')
             for (var i in mentions) {
                 var j = mentions[i].data.userpost.n + '/' + mentions[i].mentionTime;
-                if (typeof twister.mentions.twists.cached[j] === 'undefined') {
-                    twister.mentions.twists.cached[j] = mentions[i].data;
-                    twister.mentions.lengthCached++;
-                    if (twister.mentions.twists.cached[j].isNew)
-                        twister.mentions.lengthNew++;
+                if (typeof freech.mentions.freechs.cached[j] === 'undefined') {
+                    freech.mentions.freechs.cached[j] = mentions[i].data;
+                    freech.mentions.lengthCached++;
+                    if (freech.mentions.freechs.cached[j].isNew)
+                        freech.mentions.lengthNew++;
 
-                    twister.mentions.lengthFromTorrent++;
+                    freech.mentions.lengthFromTorrent++;
                 }
             }
 
         storage.remove('knownMentions');
     }
     if (storage.isSet('lastMentionTime')) {
-        twister.mentions.lastTime = storage.get('lastMentionTime');
+        freech.mentions.lastTime = storage.get('lastMentionTime');
         storage.remove('lastMentionTime');
     }
     if (storage.isSet('lastLocalMentionId')) {
-        twister.mentions.lastTorrentId = storage.get('lastLocalMentionId');
+        freech.mentions.lastTorrentId = storage.get('lastLocalMentionId');
         storage.remove('lastLocalMentionId');
     }
     if (storage.isSet('newMentions'))
@@ -86,9 +86,9 @@ function loadMentionsFromStorage() {
 
 function queryPendingPushMentions(req, res) {
     var lengthNew = 0;
-    var lengthPending = twister.res[req].twists.pending.length;
+    var lengthPending = freech.res[req].freechs.pending.length;
     var timeCurrent = new Date().getTime() / 1000 + 7200;  // 60 * 60 * 2
-    var timeLastMention = twister.res[req].lastTime;
+    var timeLastMention = freech.res[req].lastTime;
 
     for (var i = 0; i < res.length; i++) {
         if (res[i].userpost.time > timeCurrent) {
@@ -98,47 +98,47 @@ function queryPendingPushMentions(req, res) {
         }
 
         if (res[i].id) {
-            twister.res[req].lastTorrentId = Math.max(twister.res[req].lastTorrentId, res[i].id);
+            freech.res[req].lastTorrentId = Math.max(freech.res[req].lastTorrentId, res[i].id);
             delete res[i].id;
-            twister.res[req].lengthFromTorrent++;
+            freech.res[req].lengthFromTorrent++;
         }
 
         var j = res[i].userpost.n + '/' + res[i].userpost.time;
-        if (typeof twister.res[req].twists.cached[j] === 'undefined') {
-            twister.res[req].twists.cached[j] = res[i];
-            twister.res[req].lengthCached++;
-            twister.res[req].twists.pending.push(j);
+        if (typeof freech.res[req].freechs.cached[j] === 'undefined') {
+            freech.res[req].freechs.cached[j] = res[i];
+            freech.res[req].lengthCached++;
+            freech.res[req].freechs.pending.push(j);
 
             // mention must be somewhat recent compared to last known one to be considered new
             if (res[i].userpost.time + 259200 > timeLastMention) {  // 3600 * 24 * 3
                 lengthNew++;
-                twister.res[req].lastTime = Math.max(res[i].userpost.time, twister.res[req].lastTime);
-                twister.res[req].twists.cached[j].isNew = true;
+                freech.res[req].lastTime = Math.max(res[i].userpost.time, freech.res[req].lastTime);
+                freech.res[req].freechs.cached[j].isNew = true;
             }
         }
     }
 
     if (lengthNew)
-        twister.res[req].lengthNew += lengthNew;
+        freech.res[req].lengthNew += lengthNew;
 
-    if (twister.res[req].twists.pending.length > lengthPending)
+    if (freech.res[req].freechs.pending.length > lengthPending)
         saveMentionsToStorage();
 
     return lengthNew;
 }
 
 function resetMentionsCount() {
-    if (!twister.mentions.lengthNew)
+    if (!freech.mentions.lengthNew)
         return;
 
-    twister.mentions.lengthNew = 0;
+    freech.mentions.lengthNew = 0;
 
-    for (var j in twister.mentions.twists.cached)
-        if (twister.mentions.twists.cached[j].isNew)
-            delete twister.mentions.twists.cached[j].isNew;
+    for (var j in freech.mentions.freechs.cached)
+        if (freech.mentions.freechs.cached[j].isNew)
+            delete freech.mentions.freechs.cached[j].isNew;
 
     saveMentionsToStorage();
-    $.MAL.updateNewMentionsUI(twister.mentions.lengthNew);
+    $.MAL.updateNewMentionsUI(freech.mentions.lengthNew);
 }
 
 function initMentionsCount() {
@@ -147,33 +147,33 @@ function initMentionsCount() {
         lastTorrentId: -1,
         lengthNew: 0,
         ready: function (req) {
-            twister.mentions = twister.res[req];
-            twister.mentions.lengthFromTorrent = 0;
+            freech.mentions = freech.res[req];
+            freech.mentions.lengthFromTorrent = 0;
             loadMentionsFromStorage();
         },
         skidoo: function () {return false;}
     });
 
-    $.MAL.updateNewMentionsUI(twister.mentions.lengthNew);
+    $.MAL.updateNewMentionsUI(freech.mentions.lengthNew);
 }
 
 function handleMentionsModalScroll(event) {
-    if (!event || twister.mentions.scrollQueryActive)
+    if (!event || freech.mentions.scrollQueryActive)
         return;
 
     var elem = $(event.target);
     if (elem.scrollTop() >= elem[0].scrollHeight - elem.height() - 50) {
-        twister.mentions.scrollQueryActive = true;
+        freech.mentions.scrollQueryActive = true;
 
-        twisterRpc('getmentions', [twister.mentions.query, postsPerRefresh,
-            {max_id: twister.mentions.lastTorrentId - twister.mentions.lengthFromTorrent}],
+        freechRpc('getmentions', [freech.mentions.query, postsPerRefresh,
+            {max_id: freech.mentions.lastTorrentId - freech.mentions.lengthFromTorrent}],
             function (req, res) {
-                twister.res[req].scrollQueryActive = false;
-                twister.res[req].boardAutoAppend = true;  // FIXME all pending twists will be appended
+                freech.res[req].scrollQueryActive = false;
+                freech.res[req].boardAutoAppend = true;  // FIXME all pending freechs will be appended
                 queryProcess(req, res);
-                twister.res[req].boardAutoAppend = false;
-            }, twister.mentions.query + '@' + twister.mentions.resource,
-            function () {console.warn('getmentions API requires twister-core > 0.9.27');}
+                freech.res[req].boardAutoAppend = false;
+            }, freech.mentions.query + '@' + freech.mentions.resource,
+            function () {console.warn('getmentions API requires freech-core > 0.9.27');}
         );
     }
 }
@@ -183,28 +183,28 @@ function handleMentionsModalScroll(event) {
 function saveDMsToStorage() {
     var pool = {};
 
-    for (var peerAlias in twister.DMs) {
-        var twists = [], length = 0;
-        for (var j in twister.DMs[peerAlias].twists.cached) {
+    for (var peerAlias in freech.DMs) {
+        var freechs = [], length = 0;
+        for (var j in freech.DMs[peerAlias].freechs.cached) {
             for (var i = 0; i < length; i++)
-                if (twister.DMs[peerAlias].twists.cached[j].id > twists[i].id) {
-                    twists.splice(i, 0, twister.DMs[peerAlias].twists.cached[j]);
+                if (freech.DMs[peerAlias].freechs.cached[j].id > freechs[i].id) {
+                    freechs.splice(i, 0, freech.DMs[peerAlias].freechs.cached[j]);
                     break;
                 }
 
-            if (length === twists.length)
-                twists.push(twister.DMs[peerAlias].twists.cached[j]);
+            if (length === freechs.length)
+                freechs.push(freech.DMs[peerAlias].freechs.cached[j]);
 
             length++;
         }
         pool[peerAlias] = {
-            twists: twists.slice(0, 100),  // TODO add an option to specify number of DMs to cache
-            lastId: twister.DMs[peerAlias].lastId,
+            freechs: freechs.slice(0, 100),  // TODO add an option to specify number of DMs to cache
+            lastId: freech.DMs[peerAlias].lastId,
         };
     }
 
     if ($.Options.get('dmEncryptCache') === 'enable') {
-        pool = twister.var.key.pub.encrypt(JSON.stringify(pool));
+        pool = freech.var.key.pub.encrypt(JSON.stringify(pool));
         delete pool.orig;  // WORKAROUND the decrypt function does .slice(0, orig) but something goes wrong in process of buffer decoding (if original string contains non-ASCII characters) and orig may be smaller than the actual size, if it is undefined .slice gets it whole
     }
     $.initNamespaceStorage(defaultScreenName).localStorage.set('DMs', pool);
@@ -216,27 +216,27 @@ function loadDMsFromStorage() {
     if (storage.isSet('DMs')) {
         var pool = storage.get('DMs');
         if (pool.key && pool.body && pool.mac) {
-            if (pool = twister.var.key.decrypt(pool))
+            if (pool = freech.var.key.decrypt(pool))
                 pool = JSON.parse(pool.toString());
             else
                 console.warn('can\'t decrypt DMs\' data cache');
         }
         if (typeof pool === 'object') {
             for (var peerAlias in pool) {
-                if (!twister.DMs[peerAlias])
-                    twister.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
+                if (!freech.DMs[peerAlias])
+                    freech.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
                         {boardAutoAppend: true, lastId: 0, lengthNew: 0});
 
-                for (var i = 0; i < pool[peerAlias].twists.length; i++) {
-                    var j = pool[peerAlias].twists[i].from + '/' + pool[peerAlias].twists[i].time;
-                    if (typeof twister.DMs[peerAlias].twists.cached[j] === 'undefined') {
-                        twister.DMs[peerAlias].twists.cached[j] = pool[peerAlias].twists[i];
-                        twister.DMs[peerAlias].lengthCached++;
-                        if (twister.DMs[peerAlias].twists.cached[j].isNew)
-                            twister.DMs[peerAlias].lengthNew++;
+                for (var i = 0; i < pool[peerAlias].freechs.length; i++) {
+                    var j = pool[peerAlias].freechs[i].from + '/' + pool[peerAlias].freechs[i].time;
+                    if (typeof freech.DMs[peerAlias].freechs.cached[j] === 'undefined') {
+                        freech.DMs[peerAlias].freechs.cached[j] = pool[peerAlias].freechs[i];
+                        freech.DMs[peerAlias].lengthCached++;
+                        if (freech.DMs[peerAlias].freechs.cached[j].isNew)
+                            freech.DMs[peerAlias].lengthNew++;
                     }
                 }
-                twister.DMs[peerAlias].lastId = pool[peerAlias].lastId;
+                freech.DMs[peerAlias].lastId = pool[peerAlias].lastId;
             }
         }
     }
@@ -246,11 +246,11 @@ function loadDMsFromStorage() {
         var pool = storage.get('lastDMIdPerUser');
         if (typeof pool === 'object')
             for (var peerAlias in pool) {
-                if (!twister.DMs[peerAlias])
-                    twister.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
+                if (!freech.DMs[peerAlias])
+                    freech.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
                         {boardAutoAppend: true, lastId: 0, lengthNew: 0});
 
-                twister.DMs[peerAlias].lastId = pool[peerAlias];
+                freech.DMs[peerAlias].lastId = pool[peerAlias];
             }
 
         storage.remove('lastDMIdPerUser');
@@ -259,11 +259,11 @@ function loadDMsFromStorage() {
         var pool = storage.get('newDMsPerUser');
         if (typeof pool === 'object')
             for (var peerAlias in pool) {
-                if (!twister.DMs[peerAlias])
-                    twister.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
+                if (!freech.DMs[peerAlias])
+                    freech.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
                         {boardAutoAppend: true, lastId: 0, lengthNew: 0});
 
-                twister.DMs[peerAlias].lengthNew = pool[peerAlias];
+                freech.DMs[peerAlias].lengthNew = pool[peerAlias];
             }
 
         storage.remove('newDMsPerUser');
@@ -275,23 +275,23 @@ function queryPendingPushDMs(res) {
     var lengthPending = 0;
 
     for (var peerAlias in res) {
-        if (!res[peerAlias] || !res[peerAlias].length || !twister.DMs[peerAlias])
+        if (!res[peerAlias] || !res[peerAlias].length || !freech.DMs[peerAlias])
             continue;
 
         for (var i = 0; i < res[peerAlias].length; i++) {
             var j = res[peerAlias][i].from + '/' + res[peerAlias][i].time;
-            if (typeof twister.DMs[peerAlias].twists.cached[j] === 'undefined') {
-                twister.DMs[peerAlias].twists.cached[j] = res[peerAlias][i];
-                twister.DMs[peerAlias].lengthCached++;
-                twister.DMs[peerAlias].twists.pending.push(j);
+            if (typeof freech.DMs[peerAlias].freechs.cached[j] === 'undefined') {
+                freech.DMs[peerAlias].freechs.cached[j] = res[peerAlias][i];
+                freech.DMs[peerAlias].lengthCached++;
+                freech.DMs[peerAlias].freechs.pending.push(j);
                 lengthPending++;
-                if (twister.DMs[peerAlias].lastId < res[peerAlias][i].id) {
-                    twister.DMs[peerAlias].lastId = res[peerAlias][i].id;
-                    if ((!twister.DMs[peerAlias].board || !twister.DMs[peerAlias].board.is('html *'))
+                if (freech.DMs[peerAlias].lastId < res[peerAlias][i].id) {
+                    freech.DMs[peerAlias].lastId = res[peerAlias][i].id;
+                    if ((!freech.DMs[peerAlias].board || !freech.DMs[peerAlias].board.is('html *'))
                         && !res[peerAlias][i].fromMe && res[peerAlias][i].from !== defaultScreenName) {
                         lengthNew++;
-                        twister.DMs[peerAlias].lengthNew += 1;
-                        twister.DMs[peerAlias].twists.cached[j].isNew = true;
+                        freech.DMs[peerAlias].lengthNew += 1;
+                        freech.DMs[peerAlias].freechs.cached[j].isNew = true;
                     }
                 }
             }
@@ -311,7 +311,7 @@ function requestDMsCount() {
     for (var i = 0; i < groupChatAliases.length; i++)
         list.push({username: groupChatAliases[i]});
 
-    twisterRpc('getdirectmsgs', [defaultScreenName, 1, list],
+    freechRpc('getdirectmsgs', [defaultScreenName, 1, list],
         function (req, res) {
             var lengthNew = 0, lengthNewMax = 0;
             var list = [];
@@ -320,17 +320,17 @@ function requestDMsCount() {
                 if (!res[peerAlias] || !res[peerAlias].length)
                     continue;
 
-                if (!twister.DMs[peerAlias])
-                    twister.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
+                if (!freech.DMs[peerAlias])
+                    freech.DMs[peerAlias] = queryCreateRes(peerAlias, 'direct',
                         {boardAutoAppend: true, lastId: 0, lengthNew: 0});
 
-                if (res[peerAlias][0].id > twister.DMs[peerAlias].lastId) {
-                    lengthNew = res[peerAlias][0].id - twister.DMs[peerAlias].lastId;
+                if (res[peerAlias][0].id > freech.DMs[peerAlias].lastId) {
+                    lengthNew = res[peerAlias][0].id - freech.DMs[peerAlias].lastId;
                     if (lengthNewMax < lengthNew)
                         lengthNewMax = lengthNew;
 
                     list.push({username: peerAlias});
-                } else if (!twister.DMs[peerAlias].lengthCached)
+                } else if (!freech.DMs[peerAlias].lengthCached)
                     queryPendingPushDMs(res);
             }
 
@@ -340,7 +340,7 @@ function requestDMsCount() {
                 if (queryPendingPushDMs(res))
                     DMsSummaryProcessNew();
             } else if (lengthNewMax) {
-                twisterRpc('getdirectmsgs', [defaultScreenName, lengthNewMax, list],
+                freechRpc('getdirectmsgs', [defaultScreenName, lengthNewMax, list],
                     function (req, res) {
                         if (typeof res !== 'object' || $.isEmptyObject(res))
                             return;
@@ -370,7 +370,7 @@ function DMsSummaryProcessNew() {
             if ($.Options.showDesktopNotifDMs.val === 'enable') {
                 $.MAL.showDesktopNotification({
                     body: polyglot.t('You got') + ' ' + polyglot.t('new_direct_messages', lengthNew) + '.',
-                    tag: 'twister_notification_new_DMs',
+                    tag: 'freech_notification_new_DMs',
                     timeout: $.Options.showDesktopNotifDMsTimer.val,
                     funcClick: function () {$.MAL.showDMchat();}
                 });
@@ -389,7 +389,7 @@ function DMsSummaryProcessNew() {
             if ($.Options.showDesktopNotifDMs.val === 'enable') {
                 $.MAL.showDesktopNotification({
                     body: polyglot.t('You got') + ' ' + polyglot.t('new_group_messages', lengthNew) + '.',
-                    tag: 'twister_notification_new_DMs',
+                    tag: 'freech_notification_new_DMs',
                     timeout: $.Options.showDesktopNotifDMsTimer.val,
                     funcClick: function () {$.MAL.showDMchat({group: true});}
                 });
@@ -405,9 +405,9 @@ function DMsSummaryProcessNew() {
 function getNewDMsCount() {
     var lengthNew = 0;
 
-    for (var peerAlias in twister.DMs)
-        if (peerAlias[0] !== '*' && twister.DMs[peerAlias].lengthNew)
-            lengthNew += twister.DMs[peerAlias].lengthNew;
+    for (var peerAlias in freech.DMs)
+        if (peerAlias[0] !== '*' && freech.DMs[peerAlias].lengthNew)
+            lengthNew += freech.DMs[peerAlias].lengthNew;
 
     return lengthNew;
 }
@@ -415,9 +415,9 @@ function getNewDMsCount() {
 function getNewGroupDMsCount() {
     var lengthNew = 0;
 
-    for (var peerAlias in twister.DMs)
-        if (peerAlias[0] === '*' && twister.DMs[peerAlias].lengthNew)
-            lengthNew += twister.DMs[peerAlias].lengthNew;
+    for (var peerAlias in freech.DMs)
+        if (peerAlias[0] === '*' && freech.DMs[peerAlias].lengthNew)
+            lengthNew += freech.DMs[peerAlias].lengthNew;
 
     return lengthNew;
 }
@@ -425,11 +425,11 @@ function getNewGroupDMsCount() {
 function resetNewDMsCount() {
     var isNewDetected;
 
-    for (var peerAlias in twister.DMs)
-        if (twister.DMs[peerAlias].lengthNew && peerAlias[0] !== '*') {
-            twister.DMs[peerAlias].lengthNew = 0;
-            for (var j in twister.DMs[peerAlias].twists.cached)
-                delete twister.DMs[peerAlias].twists.cached[j].isNew;
+    for (var peerAlias in freech.DMs)
+        if (freech.DMs[peerAlias].lengthNew && peerAlias[0] !== '*') {
+            freech.DMs[peerAlias].lengthNew = 0;
+            for (var j in freech.DMs[peerAlias].freechs.cached)
+                delete freech.DMs[peerAlias].freechs.cached[j].isNew;
 
             isNewDetected = true;
         }
@@ -444,11 +444,11 @@ function resetNewDMsCount() {
 function resetNewDMsCountGroup() {
     var isNewDetected;
 
-    for (var peerAlias in twister.DMs)
-        if (twister.DMs[peerAlias].lengthNew && peerAlias[0] === '*') {
-            twister.DMs[peerAlias].lengthNew = 0;
-            for (var j in twister.DMs[peerAlias].twists.cached)
-                delete twister.DMs[peerAlias].twists.cached[j].isNew;
+    for (var peerAlias in freech.DMs)
+        if (freech.DMs[peerAlias].lengthNew && peerAlias[0] === '*') {
+            freech.DMs[peerAlias].lengthNew = 0;
+            for (var j in freech.DMs[peerAlias].freechs.cached)
+                delete freech.DMs[peerAlias].freechs.cached[j].isNew;
 
             isNewDetected = true;
         }
@@ -461,12 +461,12 @@ function resetNewDMsCountGroup() {
 }
 
 function resetNewDMsCountForPeer(peerAlias) {
-    if (!twister.DMs[peerAlias].lengthNew)
+    if (!freech.DMs[peerAlias].lengthNew)
         return;
 
-    twister.DMs[peerAlias].lengthNew = 0;
-    for (var j in twister.DMs[peerAlias].twists.cached)
-        delete twister.DMs[peerAlias].twists.cached[j].isNew;
+    freech.DMs[peerAlias].lengthNew = 0;
+    for (var j in freech.DMs[peerAlias].freechs.cached)
+        delete freech.DMs[peerAlias].freechs.cached[j].isNew;
 
     saveDMsToStorage();
     if (peerAlias[0] !== '*')
@@ -476,16 +476,16 @@ function resetNewDMsCountForPeer(peerAlias) {
 }
 
 function updateGroupList() {
-    twisterRpc('listgroups', [],
+    freechRpc('listgroups', [],
         function(req, ret) {groupChatAliases = ret;}, null,
-        function(req, ret) {console.warn('twisterd >= 0.9.30 required for listgroups');}, null
+        function(req, ret) {console.warn('freechd >= 0.9.30 required for listgroups');}, null
     );
 }
 
 function initDMsCount() {
-    twister.DMs = {};
+    freech.DMs = {};
     dumpPrivkey(defaultScreenName, function (req, res) {
-        twister.var.key = TwisterCrypto.PrivKey.fromWIF(res);
+        freech.var.key = FreechCrypto.PrivKey.fromWIF(res);
 
         loadDMsFromStorage();
         $.MAL.updateNewDMsUI(getNewDMsCount());
@@ -501,33 +501,33 @@ function initDMsCount() {
 }
 
 function newmsgsChangedUser() {
-    clearInterval(twister.mentions.interval);
+    clearInterval(freech.mentions.interval);
 }
 
 function handleDMsModalScroll(event) {
-    if (!event || !event.data.req || !twister.DMs[event.data.req]
-        || twister.DMs[event.data.req].scrollQueryActive)
+    if (!event || !event.data.req || !freech.DMs[event.data.req]
+        || freech.DMs[event.data.req].scrollQueryActive)
         return;
 
-    var length = twister.DMs[event.data.req].lastId - twister.DMs[event.data.req].lengthCached + 1;
+    var length = freech.DMs[event.data.req].lastId - freech.DMs[event.data.req].lengthCached + 1;
     if (!length)
         return;
 
     var elem = $(event.target);
     if (elem.scrollTop() < 100) {
-        twister.DMs[event.data.req].scrollQueryActive = true;
+        freech.DMs[event.data.req].scrollQueryActive = true;
 
-        twisterRpc('getdirectmsgs', [defaultScreenName, Math.min(length, postsPerRefresh),
-            [{username: twister.DMs[event.data.req].query, max_id: length - 1}]],
+        freechRpc('getdirectmsgs', [defaultScreenName, Math.min(length, postsPerRefresh),
+            [{username: freech.DMs[event.data.req].query, max_id: length - 1}]],
             function (req, res) {
-                twister.res[req.k].scrollQueryActive = false;
-                //twister.res[req.k].boardAutoAppend = true;  // FIXME all pending twists will be appended
+                freech.res[req.k].scrollQueryActive = false;
+                //freech.res[req.k].boardAutoAppend = true;  // FIXME all pending freechs will be appended
                 queryProcess(req.k, res);
-                //twister.res[req.k].boardAutoAppend = false;
+                //freech.res[req.k].boardAutoAppend = false;
                 if (req.container[0].scrollHeight !== req.containerScrollHeightPrev)
                     req.container.scrollTop(req.container[0].scrollHeight - req.containerScrollHeightPrev);
             }, {
-                k: twister.DMs[event.data.req].query + '@' + twister.DMs[event.data.req].resource,
+                k: freech.DMs[event.data.req].query + '@' + freech.DMs[event.data.req].resource,
                 container: elem,
                 containerScrollHeightPrev: elem[0].scrollHeight
             },

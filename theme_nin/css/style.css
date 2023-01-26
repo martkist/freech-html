@@ -56,7 +56,7 @@
   font-style: normal;
 }
 /* line 64, ../sass/_fonts.sass */
-[class^="icon-"]:before, [class*=" icon-"]:before, .extend-icon:before, .userMenu li.userMenu-config > a:before, .post-rt-icon:before, .post-reply:before, .post-propagate:before, .post-favorite:before, .post .show-more:before, .mini-profile-actions span:before, ul.userMenu-search-profiles button:before, .mini-profile-indicators .userMenu-connections a:before, .mini-profile-indicators .userMenu-messages a:before, .twister-user-remove:before, .refresh-toptrends:before, .twistday-reminder .refresh:before, .refresh-users:before, .modal-close:before, .mark-all-as-read:before, .modal-back:before, .icon-down-after:after {
+[class^="icon-"]:before, [class*=" icon-"]:before, .extend-icon:before, .userMenu li.userMenu-config > a:before, .post-rt-icon:before, .post-reply:before, .post-propagate:before, .post-favorite:before, .post .show-more:before, .mini-profile-actions span:before, ul.userMenu-search-profiles button:before, .mini-profile-indicators .userMenu-connections a:before, .mini-profile-indicators .userMenu-messages a:before, .freech-user-remove:before, .refresh-toptrends:before, .freechday-reminder .refresh:before, .refresh-users:before, .modal-close:before, .mark-all-as-read:before, .modal-back:before, .icon-down-after:after {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -109,7 +109,7 @@
 
 /* '' */
 /* line 115, ../sass/_fonts.sass */
-.icon-cancel:before, .twister-user-remove:before, .modal-close:before {
+.icon-cancel:before, .freech-user-remove:before, .modal-close:before {
   content: "";
 }
 
@@ -192,13 +192,13 @@
 
 /* '' */
 /* line 183, ../sass/_fonts.sass */
-.icon-arrows:before, .refresh-toptrends:before, .twistday-reminder .refresh:before, .refresh-users:before {
+.icon-arrows:before, .refresh-toptrends:before, .freechday-reminder .refresh:before, .refresh-users:before {
   content: "";
 }
 
 /* '' */
 /* line 188, ../sass/_fonts.sass */
-.icon-twistagain:before, .post-rt-icon:before, .post-propagate:before {
+.icon-freechagain:before, .post-rt-icon:before, .post-propagate:before {
   content: "";
 }
 
@@ -281,7 +281,7 @@ samp {
 
 /* FONTS */
 /* line 2, ../sass/_utils.sass */
-.clear-fix:after, .userMenu ul:after, .profile-modal .profile-data:after, .profile-card .twister-user-info:after, .forEdition.profile-card:after, .postboard:after, .following:after, .expanded-content:after, .following-list li:after, .twistday-reminder li:after, .mini-following-info:after, .network.singleBlock:after, .options .tab-content:after, .promoted-posts-only:after, .dashboard.right:after, ul.userMenu-search-profiles li:after, .mini-profile .post-area:after, .mini-profile-indicators:after, .profile-data:after, #postboard-top:after, #postboard-top .post-area:after, .who-to-follow ol:after, .toptrends ol:after, .twistday-reminder ol:after, .twister-user:after, .modal-content:after, .modal-header:after, .direct-messages-thread .post:after {
+.clear-fix:after, .userMenu ul:after, .profile-modal .profile-data:after, .profile-card .freech-user-info:after, .forEdition.profile-card:after, .postboard:after, .following:after, .expanded-content:after, .following-list li:after, .freechday-reminder li:after, .mini-following-info:after, .network.singleBlock:after, .options .tab-content:after, .promoted-posts-only:after, .dashboard.right:after, ul.userMenu-search-profiles li:after, .mini-profile .post-area:after, .mini-profile-indicators:after, .profile-data:after, #postboard-top:after, #postboard-top .post-area:after, .who-to-follow ol:after, .toptrends ol:after, .freechday-reminder ol:after, .freech-user:after, .modal-content:after, .modal-header:after, .direct-messages-thread .post:after {
   content: "";
   display: table;
   clear: both;
@@ -305,7 +305,7 @@ samp {
   width: 1180px;
   max-width: 100%;
   margin: auto;
-  background: url('/theme_nin/img/twister_logo.png?1421423397') no-repeat 50% 50%;
+  background: url('/theme_nin/img/freech_logo.png?1421423397') no-repeat 50% 50%;
   background-size: 20px;
 }
 /* line 18, ../sass/_menu.sass */
@@ -338,7 +338,7 @@ samp {
 /* line 37, ../sass/_menu.sass */
 .userMenu ul li.current > a {
   color: white;
-  border-bottom: 3px solid #B4C669;
+  border-bottom: 3px solid #C7DCFF;
 }
 
 /* Menu specific entries */
@@ -351,7 +351,7 @@ samp {
   position: absolute;
   top: 6px;
   right: -6px;
-  background: #B4C669;
+  background: #C7DCFF;
   color: #fff;
   padding: 1px 3px;
   line-height: 12px;
@@ -581,14 +581,14 @@ samp {
   background: #aaa;
 }
 /* line 157, ../sass/_profile.sass */
-.profile-card .twister-user-info {
+.profile-card .freech-user-info {
   text-align: center;
   width: 100%;
   padding: 0;
 }
 /* line 163, ../sass/_profile.sass */
 .profile-card .follow {
-  background: #B4C669;
+  background: #C7DCFF;
 }
 /* line 166, ../sass/_profile.sass */
 .profile-card .known-followers {
@@ -625,7 +625,7 @@ samp {
 }
 /* line 191, ../sass/_profile.sass */
 .bitmessage-ctc:hover, .tox-ctc:hover {
-  color: #B4C669;
+  color: #C7DCFF;
 }
 
 /* line 194, ../sass/_profile.sass */
@@ -652,7 +652,7 @@ samp {
 }
 /* line 213, ../sass/_profile.sass */
 .profile-modal .profile-tox:hover, .profile-modal .profile-bitmessage:hover {
-  color: #B4C669;
+  color: #C7DCFF;
 }
 
 /* line 222, ../sass/_profile.sass */
@@ -758,7 +758,7 @@ samp {
   color: white;
   text-align: center;
   text-transform: uppercase;
-  background: #B4C669;
+  background: #C7DCFF;
 }
 
 /* line 30, ../sass/_postboard.sass */
@@ -788,7 +788,7 @@ samp {
 }
 
 .post.new .post-info-time {
-    color: #B4C669;
+    color: #C7DCFF;
 }
 
 /* line 55, ../sass/_postboard.sass */
@@ -923,7 +923,7 @@ samp {
 .post-rt-icon:before {
   display: block;
   float: left;
-  background: #B4C669;
+  background: #C7DCFF;
   text-align: center;
   padding: 1px 2px 2px 2px;
   line-height: 9px;
@@ -1115,7 +1115,7 @@ samp {
 
 /* line 306, ../sass/_postboard.sass */
 .post-replies .sub-replies {
-  border-left: solid 3px #B4C669;
+  border-left: solid 3px #C7DCFF;
   margin-left: 1px;
 }
 
@@ -1214,7 +1214,7 @@ span.connection-status:before {
 }
 /* line 58, ../sass/_network.sass */
 span.connection-status.connected:before {
-  background: #B4C669;
+  background: #C7DCFF;
 }
 
 .network .post-area-extras {
@@ -1267,7 +1267,7 @@ a {
 }
 /* line 25, ../sass/_commons.sass */
 a:hover {
-  color: #B4C669;
+  color: #C7DCFF;
   text-decoration: none;
 }
 
@@ -1294,7 +1294,7 @@ textarea, input[type=text] {
 /* isFollowing */
 /* line 49, ../sass/_commons.sass */
 .isFollowing:after {
-  color: #B4C669;
+  color: #C7DCFF;
   content: "";
   font-family: "fontello";
   padding-left: 2px;
@@ -1455,7 +1455,7 @@ button:disabled:hover, button.disabled:hover, .mini-profile-actions span.disable
     width: 90%;
 }
 
-.options #filterLangListCont div, .options #TopTrendsCont div, .options #TwistdayReminderCont div {
+.options #filterLangListCont div, .options #TopTrendsCont div, .options #FreechdayReminderCont div {
     float: none;
     padding: 0px 4px;
 }
@@ -1467,7 +1467,7 @@ button:disabled:hover, button.disabled:hover, .mini-profile-actions span.disable
 }
 
 .langFilterSimData em {
-    color: #B4C669;
+    color: #C7DCFF;
 }
 
 
@@ -1565,7 +1565,7 @@ button:disabled:hover, button.disabled:hover, .mini-profile-actions span.disable
   right: -10px;
   width: 250px;
   overflow: hidden;
-  border-bottom: solid 2px #B4C669;
+  border-bottom: solid 2px #C7DCFF;
   box-shadow: 8px 10px 15px 0px rgba(0,0,0, .3);
 }
 
@@ -1741,7 +1741,7 @@ ul.userMenu-search-profiles button:after, ul.userMenu-search-profiles .mini-prof
   position: absolute;
   top: 10px;
   right: 25px;
-  background: #B4C669;
+  background: #C7DCFF;
   color: #fff;
   padding: 1px 3px;
   line-height: 12px;
@@ -1805,7 +1805,7 @@ ul.userMenu-search-profiles button:after, ul.userMenu-search-profiles .mini-prof
 }
 /* line 260, ../sass/style.sass */
 .profile-data li.current a {
-  border-bottom: 3px solid #B4C669;
+  border-bottom: 3px solid #C7DCFF;
 }
 /* line 262, ../sass/style.sass */
 .profile-data li a {
@@ -1897,7 +1897,7 @@ ul.userMenu-search-profiles button:after, ul.userMenu-search-profiles .mini-prof
 }
 
 .post-area-new textarea:focus {
-  border-bottom: solid 2px #B4C669;
+  border-bottom: solid 2px #C7DCFF;
 }
 
 /* line 334, ../sass/style.sass */
@@ -2030,8 +2030,8 @@ textarea.splited-post {
   color: #ff0000;
 }
 
-/* FIXME need to rework and replace all .twister-user to get same vis */
-.twister-peer {
+/* FIXME need to rework and replace all .freech-user to get same vis */
+.freech-peer {
     margin: 0;
     min-height: 72px;
     padding: 4px;
@@ -2040,11 +2040,11 @@ textarea.splited-post {
     background: #FFF;
 }
 
-.twister-peer + .twister-peer {
+.freech-peer + .freech-peer {
     border-top: none;
 }
 
-.twister-peer .avatar {
+.freech-peer .avatar {
     float: left;
     width: 48px;
     height: 48px;
@@ -2052,37 +2052,37 @@ textarea.splited-post {
     margin: 4px;
 }
 
-.twister-peer .avatar img {
+.freech-peer .avatar img {
     width: 48px;
     height: auto;
 }
 
-.twister-peer .name {
+.freech-peer .name {
     display: inline-block;
 }
 
-.twister-peer .name:hover {
+.freech-peer .name:hover {
     color: #AAA;
 }
 
-.twister-peer .alias {
+.freech-peer .alias {
     color: #AAA;
     display: inline-block;
 }
 
-.twister-peer .alias:hover {
-    color: #B4C669;
+.freech-peer .alias:hover {
+    color: #C7DCFF;
 }
 
-.twister-peer .name {
+.freech-peer .name {
     font-weight: 600;
 }
 
-.twister-peer .avatar:hover, .twister-peer .name:hover, .twister-peer .alias:hover {
+.freech-peer .avatar:hover, .freech-peer .name:hover, .freech-peer .alias:hover {
     cursor: pointer;
 }
 
-.twister-peer .bio {
+.freech-peer .bio {
     text-align: center;
     padding: 4px;
 }
@@ -2114,13 +2114,13 @@ textarea.splited-post {
   clear: both;
 }
 
-.who-to-follow .twister-user-info,
-.new-users .twister-user-info {
+.who-to-follow .freech-user-info,
+.new-users .freech-user-info {
   margin-top: 8px;
 }
 
 /* line 422, ../sass/style.sass */
-.twister-user {
+.freech-user {
   clear: both;
   width: 100%;
   position: relative;
@@ -2132,7 +2132,7 @@ textarea.splited-post {
 }
 
 /* line 433, ../sass/style.sass */
-.twister-user-photo {
+.freech-user-photo {
   display: inline-block;
   float: left;
   vertical-align: middle;
@@ -2144,7 +2144,7 @@ textarea.splited-post {
 }
 
 /* line 443, ../sass/style.sass */
-.twister-user-info {
+.freech-user-info {
   width: 80%;
 }
 
@@ -2177,7 +2177,7 @@ textarea.splited-post {
 }
 
 /* line 459, ../sass/style.sass */
-.twister-user-name, .twister-by-user-name {
+.freech-user-name, .freech-by-user-name {
   font-weight: bold;
   font-size: 14px;
   color: #aaa;
@@ -2185,7 +2185,7 @@ textarea.splited-post {
 }
 
 /* line 465, ../sass/style.sass */
-.twister-user-tag {
+.freech-user-tag {
   font-size: 12px;
   line-height: 14px;
   opacity: 0.8;
@@ -2194,7 +2194,7 @@ textarea.splited-post {
 }
 
 /* line 472, ../sass/style.sass */
-.twister-user-remove {
+.freech-user-remove {
   font-size: 13px;
   opacity: 0.2;
   text-decoration: none;
@@ -2207,12 +2207,12 @@ textarea.splited-post {
 }
 
 /* line 485, ../sass/style.sass */
-.twister-user:hover .twister-user-remove {
+.freech-user:hover .freech-user-remove {
   text-decoration: none;
 }
 
 /* line 488, ../sass/style.sass */
-.twister-user-remove:hover {
+.freech-user-remove:hover {
   opacity: 1;
 }
 
@@ -2224,7 +2224,7 @@ ul.userMenu-search-profiles .follow, ul.userMenu-search-profiles .unfollow, .fol
 }
 
 ul.userMenu-search-profiles .follow, .follow-suggestions .follow {
-  background: #B4C669;
+  background: #C7DCFF;
 }
 
 ul.userMenu-search-profiles .unfollow, .follow-suggestions .unfollow {
@@ -2237,7 +2237,7 @@ button.follow:hover, .mini-profile-actions span.follow:hover, button.unfollow, .
 }
 
 /* line 499, ../sass/style.sass */
-.refresh-toptrends, .twistday-reminder .refresh, .refresh-users {
+.refresh-toptrends, .freechday-reminder .refresh, .refresh-users {
   color: #66686B;
   cursor: pointer;
   font-size: 11px;
@@ -2267,8 +2267,8 @@ button.follow:hover, .mini-profile-actions span.follow:hover, button.unfollow, .
 }
 
 /* line 527, ../sass/style.sass */
-.refresh-toptrends:hover, .twistday-reminder .refresh:hover, .refresh-users:hover, .view-all-users:hover {
-  color: #B4C669;
+.refresh-toptrends:hover, .freechday-reminder .refresh:hover, .refresh-users:hover, .view-all-users:hover {
+  color: #C7DCFF;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2313,56 +2313,56 @@ ol.toptrends-list a:hover {
   color: #66686B;
 }
 
-/********* TWISTDAY REMINDER *******/
+/********* FREECHDAY REMINDER *******/
 
-.twistday-reminder {
+.freechday-reminder {
   width: 300px;
 }
 
-.twistday-reminder small {
+.freechday-reminder small {
   display: none;
 }
 
-.twistday-reminder h3 {
+.freechday-reminder h3 {
   font-size: 0.98em;
   float: left;
 }
 
-.twistday-reminder h4 {
+.freechday-reminder h4 {
   margin: 1% 1% 1% 16%;
   font-size: 0.84em;
   color: rgba(0, 0, 0, 0.5);
 }
 
-.twistday-reminder a:hover {
+.freechday-reminder a:hover {
   text-decoration: none;
 }
 
-.twistday-reminder .current .label, .twistday-reminder .upcoming .label {
+.freechday-reminder .current .label, .freechday-reminder .upcoming .label {
   margin-right: 10%;
 }
 
-.twistday-reminder .twister-user-info {
+.freechday-reminder .freech-user-info {
   margin-top: 1.2%;
 }
 
-.twistday-reminder .twister-user-tag,
-.twistday-reminder .twister-user-full {
+.freechday-reminder .freech-user-tag,
+.freechday-reminder .freech-user-full {
   display: block;
   margin: 0;
   text-align: center;
 }
 
-.twistday-reminder img.twister-user-photo {
+.freechday-reminder img.freech-user-photo {
   margin: 0;
 }
 
-.twistday-reminder .twisterday {
+.freechday-reminder .freechday {
   font-size: 0.8em;
   margin-left: 8%;
 }
 
-.twistday-reminder .twisterday:hover {
+.freechday-reminder .freechday:hover {
   cursor: pointer;
 }
 
@@ -2425,7 +2425,7 @@ ol.toptrends-list a:hover {
   padding: 0 20px;
   color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-  background: #B4C669;
+  background: #C7DCFF;
 }
 
 /* line 614, ../sass/style.sass */
@@ -2485,7 +2485,7 @@ ol.toptrends-list a:hover {
 
 /* line 654, ../sass/style.sass */
 .modal-back:hover, .mark-all-as-read:hover {
-  color: #B4C669;
+  color: #C7DCFF;
 }
 
 /* line 662, ../sass/style.sass */
@@ -2534,7 +2534,7 @@ ol.toptrends-list a:hover {
 
 
 .inline-warn {
-    background-color: #FEFEDF;
+    background-color: #FAFFFF;
     padding: 10px;
 }
 
@@ -2598,28 +2598,28 @@ ol.toptrends-list a:hover {
 }
 
 .following-config-method-buttons .public-following {
-  background-color: #B4C669;
+  background-color: #C7DCFF;
   margin: 0px 2px;
   padding: 6px 16px;
 }
 
-/********** RETWIST POSTS PROMPT **********/
+/********** REFREECH POSTS PROMPT **********/
 
 /* line 705, ../sass/style.sass */
-.reTwist.prompt-wrapper {
+.reFreech.prompt-wrapper {
   margin-top: -150px;
 }
 
-.reTwist .modal-content {
+.reFreech .modal-content {
   padding: 20px 15px;
 }
 
-.reTwist button.modal-propagate {
-  background-color: #B4C669;
+.reFreech button.modal-propagate {
+  background-color: #C7DCFF;
 }
 
 /* line 709, ../sass/style.sass */
-.reTwist .post-expand, .reTwist .post-interactions {
+.reFreech .post-expand, .reFreech .post-interactions {
   display: none;
 }
 
@@ -2680,7 +2680,7 @@ ol.toptrends-list a:hover {
 }
 
 .login-modal .module input:focus, .login-modal .module select:focus {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .login-modal .module .secret-key {
@@ -2880,11 +2880,11 @@ ol.toptrends-list a:hover {
 
 .profile-card .profile-bio .group-description:focus {
     border: 1px solid rgba(0, 0, 0, .1);
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .profile-card .profile-bio .group-description:hover {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .profile-card .profile-bio .save, .profile-card .profile-bio .cancel {
@@ -2910,7 +2910,7 @@ ol.toptrends-list a:hover {
 }
 
 .group-messages-control .invite-form textarea:focus {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .group-messages-control .invite-form button {
@@ -2970,7 +2970,7 @@ ol.toptrends-list a:hover {
 }
 
 .group-messages-new-group .modal-content textarea:focus {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 /*************************************
@@ -3012,7 +3012,7 @@ ol.toptrends-list a:hover {
 }
 
 .group-messages-join-group .modal-content input:focus {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .group-messages-join-group .modal-content input[type='checkbox'] {
@@ -3121,22 +3121,22 @@ ol.toptrends-list a:hover {
   text-decoration: none;
 }
 /* line 960, ../sass/style.sass */
-.who-to-follow-modal .twister-user,
-.new-users-modal .twister-user {
+.who-to-follow-modal .freech-user,
+.new-users-modal .freech-user {
 position: relative;
   padding: 5px;
 }
 /* line 963, ../sass/style.sass */
-.who-to-follow-modal .twister-user-photo,
-.new-users-modal .twister-user-photo {
+.who-to-follow-modal .freech-user-photo,
+.new-users-modal .freech-user-photo {
   position: relative;
   left: 0;
   float: left;
   display: block;
 }
 /* line 968, ../sass/style.sass */
-.who-to-follow-modal .twister-user-info,
-.new-users-modal .twister-user-info {
+.who-to-follow-modal .freech-user-info,
+.new-users-modal .freech-user-info {
   position: relative;
   margin-top: 4px;
   padding-left: 70px;
@@ -3185,7 +3185,7 @@ position: relative;
 
 .uri-shortener-modal .uris-list li.highlighted,
 .uri-shortener-modal .uris-list li:hover {
-    background-color: #FEFEDF;
+    background-color: #FAFFFF;
 }
 
 .uri-shortener-modal .uris-list .short {
@@ -3359,7 +3359,7 @@ position: relative;
 }
 
 .following-own-modal .following-list > li:hover {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .following-own-modal .following-list .mini-profile-photo {
@@ -3403,7 +3403,7 @@ position: relative;
     display: inline-block;
     position: relative;
     z-index: 10;
-    background: #B4C669;
+    background: #C7DCFF;
 }
 
 .following-own-modal .following-list .mini-profile-actions span:hover {
@@ -3438,7 +3438,7 @@ position: relative;
 }
 
 .following-own-modal .following-list .mini-profile-actions ul > li:hover {
-    border-bottom: solid 1px #B4C669;
+    border-bottom: solid 1px #C7DCFF;
 }
 
 .following-own-modal .following-list .swarm-status {
@@ -3459,7 +3459,7 @@ ul.dropdown-menu {
   margin: 2px 0 0;
   list-style: none;
   background-color: #fff;
-  border-bottom: solid 2px #B4C669;
+  border-bottom: solid 2px #C7DCFF;
   box-shadow: 8px 10px 10px 0px rgba(0,0,0, .2);
 }
 
@@ -3472,7 +3472,7 @@ ul.dropdown-menu > li > a {
 
 ul.dropdown-menu li:hover,
 ul.dropdown-menu .active, ul.dropdown-menu .active a {
-  color: #B4C669;
+  color: #C7DCFF;
   cursor: pointer;
 }
 
@@ -3498,7 +3498,7 @@ ul.dropdown-menu .active, ul.dropdown-menu .active a {
   }
 
   /* line 14, ../sass/_responsive.sass */
-  .following-list li, .twistday-reminder li {
+  .following-list li, .freechday-reminder li {
     float: left;
     font-size: 80%;
   }
@@ -3529,7 +3529,7 @@ ul.dropdown-menu .active, ul.dropdown-menu .active a {
   }
 
   /* line 32, ../sass/_responsive.sass */
-  .module.who-to-follow, .module.toptrends, .module.twistday-reminder {
+  .module.who-to-follow, .module.toptrends, .module.freechday-reminder {
     display: none;
   }
 
@@ -3539,7 +3539,7 @@ ul.dropdown-menu .active, ul.dropdown-menu .active a {
   }
 
   /* line 37, ../sass/_responsive.sass */
-  .following-list li, .twistday-reminder li {
+  .following-list li, .freechday-reminder li {
     width: 98%;
     float: none;
     margin: 2% 1%;

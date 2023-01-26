@@ -1,4 +1,4 @@
-// twister_following.js
+// freech_following.js
 // 2013 Miguel Freitas
 //
 // Manage list of following users. Load/Save to localstorage and DHT.
@@ -16,20 +16,20 @@ var _lastSearchUsersResults = [];
 var _lastSearchUsersResultsRemovedFromDHTgetQueue = true;
 var _lastLoadFromDhtTime = 0;
 
-var twisterFollowingO = undefined;
+var freechFollowingO = undefined;
 var newUsers = undefined;
 
-var TwisterFollowing = function (user) {
-    if (!(this instanceof TwisterFollowing))
-        return new TwisterFollowing(user);
+var FreechFollowing = function (user) {
+    if (!(this instanceof FreechFollowing))
+        return new FreechFollowing(user);
 
     this.init(user);
 };
 
-TwisterFollowing.minUpdateInterval = 43200;  // 1/2 day
-TwisterFollowing.maxUpdateInterval = 691200; // 8 days
+FreechFollowing.minUpdateInterval = 43200;  // 1/2 day
+FreechFollowing.maxUpdateInterval = 691200; // 8 days
 
-TwisterFollowing.prototype = {
+FreechFollowing.prototype = {
     user: undefined,
     init: function (user) {
         this.user = user;
@@ -60,7 +60,7 @@ TwisterFollowing.prototype = {
             this.knownFollowersResetTime = ns.localStorage.get("knownFollowersResetTime");
 
         var ctime = new Date().getTime() / 1000;
-        if (ctime - this.knownFollowersResetTime < TwisterFollowing.maxUpdateInterval &&
+        if (ctime - this.knownFollowersResetTime < FreechFollowing.maxUpdateInterval &&
             ns.localStorage.isSet("knownFollowers")) {
             this.knownFollowers = ns.localStorage.get("knownFollowers");
         } else {
@@ -154,7 +154,7 @@ TwisterFollowing.prototype = {
                         typeof(args.tf.followingsFollowings[args.fu]["following"]) === 'undefined') {
                         args.tf.followingsFollowings[args.fu] = {};
                         args.tf.followingsFollowings[args.fu]["lastUpdate"] = ctime;
-                        args.tf.followingsFollowings[args.fu]["updateInterval"] = TwisterFollowing.minUpdateInterval;
+                        args.tf.followingsFollowings[args.fu]["updateInterval"] = FreechFollowing.minUpdateInterval;
                         args.tf.followingsFollowings[args.fu]["following"] = following;
                     } else {
                         var diff = []; //diff for following
@@ -177,9 +177,9 @@ TwisterFollowing.prototype = {
                         }
 
                         if (diff.length > 0 || difu.length > 0) {
-                            args.tf.followingsFollowings[args.fu]["updateInterval"] = TwisterFollowing.minUpdateInterval;
+                            args.tf.followingsFollowings[args.fu]["updateInterval"] = FreechFollowing.minUpdateInterval;
                             args.tf.followingsFollowings[args.fu]["lastUpdate"] = ctime;
-                        } else if (args.tf.followingsFollowings[args.fu]["updateInterval"] < TwisterFollowing.maxUpdateInterval) {
+                        } else if (args.tf.followingsFollowings[args.fu]["updateInterval"] < FreechFollowing.maxUpdateInterval) {
                             args.tf.followingsFollowings[args.fu]["updateInterval"] *= 2;
                         } else {
                             args.tf.followingsFollowings[args.fu]["lastUpdate"] = ctime;
@@ -358,7 +358,7 @@ function saveFollowing(cbFunc, cbArg) {
 
 // update json rpc with current list of following
 function updateFollowing(cbFunc, cbArg) {
-    twisterRpc("follow", [defaultScreenName,followingUsers],
+    freechRpc("follow", [defaultScreenName,followingUsers],
                function(args, ret) {
                    if( args.cbFunc )
                        args.cbFunc(args.cbArg, true);
@@ -377,7 +377,7 @@ function follow(user, publicFollow, cbFunc, cbArg) {
     //console.log('we are following @'+user);
     if( followingUsers.indexOf(user) < 0 ) {
         followingUsers.push(user);
-        twisterFollowingO.update(user);
+        freechFollowingO.update(user);
     }
     if( publicFollow == undefined || publicFollow )
         _isFollowPublic[user] = true;
@@ -392,12 +392,12 @@ function unfollow(user, cbFunc, cbArg) {
     var i = followingUsers.indexOf(user);
     if (i >= 0) {
         followingUsers.splice(i, 1);
-        twisterFollowingO.update(user);
+        freechFollowingO.update(user);
     }
     delete _isFollowPublic[user];
     saveFollowing();
 
-    twisterRpc("unfollow", [defaultScreenName,[user]],
+    freechRpc("unfollow", [defaultScreenName,[user]],
                function(args, ret) {
                    if( args.cbFunc )
                        args.cbFunc(args.cbArg, true);
@@ -560,20 +560,20 @@ function getRandomFollowSuggestion() {
     while (followingUsers[i] === defaultScreenName)
         i = Math.floor(Math.random() * followingUsers.length);
 
-    if (typeof twisterFollowingO === 'undefined' ||
-        typeof twisterFollowingO.followingsFollowings[followingUsers[i]] === 'undefined') {
+    if (typeof freechFollowingO === 'undefined' ||
+        typeof freechFollowingO.followingsFollowings[followingUsers[i]] === 'undefined') {
             setTimeout(getRandomFollowSuggestion, 500);
             return;
     }
 
     var suggested = false;
-    var j = Math.floor(Math.random() * twisterFollowingO.followingsFollowings[followingUsers[i]].following.length);
+    var j = Math.floor(Math.random() * freechFollowingO.followingsFollowings[followingUsers[i]].following.length);
     var module = $('.module.who-to-follow');
-    for( ; j < twisterFollowingO.followingsFollowings[followingUsers[i]].following.length; j++ ) {
-        if( followingUsers.indexOf(twisterFollowingO.followingsFollowings[followingUsers[i]].following[j]) < 0 &&
-            _followSuggestions.indexOf(twisterFollowingO.followingsFollowings[followingUsers[i]].following[j]) < 0) {
-                processWhoToFollowSuggestion(module, twisterFollowingO.followingsFollowings[followingUsers[i]].following[j], followingUsers[i]);
-                _followSuggestions.push(twisterFollowingO.followingsFollowings[followingUsers[i]].following[j]);
+    for( ; j < freechFollowingO.followingsFollowings[followingUsers[i]].following.length; j++ ) {
+        if( followingUsers.indexOf(freechFollowingO.followingsFollowings[followingUsers[i]].following[j]) < 0 &&
+            _followSuggestions.indexOf(freechFollowingO.followingsFollowings[followingUsers[i]].following[j]) < 0) {
+                processWhoToFollowSuggestion(module, freechFollowingO.followingsFollowings[followingUsers[i]].following[j], followingUsers[i]);
+                _followSuggestions.push(freechFollowingO.followingsFollowings[followingUsers[i]].following[j]);
                 suggested = true;
                 break;
         }
@@ -585,8 +585,8 @@ function getRandomFollowSuggestion() {
 function whoFollows(username) {
     var list = [];
 
-    for (var following in twisterFollowingO.followingsFollowings) {
-        if (twisterFollowingO.followingsFollowings[following]["following"].indexOf(username) > -1) {
+    for (var following in freechFollowingO.followingsFollowings) {
+        if (freechFollowingO.followingsFollowings[following]["following"].indexOf(username) > -1) {
             list.push(following);
         }
     }
@@ -617,7 +617,7 @@ function getWhoFollows(peerAlias, elem) {
     fillWhoFollows(list, elem, 0, (list.length > 5 ? 5 : list.length));
 
     if (list.length > 5)
-        twister.tmpl.profileShowMoreFollowers.clone(true)
+        freech.tmpl.profileShowMoreFollowers.clone(true)
             .text(polyglot.t('show_more_count', {'smart_count': list.length - 5}))
             .on('mouseup', {route: '#followers?user=' + peerAlias}, routeOnClick)
             .appendTo(elem)
@@ -626,36 +626,36 @@ function getWhoFollows(peerAlias, elem) {
 
 function processWhoToFollowSuggestion(module, peerAlias, followedBy, prepend) {
     if (!peerAlias) {
-        console.warn('nothing to proceed: no twisters to follow was suggested');
+        console.warn('nothing to proceed: no freechs to follow was suggested');
         return;
     }
 
     var list = module.find('.follow-suggestions');
-    var item = twister.tmpl.whoTofollowPeer.clone(true);
+    var item = freech.tmpl.whoTofollowPeer.clone(true);
 
-    item.find('.twister-user-info').attr('data-screen-name', peerAlias);
-    item.find('.twister-user-name').attr('href', $.MAL.userUrl(peerAlias));
-    item.find('.twister-user-tag').text('@' + peerAlias);
+    item.find('.freech-user-info').attr('data-screen-name', peerAlias);
+    item.find('.freech-user-name').attr('href', $.MAL.userUrl(peerAlias));
+    item.find('.freech-user-tag').text('@' + peerAlias);
 
-    getAvatar(peerAlias, item.find('.twister-user-photo'));
+    getAvatar(peerAlias, item.find('.freech-user-photo'));
     getStatusTime(peerAlias, item.find('.latest-activity .time'));
 
     if (module.hasClass('who-to-follow') || module.hasClass('who-to-follow-modal')) {
-        item.find('.twister-by-user-name').attr('href', $.MAL.userUrl(followedBy));
+        item.find('.freech-by-user-name').attr('href', $.MAL.userUrl(followedBy));
         getFullname(followedBy, item.find('.followed-by').text(followedBy));
-        item.find('.twister-user-remove').on('click', {item: item}, function (event) {
+        item.find('.freech-user-remove').on('click', {item: item}, function (event) {
             event.data.item.remove();
             getRandomFollowSuggestion();
         });
     } else if (module.hasClass('new-users') || module.hasClass('new-users-modal')) {
         item.find('.followers').remove();
-        item.find('.twister-user-remove').remove();
+        item.find('.freech-user-remove').remove();
     }
 
     if (module.hasClass('modal-wrapper')) {
-        getFullname(peerAlias, item.find('.twister-user-full'));
+        getFullname(peerAlias, item.find('.freech-user-full'));
         getBioToElem(peerAlias, item.find('.bio'));
-        item.find('.twister-user-remove').remove();
+        item.find('.freech-user-remove').remove();
     }
 
     if (prepend)
@@ -713,7 +713,7 @@ function userSearchKeypress(event) {
 
 function searchPartialUsername(event) {
     _searchingPartialName = event.data.partialName;
-    twisterRpc('listusernamespartial', [event.data.partialName, 10],
+    freechRpc('listusernamespartial', [event.data.partialName, 10],
         function(event, ret) {
             if (event.data.partialName !== _searchingPartialName)
                 setTimeout(searchPartialUsername, 100, event);
@@ -786,7 +786,7 @@ function userSearchEnter(event) {
 }
 
 function requestSwarmProgress() {
-    twisterRpc("getlasthave", [defaultScreenName],
+    freechRpc("getlasthave", [defaultScreenName],
            function(args, ret) {processSwarmProgressPartial(ret);}, null,
            function(args, ret) {console.log("ajax error:" + ret);}, null);
 }
@@ -797,7 +797,7 @@ function processSwarmProgressPartial(lastHaves)
         incLastPostId(lastHaves[defaultScreenName]);
     }
 
-    twisterRpc("getnumpieces", [defaultScreenName],
+    freechRpc("getnumpieces", [defaultScreenName],
            function(args, ret) {processSwarmProgressFinal(args.lastHaves, ret);},
                {lastHaves:lastHaves},
            function(args, ret) {console.log("ajax error:" + ret);}, null);

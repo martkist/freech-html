@@ -1,17 +1,17 @@
-// twister_network.js
+// freech_network.js
 // 2013 Miguel Freitas
 //
 // Provides functions for periodic network status check
 // Interface to network.html page.
 
-var twisterVersion;
-var twisterDisplayVersion;
-var twisterdConnections = 0;
-var twisterdAddrman = 0;
-var twisterDhtNodes = 0;
-var twisterdBlocks = 0;
-var twisterdLastBlockTime = 0;
-var twisterdConnectedAndUptodate = false;
+var freechVersion;
+var freechDisplayVersion;
+var freechdConnections = 0;
+var freechdAddrman = 0;
+var freechDhtNodes = 0;
+var freechdBlocks = 0;
+var freechdLastBlockTime = 0;
+var freechdConnectedAndUptodate = false;
 var genproclimit = 1;
 
 // ---
@@ -34,24 +34,24 @@ function formatSpeed(total, rate) {
 }
 
 function requestNetInfo(cbFunc, cbArg) {
-    twisterRpc("getinfo", [],
+    freechRpc("getinfo", [],
                function(args, ret) {
-                   twisterdConnections = ret.connections;
-                   twisterdAddrman     = ret.addrman_total;
-                   twisterdBlocks      = ret.blocks;
-                   twisterDhtNodes     = ret.dht_nodes;
-                   twisterVersion      = ("0000000" + ret.version).slice(-8);
-                   twisterDisplayVersion = twisterVersion.slice(0,2) + '.' +
-                                           twisterVersion.slice(2,4) + '.' +
-                                           twisterVersion.slice(4,6) + '.' +
-                                           twisterVersion.slice(6,8);
+                   freechdConnections = ret.connections;
+                   freechdAddrman     = ret.addrman_total;
+                   freechdBlocks      = ret.blocks;
+                   freechDhtNodes     = ret.dht_nodes;
+                   freechVersion      = ("0000000" + ret.version).slice(-8);
+                   freechDisplayVersion = freechVersion.slice(0,2) + '.' +
+                                           freechVersion.slice(2,4) + '.' +
+                                           freechVersion.slice(4,6) + '.' +
+                                           freechVersion.slice(6,8);
 
-                   $(".connection-count").text(twisterdConnections);
-                   $(".known-peers").text(twisterdAddrman);
-                   $(".blocks").text(twisterdBlocks);
-                   $(".dht-nodes").text(twisterDhtNodes);
-                   $(".userMenu-dhtindicator a").text(twisterDhtNodes);
-                   $(".version").text(twisterDisplayVersion);
+                   $(".connection-count").text(freechdConnections);
+                   $(".known-peers").text(freechdAddrman);
+                   $(".blocks").text(freechdBlocks);
+                   $(".dht-nodes").text(freechDhtNodes);
+                   $(".userMenu-dhtindicator a").text(freechDhtNodes);
+                   $(".version").text(freechDisplayVersion);
 
                    if( ret.proxy !== undefined && ret.proxy.length ) {
                        $(".proxy").text(ret.proxy);
@@ -81,16 +81,16 @@ function requestNetInfo(cbFunc, cbArg) {
                    $(".payload-download-rate").text(formatSpeed(ret.total_payload_download, ret.payload_download_rate));
                    $(".payload-upload-rate").text(formatSpeed(ret.total_payload_upload, ret.payload_upload_rate));
 
-                   if( !twisterdConnections ) {
+                   if( !freechdConnections ) {
                        $.MAL.setNetworkStatusMsg(polyglot.t("Connection lost."), false);
-                       twisterdConnectedAndUptodate = false;
+                       freechdConnectedAndUptodate = false;
                    }
 
                    if( args.cbFunc )
                        args.cbFunc(args.cbArg);
                }, {cbFunc:cbFunc, cbArg:cbArg},
                function(args, ret) {
-                   console.log("Error connecting to local twister daemon.");
+                   console.log("Error connecting to local freech daemon.");
                }, {});
 }
 
@@ -116,7 +116,7 @@ function dnsKeypress() {
 
 function addPeerClick() {
     var peer = $(".new-peer-addr").val();
-    twisterRpc("addnode", [peer, "onetry"],
+    freechRpc("addnode", [peer, "onetry"],
                function(args, ret) {
                    $(".new-peer-addr").val("")
                }, {},
@@ -127,7 +127,7 @@ function addPeerClick() {
 
 function addDNSClick() {
     var dns = $(".new-dns-addr").val();
-    twisterRpc("adddnsseed", [dns],
+    freechRpc("adddnsseed", [dns],
                function(args, ret) {
                    $(".new-dns-addr").val("")
                }, {},
@@ -137,7 +137,7 @@ function addDNSClick() {
 }
 
 function requestBestBlock(cbFunc, cbArg) {
-    twisterRpc("getbestblockhash", [],
+    freechRpc("getbestblockhash", [],
                function(args, hash) {
                    requestBlock(hash, args.cbFunc, args.cbArg);
                }, {cbFunc:cbFunc, cbArg:cbArg},
@@ -147,7 +147,7 @@ function requestBestBlock(cbFunc, cbArg) {
 }
 
 function requestNthBlock(n, cbFunc, cbArg) {
-    twisterRpc("getblockhash", [n],
+    freechRpc("getblockhash", [n],
         function(args, hash) {
             requestBlock(hash, args.cbFunc, args.cbArg);
         }, {cbFunc:cbFunc, cbArg:cbArg},
@@ -157,7 +157,7 @@ function requestNthBlock(n, cbFunc, cbArg) {
 }
 
 function requestBlock(hash, cbFunc, cbArg) {
-    twisterRpc("getblock", [hash],
+    freechRpc("getblock", [hash],
                function(args, block) {
                    if( args.cbFunc )
                        args.cbFunc(block, args.cbArg);
@@ -171,27 +171,27 @@ function networkUpdate(cbFunc, cbArg) {
     requestNetInfo(function () {
         requestBestBlock(function(block, args) {
 
-            twisterdLastBlockTime = block.time;
-            $(".last-block-time").text(timeGmtToText(twisterdLastBlockTime));
+            freechdLastBlockTime = block.time;
+            $(".last-block-time").text(timeGmtToText(freechdLastBlockTime));
 
             var curTime = new Date().getTime() / 1000;
-            if (twisterdConnections) {
-                if (twisterdLastBlockTime > curTime + 3600) {
+            if (freechdConnections) {
+                if (freechdLastBlockTime > curTime + 3600) {
                     $.MAL.setNetworkStatusMsg(polyglot.t("Last block is ahead of your computer time, check your clock."), false);
-                    twisterdConnectedAndUptodate = false;
-                } else if (twisterdLastBlockTime > curTime - (2 * 3600)) {
-                    if (twisterDhtNodes) {
-                        $.MAL.setNetworkStatusMsg(polyglot.t("Block chain is up-to-date, twister is ready to use!"), true);
-                        twisterdConnectedAndUptodate = true;
+                    freechdConnectedAndUptodate = false;
+                } else if (freechdLastBlockTime > curTime - (2 * 3600)) {
+                    if (freechDhtNodes) {
+                        $.MAL.setNetworkStatusMsg(polyglot.t("Block chain is up-to-date, freech is ready to use!"), true);
+                        freechdConnectedAndUptodate = true;
                     } else {
                         $.MAL.setNetworkStatusMsg(polyglot.t("DHT network down."), false);
-                        twisterdConnectedAndUptodate = true;
+                        freechdConnectedAndUptodate = true;
                     }
                 } else {
-                    var daysOld = (curTime - twisterdLastBlockTime) / (3600 * 24);
+                    var daysOld = (curTime - freechdLastBlockTime) / (3600 * 24);
                     $.MAL.setNetworkStatusMsg(polyglot.t("downloading_block_chain", {days: daysOld.toFixed(2)}), false);
                     // don't alarm user if blockchain is just a little bit behind
-                    twisterdConnectedAndUptodate = (daysOld < 2);
+                    freechdConnectedAndUptodate = (daysOld < 2);
                 }
             }
             if (args.cbFunc)
@@ -201,7 +201,7 @@ function networkUpdate(cbFunc, cbArg) {
 }
 
 function getMiningInfo(cbFunc, cbArg) {
-    twisterRpc("getmininginfo", [],
+    freechRpc("getmininginfo", [],
                function(args, ret) {
                    miningDifficulty    = ret.difficulty;
                    miningHashRate      = ret.hashespersec;
@@ -210,16 +210,16 @@ function getMiningInfo(cbFunc, cbArg) {
                    $(".mining-difficulty").text(miningDifficulty);
                    $(".mining-hashrate").text(miningHashRate);
 /*
-                   if( !twisterdConnections ) {
+                   if( !freechdConnections ) {
                        $.MAL.setNetworkStatusMsg("Connection lost.", false);
-                       twisterdConnectedAndUptodate = false;
+                       freechdConnectedAndUptodate = false;
                    }
 */
                    if( args.cbFunc )
                        args.cbFunc(args.cbArg);
                }, {cbFunc:cbFunc, cbArg:cbArg},
                function(args, ret) {
-                   console.log("Error connecting to local twister daemon.");
+                   console.log("Error connecting to local freech daemon.");
                }, {});
 }
 
@@ -228,7 +228,7 @@ function miningUpdate(cbFunc, cbArg) {
 }
 
 function getGenerate() {
-    twisterRpc("getgenerate", [],
+    freechRpc("getgenerate", [],
                function(args, ret) {
                    var $genblock = $("select.genblock");
                    if( ret ) {
@@ -246,7 +246,7 @@ function setGenerate() {
     var params = [];
     params.push($("select.genblock").val() == "enable");
     params.push(parseInt($(".genproclimit").val()));
-    twisterRpc("setgenerate", params,
+    freechRpc("setgenerate", params,
                function(args, ret) {
                    console.log("setgenerate updated");
                }, {},
@@ -256,7 +256,7 @@ function setGenerate() {
 }
 
 function getSpamMsg() {
-    twisterRpc("getspammsg", [],
+    freechRpc("getspammsg", [],
                function(args, ret) {
                    var $postArea = $(".spam-msg");
                    var $localUsersList = $("select.local-usernames.spam-user");
@@ -278,7 +278,7 @@ function setSpamMsg(event) {
     var params = [$("select.local-usernames.spam-user").val(),
         btnUpdate.closest('.post-area-new').find('textarea.spam-msg').val().trim()];
 
-    twisterRpc("setspammsg", params,
+    freechRpc("setspammsg", params,
         function(args, ret) {console.log("setspammsg updated");}, {},
         function(args, ret) {console.log("setspammsg error");}, {}
     );
@@ -289,7 +289,7 @@ function exitDaemon() {
     $( ".terminate-daemon").addClass("disabled");
     $.MAL.disableButton( $( ".terminate-daemon") );
 
-    twisterRpc("stop", undefined,
+    freechRpc("stop", undefined,
                 function(args, ret) {
                     console.log("daemon exiting");
 

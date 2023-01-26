@@ -2,13 +2,13 @@ $(function(){
 
     $('.modal-close').html('');
     $('.modal-back').html('');
-    $('.twister-user-remove').html('');
+    $('.freech-user-remove').html('');
     $('.profile-card-main').attr('style', '');
     $('img[src$="img/tornado_avatar.png"]').attr("src","theme_nin/img/tornado_avatar.png");
     $('.mini-profile-actions span').html('');
 
-    $.globalEval(postToElem.toString().replace(/postContext.append\(twister\.tmpl\.postRtBy/,
-        'postContext.prependTo(postContext.parent()).append(twister.tmpl.postRtBy'));
+    $.globalEval(postToElem.toString().replace(/postContext.append\(freech\.tmpl\.postRtBy/,
+        'postContext.prependTo(postContext.parent()).append(freech.tmpl.postRtBy'));
 
 
     $( '.userMenu-home.current a' ).on( 'click', function() {

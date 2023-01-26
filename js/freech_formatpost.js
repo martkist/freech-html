@@ -1,4 +1,4 @@
-// twister_formatpost.js
+// freech_formatpost.js
 // 2013 Miguel Freitas
 //
 // Format JSON posts and DMs to HTML.
@@ -25,7 +25,7 @@ $(document).ready(function() {
         _htmlFormatMsgLinkTemplateHashtag = _htmlFormatMsgLinkTemplateHashtag[0].cloneNode();
         _htmlFormatMsgLinkTemplateHashtag.removeAttribute('id');
     }
-    twister.tmpl.linkShortened = extractTemplate('#template-link-shortened')[0];
+    freech.tmpl.linkShortened = extractTemplate('#template-link-shortened')[0];
 });
 
 // format "userpost" to html element
@@ -100,7 +100,7 @@ function postToElem(post, kind, promoted) {
     }
 
     // Now create the html elements
-    var elem = $.MAL.getPostTemplate().clone(true).appendTo(twister.html.detached);
+    var elem = $.MAL.getPostTemplate().clone(true).appendTo(freech.html.detached);
     elem.removeAttr('id')
         .addClass(kind)
         .attr('data-time', time)
@@ -163,7 +163,7 @@ function postToElem(post, kind, promoted) {
         if (userpost.msg) {
             setPostReference(postContext, rt, userpost.sig_rt);
         } else {
-            postContext.append(twister.tmpl.postRtBy.clone(true)).addClass('post-rt-by')
+            postContext.append(freech.tmpl.postRtBy.clone(true)).addClass('post-rt-by')
                 .find('.post-rt-sign .prep').text(polyglot.t('post_rt_sign_prep'))
                 .siblings('.open-profile-modal')
                     .attr('href', $.MAL.userUrl(retweeted_by)).text('@' + retweeted_by)
@@ -239,7 +239,7 @@ function setPostCommon(elem, username, time) {
 }
 
 function setPostReference(elem, rt, sig_rt) {
-    elem.append(twister.tmpl.postRtReference.clone(true))
+    elem.append(freech.tmpl.postRtReference.clone(true))
         .find('.post-rt-reference')
             .attr('data-screen-name', rt.n)
             .attr('data-id', rt.k)
@@ -267,7 +267,7 @@ function setPostInfoSent(n, k, item) {
 function postToElemDM(dmData, localUser, remoteUser) {
     var senderAlias = (dmData.from && dmData.from.length && dmData.from.charCodeAt(0))
         ? dmData.from : (dmData.fromMe || dmData.from === localUser ? localUser : remoteUser);
-    var elem = $('#dm-chat-template').clone(true).appendTo(twister.html.detached)
+    var elem = $('#dm-chat-template').clone(true).appendTo(freech.html.detached)
         .removeAttr('id')
         .addClass(dmData.fromMe || dmData.from === localUser ? 'sent' : 'received')
     ;
@@ -641,10 +641,10 @@ function htmlFormatMsg(msg, opt) {
                             )
                                 .replace(/&(?!lt;|gt;)/g, '&amp;');
                             if (markoutOpt === 'apply') {
-                                if (msg.str.slice(i, i + 6).toLowerCase() === 'twist:' && msg.str[i + 17] === '='
+                                if (msg.str.slice(i, i + 6).toLowerCase() === 'freech:' && msg.str[i + 17] === '='
                                     && getSubStrStart(msg.str, i + 16, stopCharsRightHashtagsBase64, false, '') === i + 6)
                                     msg = msgAddHtmlEntity(msg, j - 1, getSubStrEnd(msg.str, k + 1, ')', true, '') + 2,
-                                        newHtmlEntityLink(twister.tmpl.linkShortened,
+                                        newHtmlEntityLink(freech.tmpl.linkShortened,
                                             msg.str.slice(i, i + 18), linkName)
                                     );
                                 else
@@ -692,11 +692,11 @@ function htmlFormatMsg(msg, opt) {
                     i = msg.i;
                 }
             }
-        } else if (msg.str.slice(i, i + 6).toLowerCase() === 'twist:' && msg.str[i + 17] === '='
+        } else if (msg.str.slice(i, i + 6).toLowerCase() === 'freech:' && msg.str[i + 17] === '='
             && getSubStrStart(msg.str, i + 16, stopCharsRightHashtagsBase64, false, '') === i + 6) {
             str = msg.str.slice(i, i + 18);
             msg = msgAddHtmlEntity(msg, i, i + str.length,
-                newHtmlEntityLink(twister.tmpl.linkShortened, str, str));
+                newHtmlEntityLink(freech.tmpl.linkShortened, str, str));
             i = msg.i;
         }
     }

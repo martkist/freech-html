@@ -1,4 +1,4 @@
-// twister_directmsg.js
+// freech_directmsg.js
 // 2013 Miguel Freitas
 //
 // Handle direct messages modal
@@ -26,15 +26,15 @@ function newDirectMsg(msg, peerAlias) {
         if (copySelf && peerAlias[0] !== '*')
             paramsOpt = paramsOrig.concat(true)
 
-        twisterRpc('newdirectmsg', paramsOpt,
+        freechRpc('newdirectmsg', paramsOpt,
             function(req, ret) {
                 incLastPostId();
                 if (req.copySelf)
                     incLastPostId();
             }, {copySelf: copySelf},
             function(req, ret) {
-                // fallback for older twisterd (error: no copy_self parameter)
-                twisterRpc('newdirectmsg', req.paramsOrig,
+                // fallback for older freechd (error: no copy_self parameter)
+                freechRpc('newdirectmsg', req.paramsOrig,
                     function(req, ret) {incLastPostId();}, null,
                     function(req, ret) {
                         var msg = (ret.message) ? ret.message : ret;
@@ -50,11 +50,11 @@ function newDirectMsg(msg, peerAlias) {
 function modalDMsSummaryDraw(elem, group) {
     elem.empty();
 
-    for (var peerAlias in twister.DMs)
+    for (var peerAlias in freech.DMs)
         if (group ? peerAlias[0] === '*' : peerAlias[0] !== '*')
-            for (var j in twister.DMs[peerAlias].twists.cached)
-                if (twister.DMs[peerAlias].lastId === twister.DMs[peerAlias].twists.cached[j].id) {
-                    addToCommonDMsList(elem, peerAlias, twister.DMs[peerAlias].twists.cached[j]);
+            for (var j in freech.DMs[peerAlias].freechs.cached)
+                if (freech.DMs[peerAlias].lastId === freech.DMs[peerAlias].freechs.cached[j].id) {
+                    addToCommonDMsList(elem, peerAlias, freech.DMs[peerAlias].freechs.cached[j]);
                     break;
                 }
 
@@ -70,7 +70,7 @@ function openCommonDMsModal() {
 
     var modal = openModal({
         classAdd: 'directMessages',
-        content: twister.tmpl.commonDMsList.clone(true),
+        content: freech.tmpl.commonDMsList.clone(true),
         title: polyglot.t('Direct Messages')
     });
 
@@ -113,11 +113,11 @@ function openDmWithUserModal(peerAlias) {
             lastId: 0,
             lengthNew: 0,
             ready: function (req, peerAlias) {
-                twister.DMs[peerAlias] = twister.res[req];
+                freech.DMs[peerAlias] = freech.res[req];
             },
             readyReq: peerAlias,
             drawFinish: function (req) {
-                $.MAL.dmConversationLoaded(twister.res[req].board);
+                $.MAL.dmConversationLoaded(freech.res[req].board);
             }
         }
     );
@@ -137,7 +137,7 @@ function openGroupMessagesModal(groupAlias) {
     if (typeof groupAlias === 'undefined') {
         var modal = openModal({
             classAdd: 'directMessages groupMessages',
-            content: twister.tmpl.commonDMsList.clone(true),
+            content: freech.tmpl.commonDMsList.clone(true),
             title: polyglot.t('Group Messages')
         });
 
@@ -175,11 +175,11 @@ function openGroupMessagesModal(groupAlias) {
                             lastId: 0,
                             lengthNew: 0,
                             ready: function (req, peerAlias) {
-                                twister.DMs[peerAlias] = twister.res[req];
+                                freech.DMs[peerAlias] = freech.res[req];
                             },
                             readyReq: req.groupAlias,
                             drawFinish: function (req) {
-                                $.MAL.dmConversationLoaded(twister.res[req].board);
+                                $.MAL.dmConversationLoaded(freech.res[req].board);
                             }
                         }
                     );
@@ -263,7 +263,7 @@ function openGroupMessagesJoinGroupModal() {
                                         !elemEvent.closest('.groups-list').find('input:checked').length);
                             })
                         ;
-                        item.find('.twister-user-name')
+                        item.find('.freech-user-name')
                             .text(groupChatAliases[i])
                             .attr('href', $.MAL.userUrl(groupChatAliases[i]))
                         ;
@@ -297,7 +297,7 @@ function groupMsgCreateGroup(description, peersToInvite) {
     if (!peersToInvite)
         peersToInvite = [];
 
-    twisterRpc('creategroup', [description],
+    freechRpc('creategroup', [description],
         function(peersToInvite, ret) {
             groupMsgInviteToGroup(ret, peersToInvite.concat([defaultScreenName]));
         }, peersToInvite,
@@ -308,7 +308,7 @@ function groupMsgCreateGroup(description, peersToInvite) {
 }
 
 function groupMsgImportKey(key) {
-    if (parseInt(twisterVersion) < 93800) {
+    if (parseInt(freechVersion) < 93800) {
         alertPopup({
             //txtTitle: polyglot.t(''), add some title (not 'error', please) or just KISS
             txtMessage: polyglot.t('group_key_cant_import') + ' —\n'
@@ -317,7 +317,7 @@ function groupMsgImportKey(key) {
         return;
     }
 
-    twisterRpc('creategroup', ['whatever', key],
+    freechRpc('creategroup', ['whatever', key],
         function(req, ret) {
             if (!ret) {
                 alertPopup({
@@ -330,7 +330,7 @@ function groupMsgImportKey(key) {
 
             groupMsgInviteToGroup(ret, [defaultScreenName],
                 function () {
-                    twisterRpc('rescandirectmsgs', [defaultScreenName],
+                    freechRpc('rescandirectmsgs', [defaultScreenName],
                         function () {}, undefined, function () {});
                 }
             );
@@ -361,7 +361,7 @@ function groupMsgInviteToGroup(groupAlias, peersToInvite, cbFunc, cbReq) {
 }
 
 function doGroupMsgInviteToGroup() {
-    twisterRpc('newgroupinvite',
+    freechRpc('newgroupinvite',
         [defaultScreenName, lastPostId + 1,
             _groupMsgInviteToGroupQueue[0].groupAlias, _groupMsgInviteToGroupQueue[0].peersToInvite],
         function(req, ret) {
@@ -384,7 +384,7 @@ function doGroupMsgInviteToGroup() {
 }
 
 function groupMsgSetGroupDescription(groupAlias, description, cbFunc, cbArgs) {
-    twisterRpc('newgroupdescription',
+    freechRpc('newgroupdescription',
         [defaultScreenName, lastPostId + 1, groupAlias, description],
         function (req) {
             incLastPostId();
@@ -395,21 +395,21 @@ function groupMsgSetGroupDescription(groupAlias, description, cbFunc, cbArgs) {
 }
 
 function groupMsgLeaveGroup(groupAlias, cbFunc, cbArgs) {
-    twisterRpc('leavegroup', [defaultScreenName, groupAlias],
+    freechRpc('leavegroup', [defaultScreenName, groupAlias],
         cbFunc, cbArgs,
         function(req, ret) {alert(polyglot.t('error', {error: 'can\'t leave group — ' + ret.message}));}, null
     );
 }
 
 function groupMsgGetGroupsForPeer(peer, cbFunc, cbArgs) {
-    twisterRpc('listgroups', [peer],
+    freechRpc('listgroups', [peer],
         cbFunc, cbArgs,
         function(req, ret) {alert(polyglot.t('error', {error: 'can\'t list groups — ' + ret.message}));}, null
     );
 }
 
 function groupMsgGetGroupInfo(groupAlias, cbFunc, cbArgs) {
-    twisterRpc('getgroupinfo', [groupAlias],
+    freechRpc('getgroupinfo', [groupAlias],
         cbFunc, cbArgs,
         function(req, ret) {alert(polyglot.t('error', {error: 'can\'t get group info — ' + ret.message}));}, null
     );
