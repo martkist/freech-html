@@ -36,7 +36,7 @@
 {
     width: 74px;
     height: 74px;
-    border: solid 6px #971fe4;
+    border: solid 6px #ffffff;
     border-radius: 40%;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -50,11 +50,11 @@
 {
     font-size: 24px;
     font-weight: bold;
-    color: #1464c0;
+    color: #ffffff;
 }
 .profile-card-main h2
 {
-    color: #1464c0;
+    color: #ffffff;
 }
 
 .profile-card-buttons {
@@ -236,6 +236,7 @@
 .profile-modal .profile-data {
     display: inline-block;
     border-bottom: 0;
+    margin-top: 16px;
 }
 
 .profile-modal .postboard {
@@ -256,7 +257,7 @@
 
 .profile-modal .profile-card-main
 {
-    background: #971fe4;
+    background: #6176bf;
     color: white;
     width:100%;
 }
