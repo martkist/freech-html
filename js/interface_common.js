@@ -586,7 +586,7 @@ function openUserProfileModalWithNameHandler(peerAlias) {
     updateProfileData(content, peerAlias);
     // FIXME following ctc could be part of updateProfileData() when mobile will be ready for this
     content.find('.tox-ctc').attr('title', polyglot.t('Copy to clipboard'));
-    content.find('.bitmessage-ctc').attr('title', polyglot.t('Copy to clipboard'));
+    content.find('.martkist-ctc').attr('title', polyglot.t('Copy to clipboard'));
 
     content.find('.open-followers').on('mouseup', {route: '#followers?user=' + peerAlias}, routeOnClick);
 
@@ -2794,7 +2794,7 @@ function initInterfaceCommon() {
     ;
 
     $('.tox-ctc').on('click', promptCopyAttrData);
-    $('.bitmessage-ctc').on('click', promptCopyAttrData);
+    $('.martkist-ctc').on('click', promptCopyAttrData);
 
     $('.uri-shortener').on('mouseup', {route: '#/uri-shortener'}, routeOnClick);
 

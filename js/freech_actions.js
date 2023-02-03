@@ -402,7 +402,7 @@ function updateProfileData(profileModalContent, username) {
     getWebpage( username, profileModalContent.find(".profile-url") );
     getBioToElem(username, profileModalContent.find('.profile-bio'));
     getTox( username, profileModalContent.find(".profile-tox") );
-    getBitmessage( username, profileModalContent.find(".profile-bitmessage") );
+    getMartkist( username, profileModalContent.find(".profile-martkist") );
     getAvatar( username, profileModalContent.find(".profile-card-photo") );
     getPostsCount( username,  profileModalContent.find(".posts-count") );
     getFollowers( username, profileModalContent.find(".followers-count") );

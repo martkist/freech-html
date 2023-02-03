@@ -329,9 +329,9 @@ function getTox(peerAlias, elem) {
     );
 }
 
-// get bitmessage address and store it in elem.text
-function getBitmessage(peerAlias, elem) {
-    getProfileResource(peerAlias, 'bitmessage', false,
+// get martkist address and store it in elem.text
+function getMartkist(peerAlias, elem) {
+    getProfileResource(peerAlias, 'martkist', false,
         function(elem, val) {
             if (val) {
                 elem.attr('href', 'bitmsg:' + val + '?action=add&label=' + peerAlias);

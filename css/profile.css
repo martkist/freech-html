@@ -54,7 +54,7 @@
 }
 .profile-card-main h2
 {
-    color: #ffffff;
+    color: #001059;
 }
 
 .profile-card-buttons {
@@ -135,7 +135,7 @@
     display: inline-block;
 }
 .forEdition .profile-card-main .input-tox,
-.forEdition .profile-card-main .input-bitmessage
+.forEdition .profile-card-main .input-martkist
 {
     width: 90%;
     margin-top: 10px;
@@ -172,7 +172,7 @@
     display: none;
     margin-right: 35px;
 }
-.bitmessage-ctc, .tox-ctc {
+.martkist-ctc, .tox-ctc {
     position: absolute;
     height: 30px;
     width: 30px;
@@ -191,20 +191,20 @@
     transition: all 20ms;
     font-size: 18px;
 }
-.bitmessage-ctc:hover, .tox-ctc:hover {
+.martkist-ctc:hover, .tox-ctc:hover {
     background-color: #f0f2f8;
     opacity: 1;
     cursor: pointer;
     text-decoration: none;
 }
-.bitmessage-ctc:active, .tox-ctc:active {
+.martkist-ctc:active, .tox-ctc:active {
     background-color: #edfced;
 }
-.bitmessage-ctc:after,
+.martkist-ctc:after,
 .tox-ctc:after {
     content: '📋';
 }
-.profile-modal .profile-tox, .profile-modal .profile-bitmessage {
+.profile-modal .profile-tox, .profile-modal .profile-martkist {
     display: inline-block;
     width: 70px;
     height: 30px;
@@ -219,17 +219,17 @@
     -o-transition: all 200ms;
     transition: all 200ms;
 }
-.profile-modal .profile-tox:hover, .profile-modal .profile-bitmessage:hover {
+.profile-modal .profile-tox:hover, .profile-modal .profile-martkist:hover {
     opacity: 1;
     background-color: #f0f2f8;
 }
-.profile-modal .profile-tox:active, .profile-modal .profile-bitmessage:active {
+.profile-modal .profile-tox:active, .profile-modal .profile-martkist:active {
     background-color: #edfced;
 }
 .profile-modal .profile-tox {
     background: #e3e5ea url(../img/tox.png) center no-repeat;
 }
-.profile-modal .profile-bitmessage {
+.profile-modal .profile-martkist {
     background: #e3e5ea url(../img/bm.png) center no-repeat;
 }
 

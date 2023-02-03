@@ -617,19 +617,19 @@ samp {
 }
 
 /* line 186, ../sass/_profile.sass */
-.bitmessage-ctc, .tox-ctc {
+.martkist-ctc, .tox-ctc {
   font-size: 13px;
   line-height: 15px;
   cursor: pointer;
   color: #66686B;
 }
 /* line 191, ../sass/_profile.sass */
-.bitmessage-ctc:hover, .tox-ctc:hover {
+.martkist-ctc:hover, .tox-ctc:hover {
   color: #C7DCFF;
 }
 
 /* line 194, ../sass/_profile.sass */
-.bitmessage-ctc:after, .tox-ctc:after {
+.martkist-ctc:after, .tox-ctc:after {
   font-family: "fontello";
   content: "";
   font-style: normal;
@@ -645,13 +645,13 @@ samp {
 }
 
 /* line 209, ../sass/_profile.sass */
-.profile-modal .profile-tox, .profile-modal .profile-bitmessage {
+.profile-modal .profile-tox, .profile-modal .profile-martkist {
   display: inline-block;
   margin-right: 5px;
   font-size: 13px;
 }
 /* line 213, ../sass/_profile.sass */
-.profile-modal .profile-tox:hover, .profile-modal .profile-bitmessage:hover {
+.profile-modal .profile-tox:hover, .profile-modal .profile-martkist:hover {
   color: #C7DCFF;
 }
 
@@ -707,7 +707,7 @@ samp {
   display: inline-block;
 }
 /* line 255, ../sass/_profile.sass */
-.forEdition .profile-card-main .input-tox, .forEdition .profile-card-main .input-bitmessage {
+.forEdition .profile-card-main .input-tox, .forEdition .profile-card-main .input-martkist {
   width: 90%;
   margin-top: 10px;
 }

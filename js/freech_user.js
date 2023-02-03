@@ -195,8 +195,8 @@ function loadProfileForEdit() {
                        $(".input-website").val(profile.url);
                    if( "tox" in profile)
                        $(".input-tox").val(profile.tox);
-                   if( "bitmessage" in profile)
-                       $(".input-bitmessage").val(profile.bitmessage);
+                   if( "martkist" in profile)
+                       $(".input-martkist").val(profile.martkist);
                }
            }, {} );
 }
@@ -237,7 +237,7 @@ function saveProfile(e) {
             location:   '.input-city',
             url:        '.input-website',
             tox:        '.input-tox',
-            bitmessage: '.input-bitmessage'
+            martkist: '.input-martkist'
         }),
         defaultScreenName, ++profileSeqNum,
         saveAvatar, {avatarImgSrc: $('.profile-card-photo.forEdition').attr('src')}

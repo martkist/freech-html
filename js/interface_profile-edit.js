@@ -113,7 +113,7 @@ function localizePlaceholders() {
     $('.input-city').attr('placeholder', polyglot.t('Location'));
     $('.input-website').attr('placeholder', polyglot.t('website'));
     $('.input-tox').attr('placeholder', polyglot.t('Tox address'));
-    $('.input-bitmessage').attr('placeholder', polyglot.t('Bitmessage address'));
+    $('.input-martkist').attr('placeholder', polyglot.t('Martkist address'));
 }
 
 $(document).ready(localizePlaceholders);
