@@ -438,7 +438,7 @@ function updateProfilePosts(postsView, username, useGetposts) {
 
 function queryCreateRes(query, resource, extra) {
     var req = query + '@' + resource;
-    freech.res[req] = {
+    window.freech.res[req] = {
         query: query,
         resource: resource,
         lengthCached: 0,
@@ -449,16 +449,16 @@ function queryCreateRes(query, resource, extra) {
     };
     if (extra)
         for (i in extra)
-            freech.res[req][i] = extra[i];
+            window.freech.res[req][i] = extra[i];
 
-    return freech.res[req];
+    return window.freech.res[req];
 }
 
 function queryStart(board, query, resource, timeoutArgs, intervalTimeout, extra) {
     var req = query + '@' + resource;
 
-    if (typeof freech.res[req] !== 'object') {
-        freech.res[req] = {
+    if (typeof window.freech.res[req] !== 'object') {
+        window.freech.res[req] = {
             board: board,
             query: query,
             resource: resource,
@@ -470,30 +470,30 @@ function queryStart(board, query, resource, timeoutArgs, intervalTimeout, extra)
         };
         if (extra) {
             for (i in extra)
-                freech.res[req][i] = extra[i];
+                window.freech.res[req][i] = extra[i];
 
             if (typeof extra.ready === 'function')
                 extra.ready(req, extra.readyReq);
         }
     } else {
-        freech.res[req].board = board;
-        for (var i in freech.res[req].freechs.cached)
-            if (freech.res[req].freechs.pending.indexOf(i) === -1)
-                freech.res[req].freechs.pending.push(i);
+        window.freech.res[req].board = board;
+        for (var i in window.freech.res[req].freechs.cached)
+            if (window.freech.res[req].freechs.pending.indexOf(i) === -1)
+                window.freech.res[req].freechs.pending.push(i);
 
         if (extra) {
             if (typeof extra.drawFinish === 'function') {
-                freech.res[req].drawFinish = extra.drawFinish;
-                freech.res[req].drawFinishReq = extra.drawFinishReq;
+                window.freech.res[req].drawFinish = extra.drawFinish;
+                window.freech.res[req].drawFinishReq = extra.drawFinishReq;
             }
             if (typeof extra.skidoo === 'function')
-                freech.res[req].skidoo = extra.skidoo;
+                window.freech.res[req].skidoo = extra.skidoo;
         }
 
         queryPendingDraw(req);
     }
 
-    if (freech.res[req].interval)
+    if (window.freech.res[req].interval)
         return req;
 
     queryRequest(req);
@@ -501,18 +501,18 @@ function queryStart(board, query, resource, timeoutArgs, intervalTimeout, extra)
     // use extended timeout parameters on modal refresh (requires freech_core >= 0.9.14).
     // our first query above should be faster (with default timeoutArgs of freechd),
     // then we may possibly collect more posts on our second try by waiting more.
-    freech.res[req].timeoutArgs = timeoutArgs ? timeoutArgs : [10000, 2000, 3];
+    window.freech.res[req].timeoutArgs = timeoutArgs ? timeoutArgs : [10000, 2000, 3];
 
-    freech.res[req].interval = setInterval(queryTick, intervalTimeout ? intervalTimeout : 5000, req);
+    window.freech.res[req].interval = setInterval(queryTick, intervalTimeout ? intervalTimeout : 5000, req);
 
     return req;
 }
 
 function queryTick(req) {
-    if (typeof freech.res[req].skidoo === 'function' ? freech.res[req].skidoo(req)
-        : !isModalWithElemExists(freech.res[req].board)) {
-        clearInterval(freech.res[req].interval);
-        freech.res[req].interval = 0;
+    if (typeof window.freech.res[req].skidoo === 'function' ? window.freech.res[req].skidoo(req)
+        : !isModalWithElemExists(window.freech.res[req].board)) {
+        clearInterval(window.freech.res[req].interval);
+        window.freech.res[req].interval = 0;
         queryPendingClear(req);
         return;
     }
@@ -521,32 +521,32 @@ function queryTick(req) {
 }
 
 function queryPendingClear(req) {
-    freech.res[req].freechs.pending = [];
+    window.freech.res[req].freechs.pending = [];
 }
 
 function queryRequest(req) {
-    if (freech.res[req].board && isModalWithElemExists(freech.res[req].board))
-        freech.res[req].board.closest('div').find('.postboard-loading').show();
+    if (window.freech.res[req].board && isModalWithElemExists(window.freech.res[req].board))
+        window.freech.res[req].board.closest('div').find('.postboard-loading').show();
 
-    if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName) {
-        freechRpc('getmentions', [freech.res[req].query, 100, {since_id: freech.res[req].lastTorrentId}],
+    if (window.freech.res[req].resource === 'mention' && window.freech.res[req].query === defaultScreenName) {
+        freechRpc('getmentions', [window.freech.res[req].query, 100, {since_id: window.freech.res[req].lastTorrentId}],
             queryProcess, req,
             function () {console.warn('getmentions API requires freech-core > 0.9.27');}
         );
-        dhtget(freech.res[req].query, freech.res[req].resource, 'm',
-            queryProcess, req, freech.res[req].timeoutArgs);
-    } else if (freech.res[req].resource === 'fav')
-        freechRpc('getfavs', [freech.res[req].query, 1000],
+        dhtget(window.freech.res[req].query, window.freech.res[req].resource, 'm',
+            queryProcess, req, window.freech.res[req].timeoutArgs);
+    } else if (window.freech.res[req].resource === 'fav')
+        freechRpc('getfavs', [window.freech.res[req].query, 1000],
             queryProcess, req);
-    else if (freech.res[req].resource === 'direct') {
+    else if (window.freech.res[req].resource === 'direct') {
         var lengthStandard = 100;  // FIXME there may be the gap between .lastId and the lesser freech.id in response greater than 100 (very rare case)
-        if (freech.res[req].lengthCached < Math.min(freech.res[req].lastId, lengthStandard)
-            && !freech.res[req].triedToReCache) {
-            freech.res[req].triedToReCache = true;
-            var length = Math.min(freech.res[req].lastId + 1, lengthStandard);
-            var query = [{username: freech.res[req].query, max_id: freech.res[req].lastId}];
+        if (window.freech.res[req].lengthCached < Math.min(window.freech.res[req].lastId, lengthStandard)
+            && !window.freech.res[req].triedToReCache) {
+            window.freech.res[req].triedToReCache = true;
+            var length = Math.min(window.freech.res[req].lastId + 1, lengthStandard);
+            var query = [{username: window.freech.res[req].query, max_id: window.freech.res[req].lastId}];
         } else
-            var length = lengthStandard, query = [{username: freech.res[req].query, since_id: freech.res[req].lastId}];
+            var length = lengthStandard, query = [{username: window.freech.res[req].query, since_id: window.freech.res[req].lastId}];
 
         freechRpc('getdirectmsgs', [defaultScreenName, length, query],
             queryProcess, req,
@@ -555,40 +555,40 @@ function queryRequest(req) {
             }
         );
     } else
-        dhtget(freech.res[req].query, freech.res[req].resource, 'm',
-            queryProcess, req, freech.res[req].timeoutArgs);
+        dhtget(window.freech.res[req].query, window.freech.res[req].resource, 'm',
+            queryProcess, req, window.freech.res[req].timeoutArgs);
 }
 
 function queryProcess(req, res) {
-    if (!req || !freech.res[req] || typeof res !== 'object' || $.isEmptyObject(res))
+    if (!req || !window.freech.res[req] || typeof res !== 'object' || $.isEmptyObject(res))
         return;
 
     var lengthNew = 0;
-    var lengthPending = freech.res[req].freechs.pending.length;
+    var lengthPending = window.freech.res[req].freechs.pending.length;
 
-    if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName)
+    if (window.freech.res[req].resource === 'mention' && window.freech.res[req].query === defaultScreenName)
         lengthNew = queryPendingPushMentions(req, res);
-    else if (freech.res[req].resource === 'direct')
+    else if (window.freech.res[req].resource === 'direct')
         lengthNew = queryPendingPushDMs(res);
     else
         lengthNew = queryPendingPush(req, res);
 
-    if (typeof freech.res[req].skidoo === 'function' && freech.res[req].skidoo(req))
+    if (typeof window.freech.res[req].skidoo === 'function' && window.freech.res[req].skidoo(req))
         return;
 
     if (lengthNew) {
-        if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName) {
-            $.MAL.updateNewMentionsUI(freech.res[req].lengthNew);
+        if (window.freech.res[req].resource === 'mention' && window.freech.res[req].query === defaultScreenName) {
+            $.MAL.updateNewMentionsUI(window.freech.res[req].lengthNew);
             $.MAL.soundNotifyMentions();
             if (!$.mobile && $.Options.showDesktopNotifMentions.val === 'enable')
                 $.MAL.showDesktopNotification({
-                    body: polyglot.t('You got') + ' ' + polyglot.t('new_mentions', freech.res[req].lengthNew) + '.',
+                    body: polyglot.t('You got') + ' ' + polyglot.t('new_mentions', window.freech.res[req].lengthNew) + '.',
                     tag: 'freech_notification_new_mentions',
                     timeout: $.Options.showDesktopNotifMentionsTimer.val,
                     funcClick: (function () {
-                        if (!freech.res[this.req].board || !focusModalWithElement(freech.res[this.req].board,
+                        if (!window.freech.res[this.req].board || !focusModalWithElement(window.freech.res[this.req].board,
                             function (req) {
-                                freech.res[req].board.closest('.postboard')
+                                window.freech.res[req].board.closest('.postboard')
                                     .find('.postboard-news').click();
                             },
                             this.req
@@ -596,8 +596,8 @@ function queryProcess(req, res) {
                             $.MAL.showMentions(defaultScreenName);
                     }).bind({req: req})
                 });
-        } else if (freech.res[req].resource === 'direct') {
-            if (freech.res[req].query[0] !== '*')
+        } else if (window.freech.res[req].resource === 'direct') {
+            if (window.freech.res[req].query[0] !== '*')
                 $.MAL.updateNewDMsUI(getNewDMsCount());
             else
                 $.MAL.updateNewGroupDMsUI(getNewGroupDMsCount());
@@ -605,29 +605,29 @@ function queryProcess(req, res) {
             $.MAL.soundNotifyDM();
             if (!$.mobile && $.Options.showDesktopNotifDMs.val === 'enable')
                 $.MAL.showDesktopNotification({
-                    body: freech.res[req].query[0] === '*' ?
+                    body: window.freech.res[req].query[0] === '*' ?
                         polyglot.t('You got') + ' ' + polyglot.t('new_group_messages', getNewGroupDMsCount()) + '.'
                         : polyglot.t('You got') + ' ' + polyglot.t('new_direct_messages', getNewDMsCount()) + '.',
                     tag: 'freech_notification_new_DMs',
                     timeout: $.Options.showDesktopNotifDMsTimer.val,
                     funcClick: (function () {
-                        focusModalWithElement(freech.res[this.req].board);
+                        focusModalWithElement(window.freech.res[this.req].board);
                     }).bind({req: req})
                 });
             // TODO new DMs counters on minimized modals'
         } else if (!$.mobile && $.Options.showDesktopNotifPostsModal.val === 'enable'
-            && (freech.res[req].resource !== 'mention' || freech.res[req].query !== defaultScreenName)
-            && freech.res[req].board && isModalWithElemExists(freech.res[req].board)
-            && freech.res[req].board.children().length)
+            && (window.freech.res[req].resource !== 'mention' || window.freech.res[req].query !== defaultScreenName)
+            && window.freech.res[req].board && isModalWithElemExists(window.freech.res[req].board)
+            && window.freech.res[req].board.children().length)
             $.MAL.showDesktopNotification({
-                body: polyglot.t('You got') + ' ' + polyglot.t('new_posts', freech.res[req].freechs.pending.length) + ' '
+                body: polyglot.t('You got') + ' ' + polyglot.t('new_posts', window.freech.res[req].freechs.pending.length) + ' '
                     + polyglot.t('in search result') + '.',
                 tag: 'freech_notification_new_posts_modal',
                 timeout: $.Options.showDesktopNotifPostsModalTimer.val,
                 funcClick: (function () {
-                    focusModalWithElement(freech.res[this.req].board,
+                    focusModalWithElement(window.freech.res[this.req].board,
                         function (req) {
-                            freech.res[req].board.closest('.postboard')
+                            window.freech.res[req].board.closest('.postboard')
                                 .find('.postboard-news').click();
                         },
                         this.req
@@ -636,18 +636,18 @@ function queryProcess(req, res) {
             });
     }
 
-    if (freech.res[req].freechs.pending.length > lengthPending) {  // there is some freechs may be which are not considered new so lengthNew equals zero (mentions thing)
-        if (!freech.res[req].board || (!$.mobile && !isModalWithElemExists(freech.res[req].board)))
+    if (window.freech.res[req].freechs.pending.length > lengthPending) {  // there is some freechs may be which are not considered new so lengthNew equals zero (mentions thing)
+        if (!window.freech.res[req].board || (!$.mobile && !isModalWithElemExists(window.freech.res[req].board)))
             return;
 
-        if (!freech.res[req].board.children().length || freech.res[req].boardAutoAppend)
+        if (!window.freech.res[req].board.children().length || window.freech.res[req].boardAutoAppend)
             queryPendingDraw(req);
         else {
-            freech.res[req].board.closest('div').find('.postboard-news')  // FIXME we'd replace 'div' with '.postboard' but need to dig through tmobile first
-                .text(polyglot.t('new_posts', freech.res[req].freechs.pending.length))
+            window.freech.res[req].board.closest('div').find('.postboard-news')  // FIXME we'd replace 'div' with '.postboard' but need to dig through tmobile first
+                .text(polyglot.t('new_posts', window.freech.res[req].freechs.pending.length))
                 .fadeIn('slow')
             ;
-            freech.res[req].board.closest('div').find('.postboard-loading').hide();
+            window.freech.res[req].board.closest('div').find('.postboard-loading').hide();
         }
     }
 }
@@ -660,7 +660,7 @@ function queryPendingPush(req, freechs) {
         var userpost = freechs[i].userpost;
         var j = userpost.n + '/' + userpost.time;
 
-        if (typeof freech.res[req].freechs.cached[j] === 'undefined') {
+        if (typeof window.freech.res[req].freechs.cached[j] === 'undefined') {
             if (userpost.fav)
                 userpost = userpost.fav;
 
@@ -684,9 +684,9 @@ function queryPendingPush(req, freechs) {
             }
 
             lengthNew++;
-            freech.res[req].freechs.cached[j] = freechs[i];
-            freech.res[req].lengthCached++;
-            freech.res[req].freechs.pending.push(j);
+            window.freech.res[req].freechs.cached[j] = freechs[i];
+            window.freech.res[req].lengthCached++;
+            window.freech.res[req].freechs.pending.push(j);
         }
     }
 
@@ -695,10 +695,9 @@ function queryPendingPush(req, freechs) {
 
 function queryPendingDraw(req) {
     var freechs = [], length = 0;
-
-    if (freech.res[req].resource === 'direct') {
-        for (var j = 0; j < freech.res[req].freechs.pending.length; j++) {
-            var freech = freech.res[req].freechs.cached[freech.res[req].freechs.pending[j]];
+    if (window.freech.res[req].resource === 'direct') {
+        for (var j = 0; j < window.freech.res[req].freechs.pending.length; j++) {
+            var freech = window.freech.res[req].freechs.cached[window.freech.res[req].freechs.pending[j]];
             for (var i = 0; i < length; i++)
                 if (freech.id < freechs[i].id) {
                     freechs.splice(i, 0, freech);
@@ -710,17 +709,17 @@ function queryPendingDraw(req) {
 
             length++;
         }
-        attachPostsToStream(freech.res[req].board, freechs, false,
+        attachPostsToStream(window.freech.res[req].board, freechs, false,
             function (freech, req) {
                 return {item: postToElemDM(freech, req.peerAliasLocal, req.peerAliasRemote)
                     .attr('data-id', freech.id), time: freech.time};
             },
-            {peerAliasLocal: defaultScreenName, peerAliasRemote: freech.res[req].query}
+            {peerAliasLocal: defaultScreenName, peerAliasRemote: window.freech.res[req].query}
         );
-        resetNewDMsCountForPeer(freech.res[req].query);
+        resetNewDMsCountForPeer(window.freech.res[req].query);
     } else {
-        for (var j = 0; j < freech.res[req].freechs.pending.length; j++) {
-            var freech = freech.res[req].freechs.cached[freech.res[req].freechs.pending[j]];
+        for (var j = 0; j < window.freech.res[req].freechs.pending.length; j++) {
+            var freech = window.freech.res[req].freechs.cached[window.freech.res[req].freechs.pending[j]];
             for (var i = 0; i < length; i++)
                 if (freech.userpost.time > freechs[i].userpost.time) {
                     freechs.splice(i, 0, freech);
@@ -732,19 +731,19 @@ function queryPendingDraw(req) {
 
             length++;
         }
-        attachPostsToStream(freech.res[req].board, freechs, true,
+        attachPostsToStream(window.freech.res[req].board, freechs, true,
             function (freech) {
                 return {item: postToElem(freech, 'original'), time: freech.userpost.time};
             }
         );
-        if (freech.res[req].resource === 'mention' && freech.res[req].query === defaultScreenName)
+        if (window.freech.res[req].resource === 'mention' && window.freech.res[req].query === defaultScreenName)
             resetMentionsCount();
     }
 
     queryPendingClear(req);
 
-    if (typeof freech.res[req].drawFinish === 'function')
-        freech.res[req].drawFinish(req, freech.res[req].drawFinishReq);
+    if (typeof window.freech.res[req].drawFinish === 'function')
+        window.freech.res[req].drawFinish(req, window.freech.res[req].drawFinishReq);
     else
         $.MAL.postboardLoaded();
 }

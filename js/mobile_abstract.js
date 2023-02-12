@@ -548,20 +548,21 @@ jQuery.MAL = new MAL;
 function playSound(player, sound, volume) {
     if ($.mobile) {
     } else {
-        var player = $('#'+player);
-        if (player.length) {
-            player[0].pause();
-            //player.empty();
+        // TODO Audio is disabled for now
+        // var player = $('#'+player);
+        // if (player.length) {
+        //     player[0].pause();
+        //     //player.empty();
 
-            if (player[0].canPlayType('audio/mpeg;'))
-                player.attr({type: 'audio/mpeg', src: 'sound/' + sound + '.mp3'});
-            else
-                player.attr({type: 'audio/ogg', src: 'sound/' + sound + '.ogg'});
+        //     if (player[0].canPlayType('audio/mpeg;'))
+        //         player.attr({type: 'audio/mpeg', src: 'sound/' + sound + '.mp3'});
+        //     else
+        //         player.attr({type: 'audio/ogg', src: 'sound/' + sound + '.ogg'});
 
-            player[0].volume = (typeof volume === 'number') ? volume : $.Options.playerVol.val;
-            player[0].play();
-        } else
-            console.warn('cannot find player to play sound, selector: #'+player);
+        //     player[0].volume = (typeof volume === 'number') ? volume : $.Options.playerVol.val;
+        //     player[0].play();
+        // } else
+        //     console.warn('cannot find player to play sound, selector: #'+player);
     }
 }
 

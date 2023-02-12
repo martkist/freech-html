@@ -1286,7 +1286,9 @@ function watchHashChange(event) {
         if (notFirstModalView && notNavigatedBackToFirstModalView) {
             $('.modal-back').css('display', 'inline');
         } else {
-            window.history.replaceState({showCloseButton: false}, '', window.location.pathname + window.location.hash);
+            // TODO Breaks on QtWebKit, not that important?
+            //alert(window.location.pathname + window.location.hash);
+            //window.history.replaceState({showCloseButton: false}, '', window.location.pathname + window.location.hash);
             $('.modal-back').css('display', 'none');
         }
     }
