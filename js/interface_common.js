@@ -2833,7 +2833,7 @@ function extractTemplate(selector) {
 }
 
 function promptCopyAttrData(event) {
-    window.prompt(polyglot.t('copy_to_clipboard'), $(event.target).attr('data'));
+    navigator.clipboard.writeText($(event.target).attr('data'));
 }
 
 function initInterfaceModule(module) {

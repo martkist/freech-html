@@ -334,7 +334,8 @@ function getMartkist(peerAlias, elem) {
     getProfileResource(peerAlias, 'martkist', false,
         function(elem, val) {
             if (val) {
-                elem.attr('href', 'bitmsg:' + val + '?action=add&label=' + peerAlias);
+                // We need to implement the martkist: URI handler first
+                //elem.attr('href', 'martkist:' + val + '?action=add&label=' + peerAlias);
                 elem.next().attr('data', val).attr('title', 'Copy to clipboard');
                 elem.parent().css('display', 'inline-block').parent().show();
             }
