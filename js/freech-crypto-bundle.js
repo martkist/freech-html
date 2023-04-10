@@ -19017,7 +19017,7 @@ window.Buffer = require('buffer').Buffer;
 window.Bencode = require('bencode');
 
 var freech_network = {
-    magicPrefix: '\x18freech Signed Message:\n',
+    magicPrefix: '\x17freech Signed Message:\n',
     pubKeyHash: 0x00,
 }
 
